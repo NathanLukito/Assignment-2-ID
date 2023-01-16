@@ -96,6 +96,34 @@ a:active { text-decoration: none; }
     color: white
 }
 
+.popular-container{
+    display: flex;
+    border: 2px solid black;
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right:100px;
+    padding: 20px;
+}
+
+.recommended-container{
+    display: flex;
+    border: 2px solid black;
+    margin-top: 75px;
+    margin-left: 100px;
+    margin-right:100px;
+    padding: 20px;
+}
+
+
+.list-container{
+    display: flex;
+    border: 2px solid black;
+    margin-top: 75px;
+    margin-left: 100px;
+    margin-right:100px;
+    padding: 20px;
+}
+
 .menuIcon{
     width: 15px;
     height: 1px;
