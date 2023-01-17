@@ -137,7 +137,8 @@ h3{
     grid-template-rows: 1fr 1fr 1fr;
     flex-direction: column;
     gap: 75px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    height: 80vh;
+    margin-top: 5vh;
     width: 80%;
 }
