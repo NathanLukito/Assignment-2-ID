@@ -101,85 +101,6 @@ a:active { text-decoration: none; }
     transition: all 300ms;
 }
 
-h3{
-    margin-left: 10px;
-}
-
-.book-container{
-    position: absolute;
-    flex-direction: column;
-    left: 5%;
-    right: 5%;
-    outline: 2px solid black;
-}
-
-.container{
-    outline: 2px solid rgb(255, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-}
-
-.container-title{
-    align-self: center;
-}
-
-.scroll-images{
-    display: flex;
-    gap: 50px;
-    justify-content: left;
-    align-items: center;
-    position: relative;
-    
-}
-
-.book{
-    position: relative;
-    overflow: hidden;
-}
-
-.book-overlay{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 1;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.178), rgba(0, 0, 0, 0.819));
-    transform: translateY(100%);
-    transition: all 500ms;
-    z-index: 2;
-}
-
-
-.book-cover{
-    display: inline-block;
-    position: relative;
-    height: 300px;
-    width: auto;
-}
-
-.book:hover .book-overlay{
-    transform: translateY(0%);
-    transition: all 500ms;
-}
-
-.popular-container{
-    
-}
-
-.recommended-container{
-    
-}
-
-
-.list-container{
-    
-}
 
 .menuIcon{
     width: 15px;
@@ -204,3 +125,35 @@ h3{
     background-color: black;
 }
 
+
+.book{
+    display: grid;
+    height: 100vh;
+    gap: 40px;
+    grid-template-columns: 2fr 1fr;
+}
+
+.review{
+}
+
+.review-account{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.desc{
+    display: grid;
+    grid-template-rows: 1fr 0.5fr;
+}
+
+.book-desc{
+}
+
+.book-data{
+}
+
+.book-cover{
+    height: 40vh;
+    width: auto;
+}
