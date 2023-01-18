@@ -1,6 +1,7 @@
 html{
     margin: 0px;
     padding: 0px;
+    
 }
 
 body{
@@ -65,7 +66,7 @@ a:active { text-decoration: none; }
 
 .brandName{
     justify-self: center;
-    font-size: 30px;
+    font-size: 21px;
     padding-right: 5px;
 }
 
@@ -96,45 +97,50 @@ a:active { text-decoration: none; }
     padding: 8px 8px;
     border-radius: 12px;
     border: 2px solid rgb(255, 255, 255);
-    color: rgb(255, 255, 255)
+    color: rgb(255, 255, 255);
+    transition: all 300ms;
 }
 
 h3{
     margin-left: 10px;
 }
 
-.container{
+.book-container{
+    position: absolute;
+    flex-direction: column;
+    left: 2%;
+    right: 8%;
     outline: 2px solid black;
-    height: auto;
-    overflow: hidden;
+}
+
+.container{
+    outline: 2px solid rgb(255, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: auto;
+    scroll-behavior: smooth;
 }
 
 .container-title{
     align-self: center;
 }
 
-.books{
+.scroll-images{
     display: flex;
-    flex-direction: row;
     gap: 50px;
-    width: 300vw;
-    overflow: hidden;
-}
-
-.book-cover{
-    display: inline-block;
+    justify-content: left;
+    align-items: center;
     position: relative;
-    object-fit: cover;
-    height: 200px;
-    width: auto;
+    
 }
 
-.temp{
-    position: absolute;
+.book{
+    position: relative;
     overflow: hidden;
 }
 
-.book-desc{
+.book-overlay{
     position: absolute;
     top: 0;
     bottom: 0;
@@ -143,12 +149,24 @@ h3{
     height: 100%;
     width: 100%;
     opacity: 1;
-    border: 4px solid black;
     background-image: linear-gradient(rgba(0, 0, 0, 0.178), rgba(0, 0, 0, 0.819));
-    transform: translateY(0%);
+    transform: translateY(100%);
+    transition: all 500ms;
     z-index: 2;
 }
 
+
+.book-cover{
+    display: inline-block;
+    position: relative;
+    height: 300px;
+    width: auto;
+}
+
+.book:hover .book-overlay{
+    transform: translateY(0%);
+    transition: all 500ms;
+}
 
 .popular-container{
     
@@ -170,23 +188,15 @@ h3{
     background-color: rgb(255, 255, 255);
 }
 
-.book-container{
-    position: absolute;
-    flex-direction: column;
-    width: 90%;
-    left: 2%;
-    right: 8%;
-    outline: 2px solid black;
-}
 
 .nav-btn:hover{
     background-color: white;
     color: black;
     border-radius: 8px;
-    box-shadow:7px 7px black;
+    box-shadow: 7px 7px rgb(255, 167, 5);
     z-index: 1;
     transition: width 300ms 300ms, transform 200ms, color 200ms;
-
+    transition: border-radius 300ms, box-shadow 300ms;
 
 }
 
