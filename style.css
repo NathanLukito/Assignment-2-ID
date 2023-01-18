@@ -142,3 +142,19 @@ h3{
     margin-top: 5vh;
     width: 80%;
 }
+
+.nav-btn:hover{
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    box-shadow:7px 7px black;
+    z-index: 1;
+    transition: width 300ms 300ms, transform 200ms, color 200ms;
+
+
+}
+
+.nav-btn:hover .menuIcon{
+    background-color: black;
+}
+
