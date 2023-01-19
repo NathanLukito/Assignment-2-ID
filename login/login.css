@@ -1,0 +1,31 @@
+.form-container{
+    display: flex;
+    background-color: grey;
+    border-radius: 10px;
+    flex-direction: column;
+    text-align: center;
+    
+    padding-bottom: 25px;
+}
+.username{
+    margin-bottom: 10px;
+}
+.password{
+    margin-bottom: 10px;
+}
+.login-btn{
+    padding: 10px;
+    border-radius: 30px;
+    width: 35%;
+    border-width: 1px;
+}
+.username:hover{
+    border-radius: 10px;
+}
+.login-btn:hover{
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+    transition: width 300ms 300ms, transform 200ms, color 200ms;
+    transition: border-radius 250ms
+}
