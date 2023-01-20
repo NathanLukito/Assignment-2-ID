@@ -6,11 +6,11 @@ The website should allow the user to be able to search for new books to read tha
 
 # Functions & Features of Web Appplication
 
-- Allow users to log into the website and save their data into an external database
+- Allow users to log into the website and save their data
 - Allow users to add their own books into the website
-- Allow users to leave reviews and stars on books
+- Allow users to leave reviews and likes on books
 - Allow users to delete only the books that they have added
 - Text To Speech (TTS) API that reads out the synopsis of the book selected on the webpage
-- Allow the users to see the most viewed, and highest reviewed books
+- Allow the users to see the popular books, latest uploaded books, best authors
 - Allow users to save books that they think are interesting
 - Allow users to search for a book title
