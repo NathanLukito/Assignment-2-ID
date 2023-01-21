@@ -6,16 +6,41 @@
 <link href="login.css" rel="stylesheet" type="text/css"/>
 
 <body>
+    <nav class = "navigation">
+        <div class = "brand">
+            <img alt = "icon" class = "brandIcon" src = "/login/img/brand-icon.svg">
+            <span class = "brandName">
+                Book Sommeliers
+            </span>
+        </div>
+
+        <div class = "searchbar">
+            searchbar
+        </div>
+
+        <div class = "navbar">
+            
+            <button class = "nav-btn">
+                Menu
+                <div>
+                    <div class = "menuIcon"> </div>
+                    <div class = "menuIcon"> </div>
+                    <div class = "menuIcon"> </div>
+                </div>
+            <button>
+        </div>
+    </nav>
+
     <div class = "form-container">
         <h1>Login</h1>
         <form>
             <div class = "username">
-                <input type = "text" required>
                 <label>Username</label>
+                <input type = "text" required class = "input">
             </div>
             <div class = "password">
-                <input type = "password" required>
                 <label>Password</label>
+                <input type = "password" required class = "input">
             </div>
             <input type = "submit" value = "Login" class = "login-btn">
         </form>
