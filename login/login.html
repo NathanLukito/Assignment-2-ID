@@ -1,52 +1,57 @@
 <!DOCTYPE html>
 <html>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width" minimum-scale = 1>
-<link href="login.css" rel="stylesheet" type="text/css"/>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width" minimum-scale = 1>
+        <link href="login.css" rel="stylesheet" type="text/css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto&display=swap" rel="stylesheet">
+    </head>
 
-<body>
-    <nav class = "navigation">
-        <div class = "brand">
-            <img alt = "icon" class = "brandIcon" src = "/login/img/brand-icon.svg">
-            <span class = "brandName">
-                Book Sommeliers
-            </span>
-        </div>
+    <body>
+        <nav class = "navigation">
+            <div class = "brand">
+                <img alt = "icon" class = "brandIcon" src = "/login/img/brand-icon.svg">
+                <span class = "brandName">
+                    Book Sommeliers
+                </span>
+            </div>
 
-        <div class = "searchbar">
-            searchbar
-        </div>
+            <div class = "searchbar">
+                searchbar
+            </div>
 
-        <div class = "navbar">
-            
-            <button class = "nav-btn">
-                Menu
-                <div>
-                    <div class = "menuIcon"> </div>
-                    <div class = "menuIcon"> </div>
-                    <div class = "menuIcon"> </div>
+            <div class = "navbar">
+
+                <button class = "nav-btn">
+                    Menu
+                    <div>
+                        <div class = "menuIcon"> </div>
+                        <div class = "menuIcon"> </div>
+                        <div class = "menuIcon"> </div>
+                    </div>
+                <button>
+            </div>
+        </nav>
+
+        <div class = "form-container">
+            <h1>Login</h1>
+            <form>
+                <div class = "username">
+                    <label>Username</label>
+                    <input type = "text" required class = "input">
                 </div>
-            <button>
+                <div class = "password">
+                    <label>Password</label>
+                    <input type = "password" required class = "input">
+                </div>
+                <input type = "submit" value = "Login" class = "login-btn">
+            </form>
         </div>
-    </nav>
 
-    <div class = "form-container">
-        <h1>Login</h1>
-        <form>
-            <div class = "username">
-                <label>Username</label>
-                <input type = "text" required class = "input">
-            </div>
-            <div class = "password">
-                <label>Password</label>
-                <input type = "password" required class = "input">
-            </div>
-            <input type = "submit" value = "Login" class = "login-btn">
-        </form>
-    </div>
-
-</body>
+    </body>
 <script src = "/login/login.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 

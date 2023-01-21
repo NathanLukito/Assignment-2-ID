@@ -67,6 +67,7 @@ a:active { text-decoration: none; }
 .brandName{
     justify-self: center;
     font-size: 21px;
+    font-family: 'Montserrat', sans-serif;
     padding-right: 5px;
 }
 

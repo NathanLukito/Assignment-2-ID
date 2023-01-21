@@ -95,6 +95,7 @@ a:active { text-decoration: none; }
     color:rgb(0, 36, 56);
     justify-self: center;
     font-size: 21px;
+    font-family: 'Montserrat', sans-serif;
     padding-right: 5px;
 }
 
@@ -157,6 +158,7 @@ a:active { text-decoration: none; }
     margin-top: 90px;
     left: 5%;
     right: 5%;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container{
