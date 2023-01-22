@@ -28,4 +28,16 @@ $(document).ready(function(){
         const scroll = (x - startX) * 3;
         slider.scrollLeft = scrollLeft - scroll
     });
+
+    const listItems = document.querySelector('.menu').children
+    const listArray = Array.from(listItems)
+    $(".nav-btn").click(function(index){
+        var interval = 100
+        listArray.forEach(function (i, index) {
+            setTimeout(function () {
+                i.classList.toggle("show")
+            }, index * interval)
+        })
+    })
+    
 })
