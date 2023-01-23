@@ -44,9 +44,32 @@ $(document).ready(function(){
         })
     })
 
+    $(".navbar").click(function(){
+        if (document.querySelector(".icon1").getAttribute("class").endsWith("topAnim"))
+        {
+            
+            document.querySelector(".menu-btn").innerHTML = "Menu"
+            console.log("done2")
+        }
+
+        else if (document.querySelector(".icon1").getAttribute("class").endsWith("icon1"))
+        {
+            document.querySelector(".menu-btn").innerHTML = "Leave"
+            console.log($(".nav-btn"))
+        }
+
+        $(".icon1").toggleClass("topAnim")
+        $(".icon2").toggleClass("midAnim")
+        $(".icon3").toggleClass("botAnim")
+        
+        console.log("done")
+    })
+
 
     /*  RestDB Database  */
     booklist = []
+
+    //initiating book object
     function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover){
         this.BookID = BookID,
         this.Title = Title,
@@ -72,7 +95,7 @@ $(document).ready(function(){
               "cache-control": "no-cache"
             },
           }
-    
+    //Getting data from databse
         $.ajax(settings).done(async function (response) {
             for(let i = 0; i < response.length; i++)
             {
@@ -91,10 +114,11 @@ $(document).ready(function(){
                 )
                 
             }
-            localStorage.setItem("booklist", JSON.stringify(booklist))
+            //add to localStorage for use in other pages
+            localStorage.setItem("booklist", JSON.stringify(booklist)) 
 
-            let newbooklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
-            await popular() //wait for this to finish before initiating second booklist
+            //wait for data initialization to finish before initiating popular booklist
+            await popular() 
             
         })
 
@@ -104,17 +128,14 @@ $(document).ready(function(){
     function popular(){
         
         let booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
-        let htmlbooklist = document.getElementById("popular")
-        let popularchildren = htmlbooklist.children
 
-        let sorted = booklist.slice(0) //sort by highest likes
-        sorted.sort(function(a,b){
+        let sorted = booklist.slice(0) //duplicates the list into a array that always adds the higher liked book
+        sorted.sort(function(a,b){     
             return b.Likes - a.Likes
         })
 
         for (let i = 0; i < 20; i++)
         {
-            console.log(sorted[i])
             let root = document.getElementById("popular")
 
             let book_container = document.createElement("div")
@@ -141,23 +162,38 @@ $(document).ready(function(){
 
             let popular_stats = document.createElement("div")
             popular_stats.classList.add("popular-stats")
-            let likes = document.createElement("p")
-            likes.innerHTML = "Likes: " + sorted[i].Likes
-            let author = document.createElement("p")
-            author.innerHTML = "Author: " + sorted[i].Author
-            let date = document.createElement("p")
-            date.innerHTML = "Date: " + sorted[i].Date.substring(0,10);
 
-            popular_stats.appendChild(likes)
+            let likes_container = document.createElement("div")
+            likes_container.classList.add("likes")
+            let likes = document.createElement("p")
+            likes.innerHTML = sorted[i].Likes
+            let likes_icon = document.createElement("img")
+            likes_icon.setAttribute("src", "img/blacklike.svg")
+            likes_container.appendChild(likes)
+            likes_container.appendChild(likes_icon)
+
+            let author = document.createElement("p")
+            author.innerHTML = "By: " + sorted[i].Author
+
+            let date_container = document.createElement("div")
+            date_container.classList.add("date-released")
+            let date = document.createElement("p")
+            date.innerHTML = sorted[i].Date.substring(0,10)
+            let date_icon = document.createElement("img")
+            date_icon.setAttribute("src", "img/blackdate.svg")
+
+            date_container.appendChild(date)
+            date_container.appendChild(date_icon)
+
+            popular_stats.appendChild(likes_container)
             popular_stats.appendChild(author)
-            popular_stats.appendChild(date)
+            popular_stats.appendChild(date_container)
 
             book_container.appendChild(book)
             book_container.appendChild(popular_stats)
 
             root.appendChild(book_container)
-            // let likes = popularchildren[i].querySelector("#likes")
-            // likes.innerHTML = "Likes: " + sorted[i].Likes
+            
         }
         
     }

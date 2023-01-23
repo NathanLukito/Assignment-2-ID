@@ -14,6 +14,12 @@ button{
     border: None;
 }
 
+@keyframes SlideInFromLeft {
+    0% {left: -100%;}
+
+    100% {left: 0%;}
+}
+
 li{
     list-style: none;
 }
@@ -88,10 +94,10 @@ a:active { text-decoration: none; }
     text-align: center;
     vertical-align: middle;
     padding: 10px;
+    animation: 1s ease-in 0.5s 1 SlideInFromLeft;
 }
 
 .brandName{
-    
     justify-self: center;
     font-size: 21px;
     font-family: 'Montserrat', sans-serif;
@@ -122,7 +128,7 @@ a:active { text-decoration: none; }
     outline: none;
     gap: 5px;
     font-size: 10px;
-    padding: 8px 8px;
+    padding: 0px 8px;
     border-radius: 12px;
     border: 2px solid rgb(0, 36, 56);
     transition: all 300ms;
@@ -134,6 +140,10 @@ a:active { text-decoration: none; }
     margin: 3px 0;
     background-color: rgb(0, 36, 56);
     transition: all 200ms;
+}
+
+.menu-btn{
+    font-size: 11px;
 }
 
 
@@ -148,6 +158,19 @@ a:active { text-decoration: none; }
 
 .nav-btn:hover .menuIcon{
     background-color: rgb(255, 255, 255);
+
+}
+
+.topAnim{
+    transform: rotate(45deg) translateY(0px) translateX(5px)
+}
+
+.midAnim{
+    opacity: 0;
+}
+
+.botAnim{
+    transform: rotate(315deg) translateY(-1px) translateX(5px)
 }
 
 .menu{
@@ -299,6 +322,12 @@ a:active { text-decoration: none; }
     padding: 10px;
 }
 
+.book-overlay > h1{
+    padding: 10px;
+    border-bottom: 0px solid black;
+    transition: all 200ms ease-in-out;
+}
+
 
 .book-cover{
     border-radius: 12px;
@@ -314,9 +343,22 @@ a:active { text-decoration: none; }
     transition: all 500ms ease-in-out;
 }
 
+.popular-book-container:hover{
+    background-color: aliceblue;
+}
+
+.popular-book-container:first-child{
+    background-color: #ff950b;
+}
+
+.popular-book-container:first-child:hover{
+    background-color: #ff7a41;
+}
+
 .popular-book-container{
     display: flex;
-    background-color:rgb(0, 36, 56);
+    background-color: #00000014;
+    color: black;
     border-radius: 12px;
     transition: all 300ms;
 }
@@ -325,9 +367,13 @@ a:active { text-decoration: none; }
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    color: white;
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 10px;
+    min-width: 120px;
+}
+
+.date-icon-popular{
+    color: black;
 }
 
 .popular-book-container:hover{
@@ -421,10 +467,38 @@ a:active { text-decoration: none; }
 
 .date-released{
     display: flex;
+    flex-wrap: nowrap;
     gap: 10px;
 }
 
 .author-container{
 }
 
+
+@media screen and (max-width: 580px){
+    .book{
+        height: 300px;
+    }
+    .book-cover{
+        height: 300px;
+        max-width: 250px;
+    }
+
+    .book-overlay > h1{
+        font-size: 17px;
+    }
+
+    .book-overlay > p{
+        font-size: 13px;
+    }
+
+    .popular-book-container{
+        font-size: 13px;
+    }
+
+    .popular-stats{ 
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
 
