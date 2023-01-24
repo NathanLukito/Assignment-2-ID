@@ -47,10 +47,8 @@ $(document).ready(function(){
 
     $(".navbar").click(function(){
         if (document.querySelector(".icon1").getAttribute("class").endsWith("topAnim"))
-        {
-            
+        { 
             document.querySelector(".menu-btn").innerHTML = "Menu"
-            console.log("done2")
         }
 
         else if (document.querySelector(".icon1").getAttribute("class").endsWith("icon1"))
@@ -62,8 +60,6 @@ $(document).ready(function(){
         $(".icon1").toggleClass("topAnim")
         $(".icon2").toggleClass("midAnim")
         $(".icon3").toggleClass("botAnim")
-        
-        console.log("done")
     })
 
 
@@ -120,7 +116,7 @@ $(document).ready(function(){
 
             //wait for data initialization to finish before initiating popular booklist
             await popular() 
-            
+            await latest()
         })
 
         
@@ -197,6 +193,80 @@ $(document).ready(function(){
             
         }
         
+    }
+
+    function latest(){
+
+        let booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
+
+        let sorted = booklist.slice(0) //duplicates the list into a array that always adds the most recent book
+        sorted.sort(function(a,b){  
+            let ms = 1000 * 60 * 60 * 24;
+            let date1 = new Date(b.Date.substring(0,10).replace('-', '/'))
+            let date2 = new Date(a.Date.substring(0,10).replace('-', '/'))
+            clean_date1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate())
+            clean_date2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
+            return Math.floor((date1/ms - date2/ms) )
+        })
+
+        for(let i = 0; i <= 30; i++)
+        {
+            let root = document.querySelector(".latest-container")
+
+            let container = document.createElement("div")
+            container.classList.add("latest-book-container")
+
+            let img = document.createElement("img")
+            img.classList.add("latest-book-cover")
+            img.setAttribute("src", "https://nathaninteractivedev-4002.restdb.io/media/" + sorted[i].BookCover)
+            img.setAttribute("alt", "book-cover")
+
+            let desc = document.createElement("div")
+            desc.classList.add("latest-book-desc")
+
+            let desc1 = document.createElement("div")
+            let author = document.createElement("p")
+            author.innerHTML = "By: " + sorted[i].Author
+            let date_released = document.createElement("div")
+            date_released.classList.add("date-released")
+            let date = document.createElement("p")
+            date.innerHTML = sorted[i].Date.substring(0,10).replace("-", "/")
+            let date_icon = document.createElement("img")
+            date_icon.setAttribute("src", "img/blackdate.svg")
+            date_icon.setAttribute("alt", "date")
+
+            date_released.appendChild(date)
+            date_released.appendChild(date_icon)
+
+            desc1.appendChild(author)
+            desc1.appendChild(date_released)
+            
+            let desc2 = document.createElement("div")
+            let like_container = document.createElement("div")
+            like_container.classList.add("likes")
+            let like = document.createElement("p")
+            like.innerHTML = sorted[i].Likes
+            let like_icon = document.createElement("img")
+            like_icon.setAttribute("src", "img/blacklike.svg")
+            like_icon.setAttribute("alt", "likes")
+            let genre = document.createElement("p")
+            genre.innerHTML = "foltronica"
+
+            like_container.appendChild(like)
+            like_container.appendChild(like_icon)
+
+            desc2.appendChild(like_container)
+            desc2.appendChild(genre)
+
+            desc.appendChild(desc1)
+            desc.appendChild(desc2)
+
+            container.appendChild(img)
+            container.appendChild(desc)
+
+            root.appendChild(container)
+            
+        }
     }
     
     GetBooks()
