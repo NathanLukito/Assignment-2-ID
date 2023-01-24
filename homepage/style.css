@@ -143,6 +143,7 @@ a:active { text-decoration: none; }
 .bar:focus{
     background-color: #ffffff;
     text-align: start;
+    text-indent: 10px;
     width: 60%;
 }
 
