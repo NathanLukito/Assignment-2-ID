@@ -220,6 +220,7 @@ a:active { text-decoration: none; }
     color:white;
     height: 90vh;
     text-align: center;
+    margin-top: 1vh;
     overflow-x: hidden;
     z-index: 1;
 }
