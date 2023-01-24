@@ -55,7 +55,7 @@ $(document).ready(function(){
 
         else if (document.querySelector(".icon1").getAttribute("class").endsWith("icon1"))
         {
-            document.querySelector(".menu-btn").innerHTML = "Leave"
+            document.querySelector(".menu-btn").innerHTML = "Close"
             console.log($(".nav-btn"))
         }
 
