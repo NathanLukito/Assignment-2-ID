@@ -111,8 +111,39 @@ a:active { text-decoration: none; }
 }
 
 .searchbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     font-size: 10px;
-    /* border: 2px solid black; */
+}
+
+.search-icon{
+    width: 25px;
+    
+}
+
+.bar{
+    width: 10%;
+    height: 4vh;
+    background-color: #e2e2e2;
+    border-radius: 30px;
+    text-align: center;
+    border: none;
+    transition: all 300ms ease-in-out;
+}
+
+.bar:hover{
+    width: 60%;
+    text-align:start;
+    text-indent: 10px;
+    transition: all 300ms ease-in-out;
+}
+
+.bar:focus{
+    background-color: #ffffff;
+    text-align: start;
+    width: 60%;
 }
 
 .navbar{
@@ -136,7 +167,7 @@ a:active { text-decoration: none; }
     font-size: 10px;
     padding: 0px 8px;
     border-radius: 12px;
-    border: 2px solid rgb(0, 36, 56);
+    
     transition: all 300ms;
 }
 
@@ -188,7 +219,6 @@ a:active { text-decoration: none; }
     color:white;
     height: 90vh;
     text-align: center;
-    margin-top: 10vh;
     overflow-x: hidden;
     z-index: 1;
 }
@@ -429,21 +459,9 @@ a:active { text-decoration: none; }
     transition: all 500ms ease-in-out;
 }
 
-.popular-book-container:hover{
-    background-color: aliceblue;
-}
-
-.popular-book-container:first-child{
-    background-color: #ff950b;
-}
-
-.popular-book-container:first-child:hover{
-    background-color: #ff7a41;
-}
-
 .popular-book-container{
     display: flex;
-    background-color: #00000014;
+    background-color: #ffffff14;
     color: black;
     border-radius: 12px;
     transition: all 300ms;
@@ -483,7 +501,7 @@ a:active { text-decoration: none; }
 .book-header{
     display: flex;
     flex-direction: column;
-    background-color:rgb(0, 58, 90);
+    background-color:rgb(0, 0, 0);
     border-top-right-radius: 12px;
     border-top-left-radius: 12px;
     color: white;
@@ -493,7 +511,7 @@ a:active { text-decoration: none; }
 .latest-book-container{
     display: grid;
     grid-template-columns: 1fr 3fr;
-    background-color: rgb(0, 36, 56);
+    background-color: rgb(255, 255, 255);
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 2px solid rgba(105, 105, 105, 0.296);
@@ -502,8 +520,8 @@ a:active { text-decoration: none; }
 }
 
 .latest-book-container:hover{
-    transform: scale(1.015);
-    background-color:rgb(0, 102, 156);
+    transform: scale(1.02);
+    background-color:rgb(255, 255, 255);
     transition: transform 200ms ease-in-out;
 }
 
@@ -518,7 +536,7 @@ a:active { text-decoration: none; }
 }
 
 .latest-book-container:first-child{
-    border-top: 4px solid rgba(255, 168, 5, 0.177);
+    border-top: 4px solid rgba(255, 255, 255, 0.244);
 }
 
 .latest-book-container:last-child{
@@ -538,7 +556,7 @@ a:active { text-decoration: none; }
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    color: white;
+    color: rgb(0, 0, 0);
     gap: 30px;
 }
 
