@@ -3,35 +3,36 @@ $(document).ready(function(){
         localStorage.clear()
     }
     clear()
-    // const slider = $(".popular-container")
-    // let isDown = false
-    // let startX;
-    // let scrollLeft;
 
-    // slider.mousedown(function (e) { 
-    //     isDown = true
-    //     slider.addClass('scroll-active')
-    //     startX = e.pageX
-    //     scrollLeft = slider.scrollLeft
-    // });
+    let translate = 0
+    let container = document.querySelector(".scroll-images")
+    $(".scroll-left").click(function(){
+        if(translate != 0)
+        {
+            translate += 4.5;
+            container.style.transform = "translateX(" + translate + "%)"
+        }
 
-    // slider.mouseleave(function () { 
-    //     isDown = false
-    //     slider.removeClass('scroll-active')
-    // });
+        else
+        {
+            return;
+        }   
+    })
 
-    // slider.mouseup(function () { 
-    //     isDown = false
-    //     slider.removeClass('scroll-active')
-    // });
+    $(".scroll-right").click(function(){
+        if(translate >= -95)
+        {
+            translate -= 4.5;
+            container.style.transform = "translateX(" + translate + "%)"
+            console.log(translate)
+        }
 
-    // slider.mousemove(function (e) { 
-    //     if(!isDown) return
-    //     e.preventDefault()
-    //     const x = e.pageX
-    //     const scroll = (x - startX) * 3;
-    //     slider.scrollLeft = scrollLeft - scroll
-    // });
+        else
+        {
+            return;
+        }
+    })
+
 
     const listItems = document.querySelector('.menu').children
     const listArray = Array.from(listItems)
@@ -134,7 +135,7 @@ $(document).ready(function(){
             return b.Likes - a.Likes
         })
 
-        for (let i = 0; i < 20; i++)
+        for (let i = 0; i <= 20; i++)
         {
             let root = document.getElementById("popular")
 

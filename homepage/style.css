@@ -233,6 +233,10 @@ a:active { text-decoration: none; }
     overflow-y: hidden;
 }
 
+.popular-container::-webkit-scrollbar{
+    display: none;
+}
+
 .popular-container.scroll-active{
     cursor: grabbing;
     background-color: #00000014;
@@ -281,13 +285,13 @@ a:active { text-decoration: none; }
     display: flex;
     gap: 50px;
     border-radius: 12px;
-    transition: all 200ms;
+    transition: transform 800ms ease-in-out
 }
 
 .book{
     position: relative;
     overflow: hidden;
-    height: 400px;
+    height: 350px;
     border-radius: 12px;
     background-color: transparent;
     transition: all 500ms ease-in-out;
@@ -332,8 +336,8 @@ a:active { text-decoration: none; }
 .book-cover{
     border-radius: 12px;
     position: relative;
-    height: 400px;
-    max-width: 400px;
+    height: 350px;
+    max-width: 360px;
     width: auto;
 }
 
@@ -500,5 +504,37 @@ a:active { text-decoration: none; }
         padding-right: 10px;
         padding-left: 10px;
     }
+
+@media screen and (max-width: 450px)
+{
+    .book{
+        height: 200px;
+    }
+    .book-cover{
+        height: 200px;
+        max-width: 150px;
+    }
+
+    .book-overlay > h1{
+        font-size: 13px;
+    }
+
+    .book-overlay > p{
+        font-size: 9px;
+    }
+
+    .popular-book-container{
+        font-size: 11px;
+    }
+
+    .popular-stats{ 
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .scroll{
+        display: none;
+    }
+}
 }
 
