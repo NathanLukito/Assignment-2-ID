@@ -156,8 +156,9 @@ i{
     font-family: 'Montserrat', sans-serif;
 }
 
-@media screen and (max-width: 670px){
+@media screen and (max-width: 900px){
     .message-container{
+        display:flex;
         flex-wrap: wrap;
     }
 }
