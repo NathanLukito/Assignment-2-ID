@@ -120,11 +120,10 @@ a:active { text-decoration: none; }
 
 .search-icon{
     width: 25px;
-    
 }
 
 .bar{
-    width: 10%;
+    width: 100px;
     height: 4vh;
     background-color: #e2e2e2;
     border-radius: 30px;
@@ -550,7 +549,7 @@ a:active { text-decoration: none; }
     padding-left: 20px;
     padding-right: 20px;
     align-self: center;
-    width: 80px;
+    height: 70px;
 }
 
 .latest-book-desc{
