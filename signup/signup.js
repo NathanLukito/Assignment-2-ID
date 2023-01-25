@@ -4,14 +4,6 @@ $(document).ready(function(){
     let strengthBar = document.querySelector("#strength-bar");
     let strengthText = document.querySelector(".strength-text");
 
-    password.addEventListener("focus", function(){
-        $(".strengthContainer").css("display", "flex")
-    });
-
-    password.addEventListener("blur", function(){
-        $(".strengthContainer").css("display", "none")
-    });
-
     function setStrength(value){
         strengthBar.style.width = value + "%";
     }
