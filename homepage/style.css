@@ -132,7 +132,7 @@ a:active { text-decoration: none; }
     transition: all 300ms ease-in-out;
 }
 
-.bar:hover{
+.searchbar:hover .bar{
     width: 60%;
     text-align:start;
     text-indent: 10px;
