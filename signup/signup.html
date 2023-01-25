@@ -28,16 +28,44 @@
                     <label>Email</label>
                     <input type ="email" required class = "input">
                 </div>
-                <div class = "password">
-                    <label>Password</label>
-                    <input type = "password" required class = "input">
+
+                <div class = "pass-strength-container">
+                    <div class = "password-container">
+                        <label>Password</label>
+                        <input type = "password" required class = "input" id = "password-field">
+                    </div>
+
+                    <div class = "strengthContainer">
+                        <div class = "arrow"></div>
+
+                        <div class = "strength-bar-desc-container">
+                            <p class = "title"> Password strength:
+                                <span class = "strength-text"></span>
+                            </p>
+            
+                            <div class = "strength-bar-wrapper">
+                                <div id = "strength-bar"></div>
+                            </div>
+            
+                            <p class = "strength-description">
+                                Passwords should be at least <i>7</i> characters long and max <i>15</i>. <br>
+                                Try to use <strong>lowercasing</strong>, <strong>uppercasing</strong>, <strong>numbers</strong>
+                                and <strong>symbols</strong>.
+                            </p>
+                        </div>
+                        
+                    </div>
+
                 </div>
+
+
                 <input type = "submit" value = "Login" class = "login-btn">
             </form>
+
         </div>
 
     </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src = "/signup/signup.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
 </html>
