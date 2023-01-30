@@ -68,7 +68,8 @@ $(document).ready(function(){
     booklist = []
 
     //initiating book object
-    function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover){
+    function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover)
+    {
         this.BookID = BookID,
         this.Title = Title,
         this.Synopsis = Synopsis,
@@ -94,10 +95,12 @@ $(document).ready(function(){
             },
           }
     //Getting data from databse
-        $.ajax(settings).done(async function (response) {
+        $.ajax(settings).done(async function (response) 
+        {
             for(let i = 0; i < response.length; i++)
             {
-                booklist.push(
+                booklist.push
+                (
                     new Book(
                         response[i].BookID, 
                         response[i].Title, 
@@ -123,12 +126,79 @@ $(document).ready(function(){
         
     }
 
-    async function popular(){
+    userlist = []
+
+    function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes)
+    {
+        this.UserID = UserID,
+        this.Username = Username,
+        this.Password = Password,
+        this.Email = Email,
+        this.Usertype = Usertype,
+        this.Datejoin = Datejoin,
+        this.Likes = Likes
+    }
+
+    async function GetUsers()
+    {
+        let settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://nathaninteractivedev-4002.restdb.io/rest/userdata",
+            "method": "GET",
+            "headers": {
+              "content-type": "application/json",
+              "x-apikey": APIKEY,
+              "cache-control": "no-cache"
+            },
+          }
+
+          $.ajax(settings).done(async function (response)
+          {
+              for(let i = 0; i < response.length; i++)
+              {
+                  userlist.push
+                  (
+                      new User(
+                          response[i].UserID, 
+                          response[i].Username, 
+                          response[i].Password, 
+                          response[i].Email, 
+                          response[i].Usertype, 
+                          response[i].Datejoin, 
+                          response[i].Likes
+                          )
+                  )
+                  
+              }
+              localStorage.setItem("userlist", JSON.stringiasync fy(userlist))
+              await author()
+            })
+    }
+
+    function author()
+    {
+        let userlist = JSON.parse(localStorage.getItem(localStorage.key(1)))
+        let sorted = userlist.slice(0)
+        sorted.sort(function(a,b)
+        {
+            return b.Likes - a.Likes
+        })
+
+        for (let i = 0; i <= 5; i++)
+        {
+            console.log(sorted[i])
+        }
+    }
+
+    function popular()
+    {
         
         let booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
 
         let sorted = booklist.slice(0) //duplicates the list into a array that always adds the higher liked book
-        sorted.sort(function(a,b){     
+        sorted.sort(function(a,b)
+        {     
             return b.Likes - a.Likes
         })
 
@@ -205,7 +275,8 @@ $(document).ready(function(){
         let booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
 
         let sorted = booklist.slice(0) //duplicates the list into a array that always adds the most recent book
-        sorted.sort(function(a,b){  
+        sorted.sort(function(a,b)
+        {  
             let ms = 1000 * 60 * 60 * 24;
             let date1 = new Date(b.Date.substring(0,10).replace('-', '/'))
             let date2 = new Date(a.Date.substring(0,10).replace('-', '/'))
@@ -281,5 +352,6 @@ $(document).ready(function(){
         })
     }
     GetBooks()
+    GetUsers()
 
 })
