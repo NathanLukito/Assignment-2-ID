@@ -171,7 +171,7 @@ $(document).ready(function(){
                   )
                   
               }
-              localStorage.setItem("userlist", JSON.stringiasync fy(userlist))
+              localStorage.setItem("userlist", JSON.stringify(userlist))
               await author()
             })
     }
@@ -265,7 +265,6 @@ $(document).ready(function(){
 
             
         }
-        await popularBookClick()
 
         
     }
