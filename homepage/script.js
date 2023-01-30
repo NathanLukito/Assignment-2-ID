@@ -37,7 +37,7 @@ $(document).ready(function(){
     const listItems = document.querySelector('.menu').children
     const listArray = Array.from(listItems)
     $(".nav-btn").click(function(index){
-        var interval = 100
+        var interval = 100      
         listArray.forEach(function (i, index) {
             setTimeout(function () {
                 i.classList.toggle("show")
@@ -61,6 +61,7 @@ $(document).ready(function(){
         $(".icon2").toggleClass("midAnim")
         $(".icon3").toggleClass("botAnim")
     })
+
 
 
     /*  RestDB Database  */
@@ -122,7 +123,7 @@ $(document).ready(function(){
         
     }
 
-    function popular(){
+    async function popular(){
         
         let booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
 
@@ -137,6 +138,7 @@ $(document).ready(function(){
 
             let book_container = document.createElement("div")
             book_container.classList.add("popular-book-container")
+            book_container.setAttribute("data-link", sorted[i].BookID)
 
             let book = document.createElement("div")
             book.classList.add("book")
@@ -190,8 +192,11 @@ $(document).ready(function(){
             book_container.appendChild(popular_stats)
 
             root.appendChild(book_container)
+
             
         }
+        await popularBookClick()
+
         
     }
 
@@ -215,6 +220,7 @@ $(document).ready(function(){
 
             let container = document.createElement("div")
             container.classList.add("latest-book-container")
+            container.setAttribute("data-link", sorted[i].BookID)
 
             let img = document.createElement("img")
             img.classList.add("latest-book-cover")
@@ -265,10 +271,15 @@ $(document).ready(function(){
             container.appendChild(desc)
 
             root.appendChild(container)
-            
+             
         }
     }
-    
+
+    function popularBookClick(){
+        $(".popular-book-container").click(function(){
+            console.log(getAttribute("data-link"))
+        })
+    }
     GetBooks()
 
 })
