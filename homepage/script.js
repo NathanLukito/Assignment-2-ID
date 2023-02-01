@@ -128,7 +128,7 @@ $(document).ready(function(){
 
     userlist = []
 
-    function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes)
+    function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic)
     {
         this.UserID = UserID,
         this.Username = Username,
@@ -136,7 +136,8 @@ $(document).ready(function(){
         this.Email = Email,
         this.Usertype = Usertype,
         this.Datejoin = Datejoin,
-        this.Likes = Likes
+        this.Likes = Likes,
+        this.Profilepic = Profilepic
     }
 
     async function GetUsers()
@@ -166,7 +167,8 @@ $(document).ready(function(){
                           response[i].Email, 
                           response[i].Usertype, 
                           response[i].Datejoin, 
-                          response[i].Likes
+                          response[i].Likes,
+                          response[i].Profilepic
                           )
                   )
                   
@@ -185,9 +187,76 @@ $(document).ready(function(){
             return b.Likes - a.Likes
         })
 
-        for (let i = 0; i <= 5; i++)
+        for(let x = 0; x < sorted.length; x++)
         {
-            console.log(sorted[i])
+            
+        }
+
+        for (let i = 0; i < 5; i++)
+        {
+            if(sorted[i].Usertype = "Author")
+            {
+                console.log(sorted[i].Username)
+                let root = document.querySelector("#author")
+
+                let container = document.createElement("div")
+                container.classList.add("table-book-container")
+
+                let profilepic = document.createElement("img")
+                console.log(sorted[i].Profilepic)
+                profilepic.setAttribute("src", "https://nathaninteractivedev-4002.restdb.io/media/" + sorted[i].Profilepic)
+                profilepic.setAttribute("alt", "profile picture")
+                profilepic.classList.add("table-book-cover")
+
+                let description = document.createElement("div")
+                description.classList.add("table-book-desc")
+                
+                let author = document.createElement("div")
+                let authormsg = document.createElement("p")
+                authormsg.innerHTML = "Made By"
+                let authorname = document.createElement("p")
+                authorname.innerHTML = sorted[i].Username
+
+                author.appendChild(authormsg)
+                author.appendChild(authorname)
+
+                let stats = document.createElement("div")
+                likes_container = document.createElement("div")
+                likes_container.classList.add("likes")
+                likes = document.createElement("p")
+                likes.innerHTML = sorted[i].Likes
+                like_icon = document.createElement("img")
+                like_icon.setAttribute("src", "img/blacklike.svg")
+                like_icon.setAttribute("alt", "Like Icon")
+                like_icon.classList.add("like-icon")
+
+                likes_container.appendChild(likes)
+                likes_container.appendChild(like_icon)
+
+                let date_container = document.createElement("div")
+                date_container.classList.add("date-released")
+                date = document.createElement("p")
+                date.innerHTML = sorted[i].Datejoin.substring(0,10).replace("-", "/")
+                date_icon = document.createElement("img")
+                date_icon.setAttribute("src", "img/blackdate.svg")
+                date_icon.setAttribute("alt", "Date Icon")
+                date_icon.classList.add("date-icon")
+
+                date_container.appendChild(date)
+                date_container.appendChild(date_icon)
+
+                stats.appendChild(likes_container)
+                stats.appendChild(date_container)
+
+                description.appendChild(author)
+                description.appendChild(stats)
+
+                container.appendChild(profilepic)
+                container.appendChild(description)
+
+                root.appendChild(container)
+            }
+            
         }
     }
 
@@ -287,19 +356,18 @@ $(document).ready(function(){
 
         for(let i = 0; i <= 30; i++)
         {
-            let root = document.querySelector(".latest-container")
+            let root = document.querySelector(".table-container-latest-popular")
 
             let container = document.createElement("div")
-            container.classList.add("latest-book-container")
-            container.setAttribute("data-link", sorted[i].BookID)
+            container.classList.add("table-book-container")
 
             let img = document.createElement("img")
-            img.classList.add("latest-book-cover")
+            img.classList.add("table-book-cover")
             img.setAttribute("src", "https://nathaninteractivedev-4002.restdb.io/media/" + sorted[i].BookCover)
             img.setAttribute("alt", "book-cover")
 
             let desc = document.createElement("div")
-            desc.classList.add("latest-book-desc")
+            desc.classList.add("table-book-desc")
 
             let desc1 = document.createElement("div")
             let author = document.createElement("p")
@@ -345,12 +413,7 @@ $(document).ready(function(){
              
         }
     }
-
-    function popularBookClick(){
-        $(".popular-book-container").click(function(){
-            console.log(getAttribute("data-link"))
-        })
-    }
+    
     GetBooks()
     GetUsers()
 
