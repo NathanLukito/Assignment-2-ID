@@ -281,7 +281,7 @@ a:active { text-decoration: none; }
 
 
 .welcome-message{
-    color: rgb(28, 203, 177);
+    color: rgba(0,221,179,255);
     font-size: 40px;
     font-weight: 600;
 }
