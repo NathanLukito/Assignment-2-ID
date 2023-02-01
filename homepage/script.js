@@ -277,15 +277,21 @@ $(document).ready(function(){
             let book_container = document.createElement("div")
             book_container.classList.add("popular-book-container")
             book_container.setAttribute("data-link", sorted[i].BookID)
+            book_container.addEventListener('click', function(e){
+                let bookid = book_container.getAttribute("data-link")
+            
+                localStorage.setItem("BookID", bookid)
+                location.href = 'http://127.0.0.1:5500/Assignment-2-ID/homepage/book/book.html'
+            })
 
             let book = document.createElement("div")
             book.classList.add("book")
-
             let book_cover = document.createElement("img")
             book_cover.setAttribute("src", "https://nathaninteractivedev-4002.restdb.io/media/" + sorted[i].BookCover)
             book_cover.classList.add("book-cover")
             let book_overlay = document.createElement("div")
             book_overlay.classList.add("book-overlay")
+            book_overlay.setAttribute("data-link", sorted[i].BookID)
             let title = document.createElement("h1")
             title.innerHTML = sorted[i].Title
             let synopsis = document.createElement("p")
@@ -299,6 +305,7 @@ $(document).ready(function(){
 
             let popular_stats = document.createElement("div")
             popular_stats.classList.add("popular-stats")
+            popular_stats.setAttribute("data-link", sorted[i].BookID)
 
             let likes_container = document.createElement("div")
             likes_container.classList.add("likes")
@@ -330,11 +337,8 @@ $(document).ready(function(){
             book_container.appendChild(popular_stats)
 
             root.appendChild(book_container)
-
             
         }
-        await popularBookClick()
-
         
     }
 
@@ -412,6 +416,8 @@ $(document).ready(function(){
              
         }
     }
+
+    
     
     GetBooks()
     GetUsers()
