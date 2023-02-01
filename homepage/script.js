@@ -170,10 +170,9 @@ $(document).ready(function(){
                           response[i].Likes,
                           response[i].Profilepic
                           )
-                  )
-                  
+                  )  
               }
-              localStorage.setItem("userlist", JSON.stringiasync fy(userlist))
+              localStorage.setItem("userlist", JSON.stringify(userlist))
               await author()
             })
     }
@@ -334,7 +333,6 @@ $(document).ready(function(){
 
             
         }
-        await popularBookClick()
 
         
     }

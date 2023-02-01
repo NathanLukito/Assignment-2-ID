@@ -11,48 +11,87 @@
     </head>
 
     <body>
-        <nav class = "navigation">
-            <div class = "brand">
-                <img alt = "icon" class = "brandIcon" src = "/login/img/brand-icon.svg">
-                <span class = "brandName">
-                    Book Sommeliers
-                </span>
+        <nav>
+            <div class = "menu">
+                <div class = "select">
+                    <h1>Selection</h1>
+                </div>
+        
+                <div class = "select">
+                    <h1>Selection</h1>
+                </div>
+        
+                <div class = "select">
+                    <h1>Selection</h1>
+                </div>
+                
+                <div class = "select">
+                    <h1>Selection</h1>
+                </div>
             </div>
-
-            <div class = "searchbar">
-                searchbar
+            <div class = "navigation">
+                <div class = "brand">
+                    <img alt = "icon" class = "brandIcon" src = "img/brand-icon.svg">
+                    <span class = "brandName">
+                        Book Sommeliers
+                    </span>
+                </div>
+        
+                <div class = "searchbar">
+                    <button type = "submit">
+                        <img class = "search-icon" src = "img/search.svg">
+                    </button>
+                    <input class = "bar" id = "search" type = "text" placeholder="Search">
+                </div>
+        
+                <div class = "navbar">
+                    <button class = "nav-btn">
+                        <p class = "menu-btn">Menu</p>
+                        <div>
+                            <div class = "menuIcon icon1"> </div>
+                            <div class = "menuIcon icon2"> </div>
+                            <div class = "menuIcon icon3"> </div>
+                        </div>
+                    <button>
+                </div>
+                
             </div>
-
-            <div class = "navbar">
-
-                <button class = "nav-btn">
-                    Menu
-                    <div>
-                        <div class = "menuIcon"> </div>
-                        <div class = "menuIcon"> </div>
-                        <div class = "menuIcon"> </div>
-                    </div>
-                <button>
-            </div>
+    
+            
         </nav>
+        <div class = "form-sign-up-container">
+            <div class = "form-container">
+                <h1>Login</h1>
+                <form>
+                    <div class = "input-fields">
+                        <div class = "username">
+                            <input type = "text" required class = "input" id = "Username" placeholder="Username">
+                            <div class = "bottom-border-wrapper">
+                                <div class = "bottom-border-username"></div>
+                            </div>
+                        </div>
+                        <div class = "password">
+                            <input type = "password" required class = "input" id = "Password" placeholder="Password">
+                            <div class = "bottom-border-wrapper">
+                                <div class = "bottom-border-password"></div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class = "form-container">
-            <h1>Login</h1>
-            <form>
-                <div class = "username">
-                    <label>Username</label>
-                    <input type = "text" required class = "input" id = "Username">
+                    <input type = "submit" value = "Login" class = "login-btn">
+                </form>
+            </div>
+        
+            <div class = "sign-up-container">
+                <div class = "sign-up-text">
+                    <p>New to Book Sommeliers? <a href = "/signup/signup.html" class = "create-acc">Create an account</a></p>
                 </div>
-                <div class = "password">
-                    <label>Password</label>
-                    <input type = "password" required class = "input" id = "Password">
-                </div>
-                <input type = "submit" value = "Login" class = "login-btn">
-            </form>
+            </div>
         </div>
 
-    </body>
-<script src = "/login/login.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
+    </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src = "/login/login.js"></script>
 </html>
