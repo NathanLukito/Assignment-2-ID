@@ -24,7 +24,6 @@ $(document).ready(function(){
         {
             translate -= 4.5;
             container.style.transform = "translateX(" + translate + "%)"
-            console.log(translate)
         }
 
         else
@@ -54,7 +53,6 @@ $(document).ready(function(){
         else if (document.querySelector(".icon1").getAttribute("class").endsWith("icon1"))
         {
             document.querySelector(".menu-btn").innerHTML = "Close"
-            console.log($(".nav-btn"))
         }
 
         $(".icon1").toggleClass("topAnim")
@@ -68,7 +66,7 @@ $(document).ready(function(){
     let booklist = []
 
     //initiating book object
-    function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover)
+    function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover, Genre)
     {
         this.BookID = BookID,
         this.Title = Title,
@@ -78,7 +76,8 @@ $(document).ready(function(){
         this.Dislikes = Dislikes,
         this.ReviewID = ReviewID,
         this.Date = Date,
-        this.BookCover = BookCover
+        this.BookCover = BookCover,
+        this.Genre = Genre
 
     }
     const APIKEY = "63b3e1aa969f06502871a8c1"
@@ -110,7 +109,8 @@ $(document).ready(function(){
                         response[i].Dislikes, 
                         response[i].ReviewID,
                         response[i].Date,
-                        response[i].BookCover
+                        response[i].BookCover,
+                        response[i].Genre
                         )
                 )
                 
@@ -121,7 +121,6 @@ $(document).ready(function(){
             //wait for data initialization to finish before initiating popular booklist
             await popular() 
             await latest()
-            await author()
         })
 
         
@@ -174,8 +173,10 @@ $(document).ready(function(){
                   )  
               }
               localStorage.setItem("userlist", JSON.stringify(userlist))
-              
+              await author()
             })
+            
+                 
     }
 
     let reviewlist = []
@@ -223,87 +224,76 @@ $(document).ready(function(){
     {
         let userlist = []
         userlist = JSON.parse(localStorage.getItem(localStorage.key(1)))
-
-        if (userlist == [])  //This if statement is to prevent userlist.slice(0) from running before user data is added
-        {
-            author()
-        }
-        else
-        {
-            let sorted = userlist.slice(0)
-            sorted.sort(function(a,b)
-            {
-                return b.Likes - a.Likes
-            })
-
-            for (let i = 0; i < 5; i++)
-            {
-                if(sorted[i].Usertype = "Author")
+        let sorted = userlist.slice(0)
+                sorted.sort(function(a,b)
                 {
-                    console.log(sorted[i].Username)
-                    let root = document.querySelector("#author")
+                    return b.Likes - a.Likes
+                })
 
-                    let container = document.createElement("div")
-                    container.classList.add("table-book-container")
+                for (let i = 0; i < 4; i++)
+                {
+                    if(sorted[i].Usertype = "Author")
+                    {
+                        let root = document.querySelector("#author")
 
-                    let profilepic = document.createElement("img")
-                    console.log(sorted[i].Profilepic)
-                    profilepic.setAttribute("src", "https://nathaninteractivedev-4002.restdb.io/media/" + sorted[i].Profilepic)
-                    profilepic.setAttribute("alt", "profile picture")
-                    profilepic.classList.add("table-book-cover")
+                        let container = document.createElement("div")
+                        container.classList.add("table-book-container")
 
-                    let description = document.createElement("div")
-                    description.classList.add("table-book-desc")
+                        let profilepic = document.createElement("img")
+                        profilepic.setAttribute("src", "https://nathaninteractivedev-4002.restdb.io/media/" + sorted[i].Profilepic)
+                        profilepic.setAttribute("alt", "profile picture")
+                        profilepic.classList.add("table-book-cover")
+
+                        let description = document.createElement("div")
+                        description.classList.add("table-book-desc")
+                        
+                        let author = document.createElement("div")
+                        let authormsg = document.createElement("p")
+                        authormsg.innerHTML = "Made By"
+                        let authorname = document.createElement("p")
+                        authorname.innerHTML = sorted[i].Username
+
+                        author.appendChild(authormsg)
+                        author.appendChild(authorname)
+
+                        let stats = document.createElement("div")
+                        likes_container = document.createElement("div")
+                        likes_container.classList.add("likes")
+                        likes = document.createElement("p")
+                        likes.innerHTML = sorted[i].Likes
+                        like_icon = document.createElement("img")
+                        like_icon.setAttribute("src", "img/blacklike.svg")
+                        like_icon.setAttribute("alt", "Like Icon")
+                        like_icon.classList.add("like-icon")
+
+                        likes_container.appendChild(likes)
+                        likes_container.appendChild(like_icon)
+
+                        let date_container = document.createElement("div")
+                        date_container.classList.add("date-released")
+                        date = document.createElement("p")
+                        date.innerHTML = sorted[i].Datejoin.substring(0,10).replace("/", "-")
+                        date_icon = document.createElement("img")
+                        date_icon.setAttribute("src", "img/blackdate.svg")
+                        date_icon.setAttribute("alt", "Date Icon")
+                        date_icon.classList.add("date-icon")
+
+                        date_container.appendChild(date)
+                        date_container.appendChild(date_icon)
+
+                        stats.appendChild(likes_container)
+                        stats.appendChild(date_container)
+
+                        description.appendChild(author)
+                        description.appendChild(stats)
+
+                        container.appendChild(profilepic)
+                        container.appendChild(description)
+
+                        root.appendChild(container)
+                    }
                     
-                    let author = document.createElement("div")
-                    let authormsg = document.createElement("p")
-                    authormsg.innerHTML = "Made By"
-                    let authorname = document.createElement("p")
-                    authorname.innerHTML = sorted[i].Username
-
-                    author.appendChild(authormsg)
-                    author.appendChild(authorname)
-
-                    let stats = document.createElement("div")
-                    likes_container = document.createElement("div")
-                    likes_container.classList.add("likes")
-                    likes = document.createElement("p")
-                    likes.innerHTML = sorted[i].Likes
-                    like_icon = document.createElement("img")
-                    like_icon.setAttribute("src", "img/blacklike.svg")
-                    like_icon.setAttribute("alt", "Like Icon")
-                    like_icon.classList.add("like-icon")
-
-                    likes_container.appendChild(likes)
-                    likes_container.appendChild(like_icon)
-
-                    let date_container = document.createElement("div")
-                    date_container.classList.add("date-released")
-                    date = document.createElement("p")
-                    date.innerHTML = sorted[i].Datejoin.substring(0,10).replace("/", "-")
-                    date_icon = document.createElement("img")
-                    date_icon.setAttribute("src", "img/blackdate.svg")
-                    date_icon.setAttribute("alt", "Date Icon")
-                    date_icon.classList.add("date-icon")
-
-                    date_container.appendChild(date)
-                    date_container.appendChild(date_icon)
-
-                    stats.appendChild(likes_container)
-                    stats.appendChild(date_container)
-
-                    description.appendChild(author)
-                    description.appendChild(stats)
-
-                    container.appendChild(profilepic)
-                    container.appendChild(description)
-
-                    root.appendChild(container)
-                }
-                
-            }
-        }
-        
+                }        
     }
 
     function popular()
@@ -324,16 +314,14 @@ $(document).ready(function(){
                 return b.Likes - a.Likes
             })
 
-            for (let i = 0; i <= 20; i++)
+            for (let i = 0; i <= 10; i++)
             {
                 let root = document.getElementById("popular")
-
                 let book_container = document.createElement("div")
                 book_container.classList.add("popular-book-container")
                 book_container.setAttribute("data-link", sorted[i].BookID)
-                book_container.addEventListener('click', function(e){
+                book_container.addEventListener('click', function(){
                     let bookid = book_container.getAttribute("data-link")
-                
                     localStorage.setItem("BookID", bookid)
                     location.href = 'http://127.0.0.1:5500/Assignment-2-ID/homepage/book/book.html'
                 })
@@ -420,7 +408,7 @@ $(document).ready(function(){
                 return Math.floor((date1/ms - date2/ms) )
             })
 
-            for(let i = 0; i <= 30; i++)
+            for(let i = 0; i <= 10; i++)
             {
                 let root = document.querySelector(".table-container-latest-popular")
 
@@ -461,7 +449,7 @@ $(document).ready(function(){
                 like_icon.setAttribute("src", "img/blacklike.svg")
                 like_icon.setAttribute("alt", "likes")
                 let genre = document.createElement("p")
-                genre.innerHTML = "foltronica"
+                genre.innerHTML = sorted[i].Genre
 
                 like_container.appendChild(like)
                 like_container.appendChild(like_icon)

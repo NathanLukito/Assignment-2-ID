@@ -19,7 +19,6 @@ $(document).ready(function(){
         else if (document.querySelector(".icon1").getAttribute("class").endsWith("icon1"))
         {
             document.querySelector(".menu-btn").innerHTML = "Close"
-            console.log($(".nav-btn"))
         }
 
         $(".icon1").toggleClass("topAnim")
@@ -61,7 +60,7 @@ $(document).ready(function(){
         book_desc.classList.add("book-desc")
 
         title = document.createElement("h1")
-        title.innerText = book.Title
+        title.innerText = book.Title + " \nBy " + book.Author
         title.classList.add("book-title")
 
         synopsis = document.createElement("h1")
@@ -79,12 +78,14 @@ $(document).ready(function(){
         likes = document.createElement("h1")
         likes.innerHTML = "Likes: " + book.Likes
 
-        views = document.createElement("h1")
-        views.innerHTML = "Views: " + book.Views
+        genre = document.createElement("h1")
+        genre.innerHTML = "Genre: " + book.Genre
+
+
 
         book_data.appendChild(likes)
         
-        book_data.appendChild(views)
+        book_data.appendChild(genre)
 
         root.appendChild(book_desc)
         root.appendChild(book_data)
