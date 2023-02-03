@@ -126,16 +126,6 @@ form{
 	/*margin-left: 5px;*/
 }
 
-.arrow{
-	width: 13px;
-	height: 13px;
-	border-top: thin solid #d4d4d4;
-	border-left: thin solid #d4d4d4;
-	transform: rotate(-47deg) translateX(-33px);
-    position:absolute;
-	background-color: #fff;
-}
-
 i{
 	font-style: normal;
 	color: red;

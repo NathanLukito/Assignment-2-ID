@@ -333,7 +333,6 @@ $(document).ready(function(){
 
             
         }
-        await popularBookClick()
 
         
     }
