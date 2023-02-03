@@ -53,4 +53,30 @@ $(document).ready(function(){
             }
         }
     })
+
+    document.querySelector("#Username").addEventListener("focus", function(){
+        setWidthUsername(100)
+    })
+
+    document.querySelector("#Username").addEventListener("blur", function(){
+        setWidthUsername(0)
+    })
+
+    document.querySelector("#Password").addEventListener("focus", function(){
+        setWidthPassword(100)
+    })
+
+    document.querySelector("#Password").addEventListener("blur", function(){
+        setWidthPassword(0)
+    })
+
+    function setWidthUsername(value){
+        document.querySelector(".bottom-border-username").style.width = value + "%";
+        document.querySelector(".bottom-border-username").style.backgroundColor = "rgba(27,185,157,255)"
+    }
+
+    function setWidthPassword(value){
+        document.querySelector(".bottom-border-password").style.width = value + "%";
+        document.querySelector(".bottom-border-password").style.backgroundColor = "rgba(27,185,157,255)"
+    }
 })
