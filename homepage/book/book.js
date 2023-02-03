@@ -61,10 +61,11 @@ $(document).ready(function(){
         book_desc.classList.add("book-desc")
 
         title = document.createElement("h1")
-        title.innerText = "Title: " + book.Title
+        title.innerText = book.Title
+        title.classList.add("book-title")
 
         synopsis = document.createElement("h1")
-        synopsis.innerHTML = "Synopsis: "
+        synopsis.innerHTML = "Synopsis"
         synopsis_text = document.createElement("p")
         synopsis_text.innerHTML = book.Synopsis
 
@@ -91,12 +92,11 @@ $(document).ready(function(){
 
     function AddBookCover(book)
     {
-        var root = document.querySelector(".review");
+        var root = document.querySelector(".book-container");
         let img = document.createElement("div")
         img.innerHTML = 
         `
             <img class = "book-cover" src = "https://nathaninteractivedev-4002.restdb.io/media/${book.BookCover}">
-            <h3 class = "book-review-container">Reviews</h3>
         `
         root.appendChild(img)
     }
