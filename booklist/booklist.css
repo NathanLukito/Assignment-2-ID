@@ -1,0 +1,300 @@
+html{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button{
+    background-color: transparent;
+    border: None;
+}
+
+@keyframes SlideInFromLeft {
+    0% {left: -100%;}
+
+    100% {left: 0%;}
+}
+
+@keyframes show{
+    0% {width: 0;}
+    100% {width: 100%}
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    color: black;
+}
+
+::-webkit-scrollbar
+{
+    width: 0.7em;
+    
+}
+
+::-webkit-scrollbar-track
+{
+    background-color:rgba(0, 121, 187, 0.178);
+    
+    border-radius: 100vw;
+    margin-block: 0.5em;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(0, 36, 56);
+    transition: all 300ms;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 100vw;
+    background-color: rgba(0, 36, 56, 0.458);
+    transition: all 300ms;
+}
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+.navigation{
+    top: 0 !important;
+    position: fixed;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    background-color: rgba(255, 255, 255, 0.996);
+    color:rgb(0, 36, 56);
+    width: 100%;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    height: 10vh;
+    z-index: 100;
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+    /* border: 2px solid black; */
+}
+
+.brandIcon{
+    justify-self: flex-start;
+    max-height: 30px;
+    max-width: 30px;
+    background: #ff950b;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    animation: 1s ease-in 0.5s 1 SlideInFromLeft;
+}
+
+.brandName{
+    justify-self: center;
+    font-size: 21px;
+    font-family: 'Montserrat', sans-serif;
+    padding-right: 5px;
+}
+
+.searchbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+}
+
+.search-icon{
+    width: 25px;
+}
+
+.bar{
+    width: 100px;
+    height: 4vh;
+    background-color: #e2e2e2;
+    border-radius: 30px;
+    text-align: center;
+    border: none;
+    transition: all 300ms ease-in-out;
+}
+
+.searchbar:hover .bar{
+    width: 60%;
+    text-align:start;
+    text-indent: 10px;
+    transition: all 300ms ease-in-out;
+}
+
+.bar:focus{
+    background-color: #ffffff;
+    text-align: start;
+    text-indent: 10px;
+    width: 60%;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    /* border: 2px solid black; */
+    gap: 2px;
+}
+
+.nav-btn{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-self: flex-end;
+    justify-content: space-evenly;
+    margin-left: auto;
+    border: none;
+    padding: 0;
+    outline: none;
+    gap: 5px;
+    font-size: 10px;
+    padding: 0px 8px;
+    border-radius: 12px;
+    
+    transition: all 300ms;
+}
+
+.menuIcon{
+    width: 15px;
+    height: 1px;
+    margin: 3px 0;
+    background-color: rgb(0, 36, 56);
+    transition: all 200ms;
+}
+
+.menu-btn{
+    font-size: 11px;
+}
+
+
+.nav-btn:hover{
+    background-color: rgb(0, 36, 56);
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 7px 7px rgb(255, 167, 5);
+    transition: all 200ms;
+    z-index: 1;
+}
+
+.nav-btn:hover .menuIcon{
+    background-color: rgb(255, 255, 255);
+
+}
+
+.topAnim{
+    transform: rotate(45deg) translateY(0px) translateX(5px)
+}
+
+.midAnim{
+    opacity: 0;
+}
+
+.botAnim{
+    transform: rotate(315deg) translateY(-1px) translateX(5px)
+}
+
+.menu{
+    position: fixed;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    justify-content: space-evenly;
+    background-color: rgba(106, 106, 106, 0.608);
+    color:white;
+    height: 90vh;
+    text-align: center;
+    margin-top: 11vh;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+.select{
+    display: flex;
+    flex-direction: column;
+    width: 0vw;
+    justify-content: center;
+    transition: background-color 200ms;
+    opacity: 0;
+    transition: 100ms ease-in-out;
+}
+
+.select.show{
+    width: 100vw;
+    opacity: 1;
+    transition: 100ms ease-in-out;
+}
+
+.select:hover{
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.337);
+    transition: transform 200ms;
+}
+
+.select:active{
+    transform: scale(1.05);
+}
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(11vh);
+}
+
+.booklist{
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(auto-fill, 350px);
+    justify-content: space-evenly;
+}
+
+
+
+.book-container{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid gray;
+    height: auto;
+}
+
+.book{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 70%;
+}
+.synopsis{
+    text-align: center;
+}
+
+.book-cover{
+    width: 150px;
+}
+
+.book-details{
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
