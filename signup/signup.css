@@ -12,13 +12,33 @@ body{
     justify-content: center;
     flex-direction: column;
 }
-.background-video{
-    position: relative;
+#background-video{
+    position: fixed;
     right: 0;
     bottom: 0;
-    width: 100vw;
-    height: 100vh;
     z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9){
+    #background-video{
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9){
+    #background-video{
+        width: auto;
+        height: 100%;
+    }
+}
+
+@media(max-width: 767px){
+    #background-video{
+        display:none;
+    }
+
+
 }
 .brandIcon{
     display:flex;
@@ -73,10 +93,11 @@ form{
 .input{
     display:flex;
     background-color: transparent;
-    width:150px;
+    width:25vw;
     padding: 10px;
     font-size: 20px;
     text-align: left;
+    align-self: center;
     border-top: none;
     border-right: none;
     border-left: none;
@@ -109,6 +130,7 @@ form{
 .bottom-border-wrapper{
     display:flex;
     justify-content: center;
+    align-self: center;
     width: 25vw;
     height: 3px;
     background-color: #e9e9e9;
@@ -136,16 +158,10 @@ form{
     border-radius: 3px ;
 }
 
-.password-container{
-    display:flex;
-    flex-direction: column;
-    text-align: center;
-    width: 110%;
-}
-
 .pass-strength-container{
     display:flex;
     justify-self: center;
+    flex-direction: column;
 }
 
 .strengthContainer{
@@ -205,7 +221,7 @@ i{
 
 .message-container{
     display:flex;
-    position: absolute;
+    position: relative;
     flex-direction: column;
     align-items: center;
     align-self:center;
@@ -227,4 +243,8 @@ i{
     border-radius: 8px;
     transition: width 300ms 300ms, transform 200ms, color 200ms;
     transition: border-radius 250ms
+}
+
+.title{
+    margin-bottom: 10px;
 }
