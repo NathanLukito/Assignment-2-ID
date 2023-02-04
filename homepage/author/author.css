@@ -260,7 +260,8 @@ a:active { text-decoration: none; }
 }
 
 .profilepic{
-    width: 40vw;
+    width: 50%;
+    height: 100%;
 }
 
 .author-details{
@@ -268,7 +269,7 @@ a:active { text-decoration: none; }
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 52vw;
+    white-space: nowrap;
 }
 
 .book-header{
