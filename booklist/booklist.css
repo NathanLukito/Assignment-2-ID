@@ -260,7 +260,7 @@ a:active { text-decoration: none; }
 .booklist{
     display: grid;
     gap: 40px;
-    grid-template-columns: repeat(auto-fill, 350px);
+    grid-template-columns: repeat(auto-fill, 400px);
     justify-content: space-evenly;
 }
 
@@ -269,8 +269,8 @@ a:active { text-decoration: none; }
 .book-container{
     display: flex;
     flex-direction: row;
-    border: 2px solid gray;
     height: auto;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .book{
@@ -278,12 +278,10 @@ a:active { text-decoration: none; }
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     padding-left: 20px;
     padding-right: 20px;
     width: 70%;
-}
-.synopsis{
-    text-align: center;
 }
 
 .book-cover{
