@@ -96,4 +96,47 @@ $(document).ready(function(){
 
         setStrength(strength);
     }
+
+    document.querySelector("#Username").addEventListener("focus", function(){
+        setWidthUsername(100)
+    })
+
+    document.querySelector("#Username").addEventListener("blur", function(){
+        setWidthUsername(0)
+    })
+
+    document.querySelector("#Email").addEventListener("focus", function(){
+        setWidthEmail(100)
+    })
+
+    document.querySelector("#Email").addEventListener("blur", function(){
+        setWidthEmail(0)
+    })
+
+    document.querySelector("#password-field").addEventListener("focus", function(){
+        setWidthPassword(100)
+    })
+
+    document.querySelector("#password-field").addEventListener("blur", function(){
+        setWidthPassword(0)
+    })
+
+
+
+    function setWidthUsername(value){
+        document.querySelector(".bottom-border-username").style.width = value + "%";
+        document.querySelector(".bottom-border-username").style.backgroundColor = "rgba(27,185,157,255)"
+    }
+
+    function setWidthEmail(value){
+        document.querySelector(".bottom-border-email").style.width = value + "%";
+        document.querySelector(".bottom-border-email").style.backgroundColor = "rgba(27,185,157,255)"
+    }
+
+    function setWidthPassword(value){
+        document.querySelector(".bottom-border-password").style.width = value + "%";
+        document.querySelector(".bottom-border-password").style.backgroundColor = "rgba(27,185,157,255)"
+    }
+
+
 })
