@@ -30,15 +30,19 @@ $(document).ready(function(){
     let booklist = []
     let userlist = []
     let reviewlist = []
-    booklist = JSON.parse(localStorage.getItem("booklist"))
-    userlist = JSON.parse(localStorage.getItem("userlist"))
-    reviewlist = JSON.parse(localStorage.getItem("reviewlist"))
+    init_data()
+    async function init_data(){
+        const BookID = JSON.parse(localStorage.getItem("BookID"))
+        booklist = JSON.parse(localStorage.getItem("booklist"))
+        userlist = JSON.parse(localStorage.getItem("userlist"))
+        reviewlist = JSON.parse(localStorage.getItem("reviewlist"))
+        await GetBook(BookID, booklist)
+    }
 
-    let BookID = JSON.parse(localStorage.getItem("BookID"))
     async function GetBook(BookID, booklist){
         for(let i = 0; i < booklist.length; i++){
+            console.log(booklist[i].BookID, BookID)
             if(booklist[i].BookID == BookID){
-                
                 var book = booklist[i];
             }
             else
@@ -50,8 +54,6 @@ $(document).ready(function(){
         await AddBookCover(book)
         await AddReviews(book)
     }
-    let book = GetBook(BookID, booklist)
-
     function AddDesc(book)
     {
         root = document.querySelector(".desc")

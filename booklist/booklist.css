@@ -270,7 +270,21 @@ a:active { text-decoration: none; }
     display: flex;
     flex-direction: row;
     height: auto;
+    border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition: all 200ms ease-in-out;
+}
+
+.book-container:hover{
+    transform: scale(1.05);
+    transition: transform 200ms ease-in-out;
+    background-color:rgba(243, 243, 243, 0.337);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 8px;
+}
+
+.book-container:active{
+    transform: scale(0.95);
+    transition: transform 200ms ease-in-out;
 }
 
 .book{

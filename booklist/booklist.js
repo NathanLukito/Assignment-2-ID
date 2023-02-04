@@ -35,10 +35,15 @@ $(document).ready(function(){
         root = document.querySelector(".booklist")
         let book_container = document.createElement("div")
         book_container.classList.add("book-container")
-
+        book_container.setAttribute("data-link", booklist[i].BookID)
+        book_container.addEventListener('click', function(){
+            let bookid = book_container.getAttribute("data-link")
+            localStorage.setItem("BookID", bookid)
+            location.href = 'http://127.0.0.1:5500/Assignment-2-ID/homepage/book/book.html'
+        })                
         book_container.innerHTML = 
         `
-            <div class = "book-container">
+            
                 <div class = "book">
                     <h1>${booklist[i].Title}</h1>
                     <img class = "book-cover" src = "https://nathaninteractivedev-4002.restdb.io/media/${booklist[i].BookCover}">
@@ -50,9 +55,12 @@ $(document).ready(function(){
                     <h1>By: ${booklist[i].Author}</h1>
                     <h1>Genre: ${booklist[i].Genre}</h1>
                 </div>
-            </div>
+            
         `
+        
         root.appendChild(book_container)
+
+        
     }
     
 })
