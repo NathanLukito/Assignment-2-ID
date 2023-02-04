@@ -225,75 +225,81 @@ $(document).ready(function(){
         let userlist = []
         userlist = JSON.parse(localStorage.getItem(localStorage.key(1)))
         let sorted = userlist.slice(0)
-                sorted.sort(function(a,b)
-                {
-                    return b.Likes - a.Likes
-                })
+        sorted.sort(function(a,b)
+        {
+            return b.Likes - a.Likes
+        })
 
-                for (let i = 0; i < 4; i++)
-                {
-                    if(sorted[i].Usertype = "Author")
-                    {
-                        let root = document.querySelector("#author")
+        for (let i = 0; i < 4; i++)
+        {
+            if(sorted[i].Usertype = "Author")
+            {
+                let root = document.querySelector("#author")
 
-                        let container = document.createElement("div")
-                        container.classList.add("table-book-container")
+                let container = document.createElement("div")
+                container.classList.add("table-book-container")
+                container.setAttribute("data-link", sorted[i].UserID)
+                container.addEventListener('click', function(){
+                let UserID = container.getAttribute("data-link")
+                localStorage.setItem("UserID", UserID)
+                location.href = 'http://127.0.0.1:5500/Assignment-2-ID/homepage/author/author.html'
+            })
 
-                        let profilepic = document.createElement("img")
-                        profilepic.setAttribute("src", "https://nathaninteractivedev-4002.restdb.io/media/" + sorted[i].Profilepic)
-                        profilepic.setAttribute("alt", "profile picture")
-                        profilepic.classList.add("table-book-cover")
+                let profilepic = document.createElement("img")
+                profilepic.setAttribute("src", "https://nathaninteractivedev-4002.restdb.io/media/" + sorted[i].Profilepic)
+                profilepic.setAttribute("alt", "profile picture")
+                profilepic.classList.add("table-book-cover")
 
-                        let description = document.createElement("div")
-                        description.classList.add("table-book-desc")
-                        
-                        let author = document.createElement("div")
-                        let authormsg = document.createElement("p")
-                        authormsg.innerHTML = "Made By"
-                        let authorname = document.createElement("p")
-                        authorname.innerHTML = sorted[i].Username
+                let description = document.createElement("div")
+                description.classList.add("table-book-desc")
+                
+                let author = document.createElement("div")
+                let authormsg = document.createElement("p")
+                authormsg.innerHTML = "Made By"
+                let authorname = document.createElement("p")
+                authorname.innerHTML = sorted[i].Username
 
-                        author.appendChild(authormsg)
-                        author.appendChild(authorname)
+                author.appendChild(authormsg)
+                author.appendChild(authorname)
 
-                        let stats = document.createElement("div")
-                        likes_container = document.createElement("div")
-                        likes_container.classList.add("likes")
-                        likes = document.createElement("p")
-                        likes.innerHTML = sorted[i].Likes
-                        like_icon = document.createElement("img")
-                        like_icon.setAttribute("src", "img/blacklike.svg")
-                        like_icon.setAttribute("alt", "Like Icon")
-                        like_icon.classList.add("like-icon")
+                let stats = document.createElement("div")
+                likes_container = document.createElement("div")
+                likes_container.classList.add("likes")
+                likes = document.createElement("p")
+                likes.innerHTML = sorted[i].Likes
+                like_icon = document.createElement("img")
+                like_icon.setAttribute("src", "img/blacklike.svg")
+                like_icon.setAttribute("alt", "Like Icon")
+                like_icon.classList.add("like-icon")
 
-                        likes_container.appendChild(likes)
-                        likes_container.appendChild(like_icon)
+                likes_container.appendChild(likes)
+                likes_container.appendChild(like_icon)
 
-                        let date_container = document.createElement("div")
-                        date_container.classList.add("date-released")
-                        date = document.createElement("p")
-                        date.innerHTML = sorted[i].Datejoin.substring(0,10).replace("/", "-")
-                        date_icon = document.createElement("img")
-                        date_icon.setAttribute("src", "img/blackdate.svg")
-                        date_icon.setAttribute("alt", "Date Icon")
-                        date_icon.classList.add("date-icon")
+                let date_container = document.createElement("div")
+                date_container.classList.add("date-released")
+                date = document.createElement("p")
+                date.innerHTML = sorted[i].Datejoin.substring(0,10).replace("/", "-")
+                date_icon = document.createElement("img")
+                date_icon.setAttribute("src", "img/blackdate.svg")
+                date_icon.setAttribute("alt", "Date Icon")
+                date_icon.classList.add("date-icon")
 
-                        date_container.appendChild(date)
-                        date_container.appendChild(date_icon)
+                date_container.appendChild(date)
+                date_container.appendChild(date_icon)
 
-                        stats.appendChild(likes_container)
-                        stats.appendChild(date_container)
+                stats.appendChild(likes_container)
+                stats.appendChild(date_container)
 
-                        description.appendChild(author)
-                        description.appendChild(stats)
+                description.appendChild(author)
+                description.appendChild(stats)
 
-                        container.appendChild(profilepic)
-                        container.appendChild(description)
+                container.appendChild(profilepic)
+                container.appendChild(description)
 
-                        root.appendChild(container)
-                    }
-                    
-                }        
+                root.appendChild(container)
+            }
+            
+        }                        
     }
 
     function popular()
@@ -414,6 +420,12 @@ $(document).ready(function(){
 
                 let container = document.createElement("div")
                 container.classList.add("table-book-container")
+                container.setAttribute("data-link", sorted[i].BookID)
+                container.addEventListener('click', function(){
+                    let bookid = container.getAttribute("data-link")
+                    localStorage.setItem("BookID", bookid)
+                    location.href = 'http://127.0.0.1:5500/Assignment-2-ID/homepage/book/book.html'
+                })
 
                 let img = document.createElement("img")
                 img.classList.add("table-book-cover")
