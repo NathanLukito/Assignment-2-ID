@@ -33,26 +33,33 @@ $(document).ready(function(){
         let name = $("#Username").val();
         let pass = $("#Password").val();
 
-        let userList = JSON.parse(localStorage.getItem("userlist"))
+        if(pass == ""|| name == ""){
+            alert("Please fill up all of the fields!")
+        }
 
-        for (let i = 0; i < userList.length; i++)
-        {
-            if (name == userList[i].Username && pass == userList[i].Password)
-            {
-                
-                document.querySelector(".login-btn").setAttribute("value", "Logging in...")
-                document.querySelector(".login-btn").style.backgroundColor = "rgba(27,185,157,0.6)"
-                setTimeout(function(){
-                    location.href = "/homepage/index.html"
-                },1000)
-               
-            }
+        else{
+            let userList = JSON.parse(localStorage.getItem("userlist"))
 
-            else if (name != userList[i].Username || pass != userList[i].Password)
+            for (let i = 0; i < userList.length; i++)
             {
-                continue
+                if (name == userList[i].Username && pass == userList[i].Password)
+                {
+                    
+                    document.querySelector(".login-btn").setAttribute("value", "Logging in...")
+                    document.querySelector(".login-btn").style.backgroundColor = "rgba(27,185,157,0.6)"
+                    setTimeout(function(){
+                        location.href = "/homepage/index.html"
+                    },1000)
+                   
+                }
+    
+                else if (name != userList[i].Username || pass != userList[i].Password)
+                {
+                    continue
+                }
             }
         }
+
     })
 
     document.querySelector("#Username").addEventListener("focus", function(){
