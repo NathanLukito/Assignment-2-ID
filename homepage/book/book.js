@@ -122,7 +122,7 @@ $(document).ready(function(){
                         html.classList.add("review-account")
                         html.innerHTML = 
                         `                     
-                            <img src = "img/brand-icon.svg" width = "30" height = "30">
+                            <img class = "profilepic" src = "https://nathaninteractivedev-4002.restdb.io/media/${userlist[x].Profilepic}">
                             <p>${userlist[x].Username}<br></p>
                         `
                         let review = document.createElement("p")

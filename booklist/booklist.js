@@ -31,13 +31,9 @@ $(document).ready(function(){
     booklist = JSON.parse(localStorage.getItem("booklist"))
     let searchfor = localStorage.getItem("search")
     document.querySelector(".searchfor").innerHTML = "Searched for: " + searchfor
-    
-    const searched = booklist.map((obj) => obj.Title.toUpperCase())
-
-
     for(let i = 0; i < booklist.length; i++)
     {
-        if(booklist[i].Title.toUpperCase() == searchfor.toUpperCase())
+        if((booklist[i].Title.toUpperCase().replaceAll(" ", "")).includes(searchfor.toUpperCase().replaceAll(" ", "")) == true)
         {
             root = document.querySelector(".booklist")
             let book_container = document.createElement("div")
@@ -46,7 +42,7 @@ $(document).ready(function(){
             book_container.addEventListener('click', function(){
                 let bookid = book_container.getAttribute("data-link")
                 localStorage.setItem("BookID", bookid)
-                location.href = 'http://127.0.0.1:5500/Assignment-2-ID/homepage/book/book.html'
+                location.href = '/homepage/book/book.html'
             })                
             book_container.innerHTML = 
             ` 
@@ -70,5 +66,4 @@ $(document).ready(function(){
             continue
         }
     }
-    
 })

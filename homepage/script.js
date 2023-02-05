@@ -179,10 +179,10 @@ $(document).ready(function(){
                   )  
               }
               localStorage.setItem("userlist", JSON.stringify(userlist))
-              await author()
+              await author() 
             })
             
-                 
+                    
     }
 
     let reviewlist = []
