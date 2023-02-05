@@ -63,7 +63,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = 'http://127.0.0.1:5500/Assignment-2-ID/booklist/booklist.html'
+        location.href = '/booklist/booklist.html'
     })
 
 
@@ -248,7 +248,7 @@ $(document).ready(function(){
                 container.addEventListener('click', function(){
                 let UserID = container.getAttribute("data-link")
                 localStorage.setItem("UserID", UserID)
-                location.href = 'http://127.0.0.1:5500/Assignment-2-ID/homepage/author/author.html'
+                location.href = '/homepage/author/author.html'
             })
 
                 let profilepic = document.createElement("img")
@@ -335,7 +335,7 @@ $(document).ready(function(){
                 book_container.addEventListener('click', function(){
                     let bookid = book_container.getAttribute("data-link")
                     localStorage.setItem("BookID", bookid)
-                    location.href = 'http://127.0.0.1:5500/Assignment-2-ID/homepage/book/book.html'
+                    location.href = '/homepage/book/book.html'
                 })
 
                 let book = document.createElement("div")
@@ -430,7 +430,7 @@ $(document).ready(function(){
                 container.addEventListener('click', function(){
                     let bookid = container.getAttribute("data-link")
                     localStorage.setItem("BookID", bookid)
-                    location.href = 'http://127.0.0.1:5500/Assignment-2-ID/homepage/book/book.html'
+                    location.href = '/homepage/book/book.html'
                 })
 
                 let img = document.createElement("img")
