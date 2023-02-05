@@ -60,6 +60,12 @@ $(document).ready(function(){
         $(".icon3").toggleClass("botAnim")
     })
 
+    $(".search-icon").click(function(){
+        let search = $("#search").val()
+        localStorage.setItem("search", search)
+        location.href = 'http://127.0.0.1:5500/Assignment-2-ID/booklist/booklist.html'
+    })
+
 
 
     /*  RestDB Database  */
