@@ -1,6 +1,5 @@
 $(document).ready(function(){
     let password = document.querySelector("#password-field");
-    let strengthContainer = document.querySelector(".strengthContainer");
     let strengthBar = document.querySelector("#strength-bar");
     let strengthText = document.querySelector(".strength-text");
 
@@ -76,7 +75,7 @@ $(document).ready(function(){
 
             //Strong password
             if(
-                (lowerCase && upperCase && numbers) || (lowerCase && upperCase && specialCharacter) ||
+                (lowerCase && upperCase && numbers) || (lowerCase && upperCase && specialCharacters) ||
                 (lowerCase && numbers && specialCharacters) || (upperCase && numbers && specialCharacters)
             )
             {
@@ -96,6 +95,8 @@ $(document).ready(function(){
 
         setStrength(strength);
     }
+
+
 
     document.querySelector("#Username").addEventListener("focus", function(){
         setWidthUsername(100)
@@ -138,5 +139,57 @@ $(document).ready(function(){
         document.querySelector(".bottom-border-password").style.backgroundColor = "rgba(27,185,157,255)"
     }
 
+    async function CreateUser(userData){
+        const APIKEY = "63b3e1aa969f06502871a8c1"
+        let settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://nathaninteractivedev-4002.restdb.io/rest/userdata",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(userData)
+        }
 
+        $.ajax(settings).done(function (response){
+            console.log(response);
+        })
+    }
+
+    $(".login-btn").click(function(){
+        event.preventDefault()
+        let userlist = JSON.parse(localStorage.getItem("userlist"))
+        const ids = userlist.map(object => {
+            return object.UserID;
+          });
+        const max = Math.max(...ids) + 1
+        let username = $("#Username").val();
+        let pass = $("#password-field").val();
+        let email = $("#Email").val();
+    
+        let jsonUserData = {
+            "UserID": max,
+            "Username": username,
+            "Password": pass,
+            "Email": email,
+            "Usertype": "user",
+            "Datejoin": Date.now(),
+            "Likes": 0,
+            "Profilepic": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+        }
+
+        CreateUser(jsonUserData)
+
+        document.querySelector("#form").reset();
+        document.querySelector(".login-btn").setAttribute("value", "Signing up...")  
+        document.querySelector(".login-btn").style.backgroundColor = "rgba(27,185,157,0.6)"
+        setTimeout(function(){
+            location.href = "/homepage/index.html"
+        },1000)
+
+    })
 })

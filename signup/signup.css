@@ -66,6 +66,7 @@ h1{
     flex-direction: column;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    margin-top: 2vh;
     width: 50vw;
     background-color: rgba(255, 255, 255, 0.80);
 }
@@ -239,10 +240,10 @@ i{
 
 .login-btn:hover{
     color: white;
-    background-color: black;
+    background-color: rgba(27,185,157,255);
     border-radius: 8px;
     transition: width 300ms 300ms, transform 200ms, color 200ms;
-    transition: border-radius 250ms
+    transition: border-radius 250ms;
 }
 
 .title{

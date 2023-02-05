@@ -179,7 +179,7 @@ $(document).ready(function(){
 
     function author()
     {
-        let userlist = JSON.parse(localStorage.getItem(localStorage.key(1)))
+        let userlist = JSON.parse(localStorage.getItem("userlist"))
         let sorted = userlist.slice(0)
         sorted.sort(function(a,b)
         {
