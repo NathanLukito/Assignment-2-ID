@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width" minimum-scale = 1>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <nav>
+        <div class = "menu">
+            <div class = "select">
+                <h1>All Books</h1>
+            </div>
+    
+            <div class = "select">
+                <h1>Authors</h1>
+            </div>
+    
+            <div style="cursor: pointer" onclick="window.location= '/Assignment-2-ID/signup/signup.html'" class = "select">
+                <h1>Sign In</h1>
+            </div>
+            
+            <div class = "select">
+                <h1>Account</h1>
+            </div>
+        </div>
+        <div class = "navigation">
+            <div class = "brand">
+                <img alt = "icon" class = "brandIcon" src = "img/brand-icon.svg">
+                <span class = "brandName">
+                    Book Sommeliers
+                </span>
+            </div>
+    
+            <div class = "searchbar">
+                <button type = "submit">
+                    <img class = "search-icon" src = "img/search.svg">
+                </button>
+                <input class = "bar" id = "search" type = "text" placeholder="Search" required>
+            </div>
+    
+            <div class = "navbar">
+                <button class = "nav-btn">
+                    <p class = "menu-btn">Menu</p>
+                    <div>
+                        <div class = "menuIcon icon1"> </div>
+                        <div class = "menuIcon icon2"> </div>
+                        <div class = "menuIcon icon3"> </div>
+                    </div>
+                <button>
+            </div>
+            
+        </div>
+
+        
+    </nav>
+
+    <div class = "landing-page">
+        <lottie-player class = "book-anim"src="https://assets8.lottiefiles.com/packages/lf20_RWXrZBfogz.json"  background="transparent"  speed="0.8" loop autoplay></lottie-player>
+        <div class = "welcome">
+            <h1 class = "welcome-title">
+                Welcome to
+            </h1>
+            <h1 class = "welcome-message">
+                 Book Sommeliers
+            </h1>
+            <p>
+                The book review website for you.
+            </p>
+        </div>
+    </div>
+    
+    <div class = "book-container">
+        <div class = "book-container-header">
+            <h3 class = "container-title">
+                Popular
+            </h3>
+            <div class = "scroll-container">
+                <img id = "scroll-left" class = "scroll scroll-left" src = "img/left.svg" alt = "left">
+                <img id = "scroll-right" class = "scroll scroll-right" src = "img/right.svg" alt = "right">
+            </div>
+            
+        </div>
+        <div class = "popular-container">  
+            <div class = "scroll-images" id = "popular"> 
+
+            </div>
+            
+        </div>
+
+        <div class = "table-container">
+            <div class = "container">
+                <div class = "book-header">
+                    <h1>
+                        Latest
+                    </h1>
+                </div>
+                <div class = "table-container-latest-popular">
+                    
+                </div>    
+            </div>
+
+            <div class = "container">
+                <div class = "book-header">
+                    <h1>
+                        Best Authors
+                    </h1>
+                </div>
+                <div class = "table-container-latest-popular" id = "author">
+                    
+                </div>
+                
+                
+            </div>
+            
+            
+        </div>
+        
+    </div>
+</body>
+
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src = "script.js"></script>
+
+
+</html>
