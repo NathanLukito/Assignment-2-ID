@@ -27,6 +27,12 @@ $(document).ready(function(){
         $(".icon3").toggleClass("botAnim")
     })
 
+    $(".search-icon").click(function(){
+        let search = $("#search").val()
+        localStorage.setItem("search", search)
+        location.href = '/booklist/booklist.html'
+    })
+
     let booklist = []
     booklist = JSON.parse(localStorage.getItem("booklist"))
     let searchfor = localStorage.getItem("search")

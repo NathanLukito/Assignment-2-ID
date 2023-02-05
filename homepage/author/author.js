@@ -26,6 +26,12 @@ $(document).ready(function(){
         $(".icon3").toggleClass("botAnim")
     })
 
+    $(".search-icon").click(function(){
+        let search = $("#search").val()
+        localStorage.setItem("search", search)
+        location.href = '/booklist/booklist.html'
+    })
+
     let userlist = []
     let booklist = []
     const AuthorID = localStorage.getItem("UserID")

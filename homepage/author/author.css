@@ -304,3 +304,19 @@ a:active { text-decoration: none; }
     transition: all 200ms ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.351) 0px 1px 8px;
 }
+
+@media screen and (max-width: 500px) 
+{
+    .brandIcon{
+        display: none;
+    }
+    .brandName{
+        font-size: 13px;
+    }
+    .search-icon{
+        width: 15px;
+    }
+    .bar{
+        width: 40%;
+    }
+}

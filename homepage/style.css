@@ -637,5 +637,37 @@ a:active { text-decoration: none; }
 
     
 }
+
+@media screen and (max-width: 385px)
+{
+    .table-book-cover{
+        height: 50px;
+    }
+    .table-book-container{
+        font-size: 10px;
+    }
+    .date-released > img{
+        width: 10px;
+    }
+    .likes > img{
+        width: 10px;
+    }
 }
 
+@media screen and (max-width: 500px) 
+{
+    .brandIcon{
+        display: none;
+    }
+    .brandName{
+        font-size: 13px;
+    }
+    .search-icon{
+        width: 15px;
+    }
+    .bar{
+        width: 40%;
+    }
+}
+
+}

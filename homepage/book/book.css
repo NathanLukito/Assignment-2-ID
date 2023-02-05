@@ -331,3 +331,19 @@ a:active { text-decoration: none; }
         grid-template-columns: repeat(2, 1fr);  
     }
 }
+
+@media screen and (max-width: 500px) 
+{
+    .brandIcon{
+        display: none;
+    }
+    .brandName{
+        font-size: 13px;
+    }
+    .search-icon{
+        width: 15px;
+    }
+    .bar{
+        width: 40%;
+    }
+}

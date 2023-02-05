@@ -386,3 +386,19 @@ a:visited {
   color: blueviolet;
   text-decoration: underline;
 }
+
+@media screen and (max-width: 500px) 
+{
+    .brandIcon{
+        display: none;
+    }
+    .brandName{
+        font-size: 13px;
+    }
+    .search-icon{
+        width: 15px;
+    }
+    .bar{
+        width: 40%;
+    }
+}

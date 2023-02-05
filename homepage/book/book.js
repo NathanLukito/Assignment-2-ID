@@ -24,6 +24,13 @@ $(document).ready(function(){
         $(".icon1").toggleClass("topAnim")
         $(".icon2").toggleClass("midAnim")
         $(".icon3").toggleClass("botAnim")
+    
+    })
+
+    $(".search-icon").click(function(){
+        let search = $("#search").val()
+        localStorage.setItem("search", search)
+        location.href = '/booklist/booklist.html'
     })
 
     /*Initiating Data*/
