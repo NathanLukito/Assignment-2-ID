@@ -413,10 +413,19 @@ $(document).ready(function(){
     }
     
     function loadUser(){
-        let user = JSON.parse(localStorage.getItem("user"))
-        console.log(user)
-        document.querySelector(".pfp").innerHTML = `<img src = ${user.Profilepic} width = "40">`
-        document.querySelector(".pfp").style.borderRadius = "10px"
+        if(JSON.parse(localStorage.getItem("user")) != null)
+        {
+            let user = JSON.parse(localStorage.getItem("user"))
+            console.log(user)
+            document.querySelector(".pfp").innerHTML = `<img src = ${user.Profilepic} width = "40">`
+            document.querySelector(".pfp").style.borderRadius = "10px"
+        }
+
+        else
+        {
+            return
+        }
+
     }
     GetBooks()
     GetUsers()
