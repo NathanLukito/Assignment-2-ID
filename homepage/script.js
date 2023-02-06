@@ -62,7 +62,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/booklist/booklist.html'
+        location.href = '/book+authorlist/book_author.html'
     })
 
 
@@ -310,7 +310,7 @@ $(document).ready(function(){
     function popular()
     {
         let booklist = []
-        booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
+        booklist = JSON.parse(localStorage.getItem("booklist"))
 
         if(booklist == [])
         {
@@ -393,15 +393,11 @@ $(document).ready(function(){
                 
             }
         }
-        
-            
-        
-        
     }
 
     function latest(){
         let booklist = []
-        booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
+        booklist = JSON.parse(localStorage.getItem("booklist"))
         if (booklist == [])
         {
             latest()
@@ -483,7 +479,7 @@ $(document).ready(function(){
             root.appendChild(container)
              
         }
-    }
+    }}
     
     function loadUser(){
         if(JSON.parse(localStorage.getItem("user")) != null)
@@ -500,12 +496,10 @@ $(document).ready(function(){
         }
 
     }
-
-
     
-}
-GetBooks()
-GetUsers()
-GetReviews()
-loadUser()
+
+    GetBooks()
+    GetUsers()
+    GetReviews()
+    loadUser()  
 })

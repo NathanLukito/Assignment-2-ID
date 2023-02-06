@@ -30,10 +30,14 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/booklist/booklist.html'
+        location.href = '/book+authorlist/book_author.html'
     })
 
+    
+
     let booklist = []
+    let userlist = []
+    userlist = JSON.parse(localStorage.getItem("userlist"))
     booklist = JSON.parse(localStorage.getItem("booklist"))
     let searchfor = localStorage.getItem("search")
     document.querySelector(".searchfor").innerHTML = "Searched for: " + searchfor
@@ -93,6 +97,104 @@ $(document).ready(function(){
                 </div> 
             `
             root.appendChild(book_container)
+        }
+        
+        else
+        {
+            continue
+        }
+    }
+
+    for(let i = 0; i < userlist.length; i++)
+    {
+        if(searchfor == null && userlist[i].Usertype == "Author")
+        {
+            function CalcBooks(){
+                let total = [0,0]
+                for(let i = 0; i < booklist.length; i++)
+                {
+                    if (userlist[i].UserID == booklist[i].AuthorID)
+                    {
+                        total[0] ++
+                        total[1] += booklist[i].Likes
+                    }
+                    else
+                    {
+                        continue
+                    }
+                }
+                return total
+            }
+            const TotalBooks = CalcBooks()
+
+            root = document.querySelector(".authorlist")
+            let author = document.createElement("div")
+            author.classList.add("author")
+            author.setAttribute("data-link", userlist[i].UserID)
+            author.addEventListener('click', function(){
+                let userid = book_container.getAttribute("data-link")
+                localStorage.setItem("UserID", userid)
+                location.href = '/homepage/author/author.html'
+            })                
+            author.innerHTML = 
+            ` 
+                <div class = "author">
+                    <div class = "author-identity">
+                        <h1 class = "author-name">${userlist[i].Username}</h1>
+                        <img class = "profilepic"src = "https://nathaninteractivedev-4002.restdb.io/media/${userlist[i].Profilepic}" width = "50">
+                    </div>
+                    <div class = "author-details">
+                        <h1>${TotalBooks[1]} Likes</h1>
+                        <h1>Datejoined ${userlist[i].Datejoin.substring(0,10).replace("/", "-")}</h1>
+                        <h1>${TotalBooks[0]}</h1>
+                    </div>
+                </div>
+            `
+            root.appendChild(author)
+        }
+
+        else if((userlist[i].Username.toUpperCase().replaceAll(" ", "")).includes(searchfor.toUpperCase().replaceAll(" ", "")) == true && userlist[i].Usertype == "Author")
+        {
+            function CalcBooks(){
+                let total = [0,0]
+                for(let i = 0; i < booklist.length; i++)
+                {
+                    if (userlist[i].UserID == booklist[i].AuthorID)
+                    {
+                        total[0] ++
+                        total[1] += booklist[i].Likes
+                    }
+                    else
+                    {
+                        continue
+                    }
+                }
+                return total
+            }
+            const TotalBooks = CalcBooks()
+
+            root = document.querySelector(".authorlist")
+            let author = document.createElement("div")
+            author.classList.add("author")
+            author.setAttribute("data-link", userlist[i].UserID)
+            author.addEventListener('click', function(){
+                let userid = author.getAttribute("data-link")
+                localStorage.setItem("UserID", userid)
+                location.href = '/homepage/author/author.html'
+            })                
+            author.innerHTML = 
+            `  
+                <div class = "author-identity">
+                    <h1 class = "author-name">${userlist[i].Username}</h1>
+                    <img class = "profilepic"src = "https://nathaninteractivedev-4002.restdb.io/media/${userlist[i].Profilepic}" width = "50">
+                </div>
+                <div class = "author-details">
+                    <h1>${TotalBooks[1]} Likes</h1>
+                    <h1>Datejoined ${userlist[i].Datejoin.substring(0,10).replace("/", "-")}</h1>
+                    <h1>${TotalBooks[0]} Books</h1>
+                </div> 
+            `
+            root.appendChild(author)
         }
         
         else
