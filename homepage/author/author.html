@@ -12,7 +12,7 @@
 <body>
     <nav>
         <div class = "menu">
-            <div class = "select">
+            <div class = "select" style="cursor: pointer" onclick="window.location = '/booklist/booklist.html'">
                 <h1>All Books</h1>
             </div>
     
@@ -20,7 +20,7 @@
                 <h1>Authors</h1>
             </div>
     
-            <div style="cursor: pointer" onclick="window.location= '/Assignment-2-ID/signup/signup.html'" class = "select">
+            <div style="cursor: pointer" onclick="window.location= '/signup/signup.html'" class = "select">
                 <h1>Sign In</h1>
             </div>
             
@@ -40,10 +40,12 @@
                 <button type = "submit">
                     <img class = "search-icon" src = "img/search.svg">
                 </button>
-                <input class = "bar" id = "search" type = "text" placeholder="Search">
+                <input class = "bar" id = "search" type = "text" placeholder="Search" required>
             </div>
-    
+            
+
             <div class = "navbar">
+                <div class = "pfp"></div>
                 <button class = "nav-btn">
                     <p class = "menu-btn">Menu</p>
                     <div>
@@ -54,7 +56,9 @@
                 <button>
             </div>
             
-        </div> 
+        </div>
+
+        
     </nav>
 
     <div class = "author-container">

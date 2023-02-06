@@ -11,62 +11,61 @@
     </head>
 
     <body>
-
         <video autoplay muted loop id = "background-video"><source src = /signup/img/LibraryVideo.mp4></video>
-    <div class = "message-container">
-        <span class = "formHeader">
-            <img alt = "icon" class = "brandIcon" src = "/signup/img/brand-icon.svg">
-            <h1>Signup</h1>
-        </span>
-        <div class = "form-container">
-            
-            <form id = "form">
-                <div class = "username">
-                    <input type = "text" required class = "input" id = "Username" placeholder="Username">
-                    <div class = "bottom-border-wrapper">
-                        <div class = "bottom-border-username"></div>
-                    </div>
-                <div class = "email">
-                    <input type ="email" required class = "input" id = "Email" placeholder = "Email">
-                    <div class = "bottom-border-wrapper">
-                        <div class = "bottom-border-email"></div>
-                    </div>
-                </div>
-
-                <div class = "pass-strength-container">
-                        <input type = "password" required class = "input" id = "password-field" placeholder="Password">
+        <div class = "message-container">
+            <span class = "formHeader">
+                <img alt = "icon" class = "brandIcon" src = "/signup/img/brand-icon.svg">
+                <h1>Signup</h1>
+            </span>
+            <div class = "form-container">
+                
+                <form id = "form">
+                    <div class = "username">
+                        <input type = "text" required class = "input" id = "Username" placeholder="Username">
                         <div class = "bottom-border-wrapper">
-                            <div class = "bottom-border-password"></div>
+                            <div class = "bottom-border-username"></div>
                         </div>
-
-                </div>
-
-
-                <input type = "submit" value = "Sign-up" class = "login-btn">
-            </form>
-
-        </div>
-
-        <div class = "strengthContainer">
-
-            <div class = "strength-bar-desc-container">
-                <p class = "title"> Password strength:
-                    <span class = "strength-text"></span>
-                </p>
-
-                <div class = "strength-bar-wrapper">
-                    <div id = "strength-bar"></div>
-                </div>
-
-                <p class = "strength-description">
-                    Passwords should be at least <i>7</i> characters long and max <i>15</i>. <br>
-                    Try to use <strong>lowercasing</strong>, <strong>uppercasing</strong>, <strong>numbers</strong>
-                    and <strong>symbols</strong>.
-                </p>
-            </div>
+                    <div class = "email">
+                        <input type ="email" required class = "input" id = "Email" placeholder = "Email">
+                        <div class = "bottom-border-wrapper">
+                            <div class = "bottom-border-email"></div>
+                        </div>
+                    </div>
+                
+                    <div class = "pass-strength-container">
+                            <input type = "password" required class = "input" id = "password-field" placeholder="Password">
+                            <div class = "bottom-border-wrapper">
+                                <div class = "bottom-border-password"></div>
+                            </div>
+                        
+                    </div>
+                
+                
+                    <input type = "submit" value = "Sign-up" class = "login-btn">
+                </form>
             
+            </div>
+        
+            <div class = "strengthContainer">
+            
+                <div class = "strength-bar-desc-container">
+                    <p class = "title"> Password strength:
+                        <span class = "strength-text"></span>
+                    </p>
+                
+                    <div class = "strength-bar-wrapper">
+                        <div id = "strength-bar"></div>
+                    </div>
+                
+                    <p class = "strength-description">
+                        Passwords should be at least <i>7</i> characters long and max <i>15</i>. <br>
+                        Try to use <strong>lowercasing</strong>, <strong>uppercasing</strong>, <strong>numbers</strong>
+                        and <strong>symbols</strong>.
+                    </p>
+                </div>
+                
+            </div>
         </div>
-    </div>
 
     </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
