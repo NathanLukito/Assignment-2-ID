@@ -1,9 +1,8 @@
 $(document).ready(function(){
-    // function clear(){
-    //     localStorage.clear()
-    // }
-    // clear()
-
+    function clear(){
+        localStorage.clear()
+    }
+    clear()
     let translate = 0
     let container = document.querySelector(".scroll-images")
     $(".scroll-left").click(function(){
@@ -228,6 +227,7 @@ $(document).ready(function(){
 
     function author()
     {
+        
         let userlist = JSON.parse(localStorage.getItem("userlist"))
         let sorted = userlist.slice(0)
         sorted.sort(function(a,b)
@@ -500,9 +500,12 @@ $(document).ready(function(){
         }
 
     }
-    GetBooks()
-    GetUsers()
-    loadUser()
-    GetReviews()
+
+
+    
 }
+GetBooks()
+GetUsers()
+GetReviews()
+loadUser()
 })
