@@ -1,8 +1,8 @@
 $(document).ready(function(){
-    function clear(){
-        localStorage.clear()
-    }
-    clear()
+    // function clear(){
+    //     localStorage.clear()
+    // }
+    // clear()
 
     let translate = 0
     let container = document.querySelector(".scroll-images")
@@ -44,7 +44,7 @@ $(document).ready(function(){
         })
     })
 
-    $(".navbar").click(function(){
+    $(".nav-btn").click(function(){
         if (document.querySelector(".icon1").getAttribute("class").endsWith("topAnim"))
         { 
             document.querySelector(".menu-btn").innerHTML = "Menu"
@@ -228,8 +228,7 @@ $(document).ready(function(){
 
     function author()
     {
-        let userlist = []
-        userlist = JSON.parse(localStorage.getItem(localStorage.key(1)))
+        let userlist = JSON.parse(localStorage.getItem("userlist"))
         let sorted = userlist.slice(0)
         sorted.sort(function(a,b)
         {
@@ -481,13 +480,29 @@ $(document).ready(function(){
                 container.appendChild(img)
                 container.appendChild(desc)
 
-                root.appendChild(container)
-                
-            }
+            root.appendChild(container)
+             
         }
-        
+    }
+    
+    function loadUser(){
+        if(JSON.parse(localStorage.getItem("user")) != null)
+        {
+            let user = JSON.parse(localStorage.getItem("user"))
+            console.log(user)
+            document.querySelector(".pfp").innerHTML = `<img src = ${user.Profilepic} width = "40">`
+            document.querySelector(".pfp").style.borderRadius = "10px"
+        }
+
+        else
+        {
+            return
+        }
+
     }
     GetBooks()
     GetUsers()
+    loadUser()
     GetReviews()
+}
 })
