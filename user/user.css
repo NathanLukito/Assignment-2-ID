@@ -181,6 +181,9 @@ a:active { text-decoration: none; }
     font-size: 11px;
 }
 
+.pfp{
+    border: 2px solid black;
+}
 
 .nav-btn:hover{
     background-color: rgb(0, 36, 56);
@@ -246,4 +249,48 @@ a:active { text-decoration: none; }
 
 .select:active{
     transform: scale(1.05);
+}
+
+.set-pfp-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+    margin-left: 5vw;
+    width: 25vw;
+    gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.profile-pic{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 20vw;
+    border-radius: 10px;
+    border: 7px solid black;
+}
+
+.profile-name{
+    display:flex;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.profile-set-button
+{
+    display:flex;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 8px;
+    border: 2px solid black;
+    margin-bottom: 10px;
+    transition: border 100ms
+}
+
+.profile-set-button:hover
+{
+    border-radius: 8px;
+    border: 2px solid white;
+    transform: scale(1.1);
+    background-color: rgba(27,185,157,255);
+    transition: border 200ms;
+    z-index: 1;
 }

@@ -32,4 +32,49 @@ $(document).ready(function(){
         location.href = '/booklist/booklist.html'
     })
 
+    function loadUserNavPfp(){
+        if(JSON.parse(localStorage.getItem("user")) != null)
+        {
+            let user = JSON.parse(localStorage.getItem("user"))
+            document.querySelector(".pfp").innerHTML = `<img src = ${user.Profilepic} width = "40">`
+            document.querySelector(".pfp").style.borderRadius = "10px"
+        }
+
+        else
+        {
+            return
+        }
+
+    }
+
+    function loadUserPfp(){
+        if(JSON.parse(localStorage.getItem("user")) != null){
+            let user = JSON.parse(localStorage.getItem("user"))
+            document.querySelector(".profile-pic").innerHTML = `<img src = ${user.Profilepic}>`
+
+            document.querySelector(".profile-name").innerHTML = user.Username
+        }
+
+        else
+        {
+            return
+        }
+    }
+
+    function loadUserData(){
+        if(JSON.parse(localStorage.getItem("user")) != null){
+            let user = JSON.parse(localStorage.getItem("user"))
+            
+            document.querySelector(user-likes).innerHTML = 
+            `
+                <div class = "books-liked>
+                    <h1> Books Liked </h1>
+
+
+            `
+        }
+    }
+
+    loadUserNavPfp()
+    loadUserPfp()
 })
