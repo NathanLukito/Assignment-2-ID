@@ -48,7 +48,6 @@ $(document).ready(function(){
 
     async function GetBook(BookID, booklist){
         for(let i = 0; i < booklist.length; i++){
-            console.log(booklist[i].BookID, BookID)
             if(booklist[i].BookID == BookID){
                 var book = booklist[i];
             }
@@ -61,8 +60,23 @@ $(document).ready(function(){
         await AddBookCover(book)
         await AddReviews(book)
     }
+
+    function CalcLikes(){
+        let likes = 0
+        for (let i = 0; i < userlist.length; i++)
+        {
+            console.log(userlist[i].liked)
+            for (let x = 0; x < userlist[i].liked.length; x++)
+            {
+                console.log("feaiunweafuiweafuio")
+                console.log(userlist[i].liked[x])
+            }
+        }
+    }
+
     function AddDesc(book)
     {
+        CalcLikes()
         root = document.querySelector(".desc")
 
         book_desc = document.createElement("div")

@@ -162,34 +162,84 @@ $(document).ready(function(){
               "x-apikey": APIKEY,
               "cache-control": "no-cache"
             },
-          }
+        }
 
-          $.ajax(settings).done(async function (response)
-          {
-              for(let i = 0; i < response.length; i++)
-              {
-                  userlist.push
-                  (
-                      new User(
-                          response[i].UserID, 
-                          response[i].Username, 
-                          response[i].Password, 
-                          response[i].Email, 
-                          response[i].Usertype, 
-                          response[i].Datejoin, 
-                          response[i].Likes,
-                          response[i].Profilepic,
-                          response[i].Liked,
-                          response[i].Publish,
-                          response[i]._id
-                          )
-                  )  
-              }
-              localStorage.setItem("userlist", JSON.stringify(userlist))
-              await author() 
-            })
-            
-                    
+
+        $.ajax(settings).done(async function (response)
+        {
+            for(let i = 0; i < response.length; i++)
+            {
+                if(response[i].Liked != undefined)
+                {
+                    function CalcLiked(){
+                        likedlist = []
+                        for(let x  = 0; x < response[i].Liked.length; x++)
+                        {
+                            likedlist.push(
+                                new Book(response[i].Liked[x].BookID, 
+                                response[i].Liked[x].Title, 
+                                response[i].Liked[x].Synopsis, 
+                                response[i].Liked[x].Author, 
+                                response[i].Liked[x].Likes,
+                                response[i].Liked[x].Dislikes, 
+                                response[i].Liked[x].ReviewID, 
+                                response[i].Liked[x].Date, 
+                                response[i].Liked[x].BookCover, 
+                                response[i].Liked[x].Genre, 
+                                response[i].Liked[x]._id)
+                                )
+                        }
+                        return likedlist
+                    }
+
+                    function FindPublish(){
+                        publishlist =[]
+                        for(let x = 0; x < response[i].Publish.length; x++)
+                        {
+                            publishlist.push(
+                                new Book(response[i].Publish[x].BookID, 
+                                response[i].Publish[x].Title, 
+                                response[i].Publish[x].Synopsis, 
+                                response[i].Publish[x].Author, 
+                                response[i].Publish[x].Likes,
+                                response[i].Publish[x].Dislikes, 
+                                response[i].Publish[x].ReviewID, 
+                                response[i].Publish[x].Date, 
+                                response[i].Publish[x].BookCover, 
+                                response[i].Publish[x].Genre, 
+                                response[i].Publish[x]._id)
+                            )
+                        }
+                        return publishlist
+                    }
+
+                    userlist.push
+                    (
+                        new User(
+                            response[i].UserID, 
+                            response[i].Username, 
+                            response[i].Password, 
+                            response[i].Email, 
+                            response[i].Usertype, 
+                            response[i].Datejoin, 
+                            response[i].Likes,
+                            response[i].Profilepic,
+                            CalcLiked(),
+                            FindPublish(),
+                            response[i].Publish,
+                            response[i]._id
+                        )
+                    )  
+                }
+                else
+                {
+                    continue
+                }
+                  
+            }
+            localStorage.setItem("userlist", JSON.stringify(userlist))
+            await author() 
+        })           
     }
 
     let reviewlist = []
@@ -495,7 +545,6 @@ $(document).ready(function(){
         if(JSON.parse(localStorage.getItem("user")) != null)
         {
             let user = JSON.parse(localStorage.getItem("user"))
-            console.log(user)
             document.querySelector(".pfp").innerHTML = `<img src = ${user.Profilepic} width = "40">`
             document.querySelector(".pfp").style.borderRadius = "10px"
         }
