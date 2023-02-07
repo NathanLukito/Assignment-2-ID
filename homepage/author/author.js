@@ -54,7 +54,7 @@ $(document).ready(function(){
 
     const author = FindAuthor()
 
-    function CalcLikes(){
+    function CalcData(){
         let total = [0,0]
         for(let i = 0; i < author.Publish.length; i++)
         {
@@ -77,8 +77,8 @@ $(document).ready(function(){
         `
         <h1>${author.Username}</h1>
         <h1>${author.Datejoin.substring(0,10).replace("/", "-")}</h1>
-        <h1>Total Books: ${CalcLikes(author)[0]}</h1>
-        <h1>Total Likes: ${CalcLikes(author)[1]}</h1>
+        <h1>Total Books: ${CalcData(author)[0]}</h1>
+        <h1>Total Likes: ${CalcData(author)[1]}</h1>
         `
         
         root.appendChild(profilepic)
@@ -95,8 +95,8 @@ $(document).ready(function(){
             `
             <img class = "book-image" src = "https://nathaninteractivedev-4002.restdb.io/media/${author.Publish[i].BookCover}">
             <div class = "book-details">
-                <h1>${author.Publish[i].Likes}</h1>
-                <h1>${author.Publish[i].BookID}</h1>
+                <h1>${author.Publish[i].Likes} Likes</h1>
+                <h1>${author.Publish[i].Date.substring(0,10).replace("/", "-")}</h1>
             </div>
             `
             root.appendChild(book)
