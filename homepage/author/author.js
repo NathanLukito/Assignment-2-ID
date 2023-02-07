@@ -42,6 +42,7 @@ $(document).ready(function(){
         {
             if (userlist[i].UserID == AuthorID)
             {
+                console.log(userlist[i])
                 return userlist[i]
             }
             else
@@ -53,23 +54,15 @@ $(document).ready(function(){
 
     const author = FindAuthor()
 
-    function CalcBooks(){
+    function CalcLikes(){
         let total = [0,0]
-        for(let i = 0; i < booklist.length; i++)
+        for(let i = 0; i < author.Publish.length; i++)
         {
-            if (author.UserID == booklist[i].AuthorID)
-            {
-                total[0] ++
-                total[1] += booklist[i].Likes
-            }
-            else
-            {
-                continue
-            }
+            total[0] ++
+            total[1] += author.Publish[i].Likes
         }
         return total
     }
-    const TotalBooks = CalcBooks()
 
     function loadAuthor(){
         let root = document.querySelector(".author-container")
@@ -84,8 +77,8 @@ $(document).ready(function(){
         `
         <h1>${author.Username}</h1>
         <h1>${author.Datejoin.substring(0,10).replace("/", "-")}</h1>
-        <h1>Total Books: ${TotalBooks[0]}</h1>
-        <h1>Total Likes: ${TotalBooks[1]}</h1>
+        <h1>Total Books: ${CalcLikes(author)[0]}</h1>
+        <h1>Total Likes: ${CalcLikes(author)[1]}</h1>
         `
         
         root.appendChild(profilepic)
@@ -93,27 +86,20 @@ $(document).ready(function(){
     }
 
     function loadBooks(){
-        for(let i = 0; i < booklist.length; i++)
+        for(let i = 0; i < author.Publish.length; i++)
         {
-            if(author.UserID == booklist[i].UserID)
-            {
-                let root = document.querySelector(".book-container")
-                let book = document.createElement("div")
-                books.classList.add("book")
-                book.innerHTML = 
-                `
-                <img class = "book-image" src = "https://nathaninteractivedev-4002.restdb.io/media/${booklist[i].BookCover}">
-                <div class = "book-details">
-                   <h1>${booklist[i].Likes}</h1>
-                   <h1>${booklist[i].Date}</h1>
-                </div>
-                `
-                root.appendChild(root)
-            }
-            else
-            {
-                continue
-            }
+            let root = document.querySelector(".book-container")
+            let book = document.createElement("div")
+            book.classList.add("book")
+            book.innerHTML = 
+            `
+            <img class = "book-image" src = "https://nathaninteractivedev-4002.restdb.io/media/${author.Publish[i].BookCover}">
+            <div class = "book-details">
+                <h1>${author.Publish[i].Likes}</h1>
+                <h1>${author.Publish[i].BookID}</h1>
+            </div>
+            `
+            root.appendChild(book)
         }
     }
     loadAuthor()
