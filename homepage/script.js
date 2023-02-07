@@ -135,7 +135,7 @@ $(document).ready(function(){
 
     let userlist = []
 
-    function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic, Likes, Publish, _id)
+    function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic, Liked, Publish, _id)
     {
         this.UserID = UserID,
         this.Username = Username,
@@ -145,7 +145,7 @@ $(document).ready(function(){
         this.Datejoin = Datejoin,
         this.Likes = Likes,
         this.Profilepic = Profilepic,
-        this.Liked = Likes,
+        this.Liked = Liked,
         this.Publish = Publish,
         this._id = _id
     }
@@ -474,7 +474,6 @@ $(document).ready(function(){
                 clean_date2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
                 return Math.floor((date1/ms - date2/ms) )
             })
-
             for(let i = 0; i <= 10; i++)
             {
                 let root = document.querySelector(".table-container-latest-popular")

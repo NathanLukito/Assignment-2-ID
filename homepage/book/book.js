@@ -43,40 +43,50 @@ $(document).ready(function(){
         booklist = JSON.parse(localStorage.getItem("booklist"))
         userlist = JSON.parse(localStorage.getItem("userlist"))
         reviewlist = JSON.parse(localStorage.getItem("reviewlist"))
-        await GetBook(BookID, booklist)
+        console.log(BookID)
+        console.log(booklist)
+        console.log(userlist)
+        console.log(reviewlist)
+        const book = await GetBook(BookID, booklist)
+        await AddDesc(book)
+        await AddBookCover(book)
+        await AddReviews(book)
     }
-
+    
     async function GetBook(BookID, booklist){
         for(let i = 0; i < booklist.length; i++){
             if(booklist[i].BookID == BookID){
-                var book = booklist[i];
+                return booklist[i];
             }
             else
             {
                 continue;
             }
         }
-        await AddDesc(book)
-        await AddBookCover(book)
-        await AddReviews(book)
     }
 
-    function CalcLikes(){
+    function CalcLikes(book){
+        console.log(book)
         let likes = 0
-        for (let i = 0; i < userlist.length; i++)
+        for(let i = 0; i < userlist.length; i++)
         {
-            console.log(userlist[i].liked)
-            for (let x = 0; x < userlist[i].liked.length; x++)
+            for(let x = 0; x < userlist[i].Liked.length; x++)
             {
-                console.log("feaiunweafuiweafuio")
-                console.log(userlist[i].liked[x])
+                if (userlist[i].Liked[x].BookID == book.BookID)
+                {
+                    likes ++
+                }
+                else
+                {
+                    continue
+                }
             }
         }
+        return likes
     }
 
     function AddDesc(book)
     {
-        CalcLikes()
         root = document.querySelector(".desc")
 
         book_desc = document.createElement("div")
@@ -99,7 +109,7 @@ $(document).ready(function(){
         book_data.classList.add("book-data")
 
         likes = document.createElement("h1")
-        likes.innerHTML = "Likes: " + book.Likes
+        likes.innerHTML = "Likes: " + CalcLikes(book)
 
         genre = document.createElement("h1")
         genre.innerHTML = "Genre: " + book.Genre
