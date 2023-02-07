@@ -20,7 +20,6 @@ $(document).ready(function(){
         else if (document.querySelector(".icon1").getAttribute("class").endsWith("icon1"))
         {
             document.querySelector(".menu-btn").innerHTML = "Close"
-            console.log($(".nav-btn"))
         }
 
         $(".icon1").toggleClass("topAnim")
@@ -65,7 +64,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/booklist/booklist.html'
+        location.href = '/book+authorlist/book_author.html'
     })
 
     document.querySelector("#Username").addEventListener("focus", function(){

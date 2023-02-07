@@ -30,7 +30,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/booklist/booklist.html'
+        location.href = '/book+authorlist/book_author.html'
     })
 
     /*Initiating Data*/
@@ -43,24 +43,48 @@ $(document).ready(function(){
         booklist = JSON.parse(localStorage.getItem("booklist"))
         userlist = JSON.parse(localStorage.getItem("userlist"))
         reviewlist = JSON.parse(localStorage.getItem("reviewlist"))
-        await GetBook(BookID, booklist)
+        console.log(BookID)
+        console.log(booklist)
+        console.log(userlist)
+        console.log(reviewlist)
+        const book = await GetBook(BookID, booklist)
+        await AddDesc(book)
+        await AddBookCover(book)
+        await AddReviews(book)
     }
-
+    
     async function GetBook(BookID, booklist){
         for(let i = 0; i < booklist.length; i++){
-            console.log(booklist[i].BookID, BookID)
             if(booklist[i].BookID == BookID){
-                var book = booklist[i];
+                return booklist[i];
             }
             else
             {
                 continue;
             }
         }
-        await AddDesc(book)
-        await AddBookCover(book)
-        await AddReviews(book)
     }
+
+    function CalcLikes(book){
+        console.log(book)
+        let likes = 0
+        for(let i = 0; i < userlist.length; i++)
+        {
+            for(let x = 0; x < userlist[i].Liked.length; x++)
+            {
+                if (userlist[i].Liked[x].BookID == book.BookID)
+                {
+                    likes += userlist[i].Liked[x].Likes
+                }
+                else
+                {
+                    continue
+                }
+            }
+        }
+        return likes
+    }
+
     function AddDesc(book)
     {
         root = document.querySelector(".desc")
@@ -85,7 +109,7 @@ $(document).ready(function(){
         book_data.classList.add("book-data")
 
         likes = document.createElement("h1")
-        likes.innerHTML = "Likes: " + book.Likes
+        likes.innerHTML = "Likes: " + CalcLikes(book)
 
         genre = document.createElement("h1")
         genre.innerHTML = "Genre: " + book.Genre
