@@ -62,7 +62,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/booklist/booklist.html'
+        location.href = '/book+authorlist/book_author.html'
     })
 
 
@@ -71,7 +71,7 @@ $(document).ready(function(){
     let booklist = []
 
     //initiating book object
-    function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover, Genre)
+    function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover, Genre, _id)
     {
         this.BookID = BookID,
         this.Title = Title,
@@ -82,7 +82,8 @@ $(document).ready(function(){
         this.ReviewID = ReviewID,
         this.Date = Date,
         this.BookCover = BookCover,
-        this.Genre = Genre
+        this.Genre = Genre,
+        this._id = _id
 
     }
     const APIKEY = "63b3e1aa969f06502871a8c1"
@@ -115,7 +116,8 @@ $(document).ready(function(){
                         response[i].ReviewID,
                         response[i].Date,
                         response[i].BookCover,
-                        response[i].Genre
+                        response[i].Genre,
+                        response[i]._id
                         )
                 )
                 
@@ -133,7 +135,7 @@ $(document).ready(function(){
 
     let userlist = []
 
-    function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic)
+    function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic, Liked, Publish, _id)
     {
         this.UserID = UserID,
         this.Username = Username,
@@ -142,7 +144,10 @@ $(document).ready(function(){
         this.Usertype = Usertype,
         this.Datejoin = Datejoin,
         this.Likes = Likes,
-        this.Profilepic = Profilepic
+        this.Profilepic = Profilepic,
+        this.Liked = Liked,
+        this.Publish = Publish,
+        this._id = _id
     }
 
     async function GetUsers()
@@ -157,39 +162,92 @@ $(document).ready(function(){
               "x-apikey": APIKEY,
               "cache-control": "no-cache"
             },
-          }
+        }
 
-          $.ajax(settings).done(async function (response)
-          {
-              for(let i = 0; i < response.length; i++)
-              {
-                  userlist.push
-                  (
-                      new User(
-                          response[i].UserID, 
-                          response[i].Username, 
-                          response[i].Password, 
-                          response[i].Email, 
-                          response[i].Usertype, 
-                          response[i].Datejoin, 
-                          response[i].Likes,
-                          response[i].Profilepic
-                          )
-                  )  
-              }
-              localStorage.setItem("userlist", JSON.stringify(userlist))
-              await author() 
-            })
-            
-                    
+
+        $.ajax(settings).done(async function (response)
+        {
+            for(let i = 0; i < response.length; i++)
+            {
+                if(response[i].Liked != undefined)
+                {
+                    function CalcLiked(){
+                        likedlist = []
+                        for(let x  = 0; x < response[i].Liked.length; x++)
+                        {
+                            likedlist.push(
+                                new Book(response[i].Liked[x].BookID, 
+                                response[i].Liked[x].Title, 
+                                response[i].Liked[x].Synopsis, 
+                                response[i].Liked[x].Author, 
+                                response[i].Liked[x].Likes,
+                                response[i].Liked[x].Dislikes, 
+                                response[i].Liked[x].ReviewID, 
+                                response[i].Liked[x].Date, 
+                                response[i].Liked[x].BookCover, 
+                                response[i].Liked[x].Genre, 
+                                response[i].Liked[x]._id)
+                                )
+                        }
+                        return likedlist
+                    }
+
+                    function FindPublish(){
+                        publishlist =[]
+                        for(let x = 0; x < response[i].Publish.length; x++)
+                        {
+                            publishlist.push(
+                                new Book(response[i].Publish[x].BookID, 
+                                response[i].Publish[x].Title, 
+                                response[i].Publish[x].Synopsis, 
+                                response[i].Publish[x].Author, 
+                                response[i].Publish[x].Likes,
+                                response[i].Publish[x].Dislikes, 
+                                response[i].Publish[x].ReviewID, 
+                                response[i].Publish[x].Date, 
+                                response[i].Publish[x].BookCover, 
+                                response[i].Publish[x].Genre, 
+                                response[i].Publish[x]._id)
+                            )
+                        }
+                        return publishlist
+                    }
+
+                    userlist.push
+                    (
+                        new User(
+                            response[i].UserID, 
+                            response[i].Username, 
+                            response[i].Password, 
+                            response[i].Email, 
+                            response[i].Usertype, 
+                            response[i].Datejoin, 
+                            response[i].Likes,
+                            response[i].Profilepic,
+                            CalcLiked(),
+                            FindPublish(),
+                            response[i]._id
+                        )
+                    )  
+                }
+                else
+                {
+                    continue
+                }
+                  
+            }
+            localStorage.setItem("userlist", JSON.stringify(userlist))
+            await author() 
+        })           
     }
 
     let reviewlist = []
 
-    function Review(ReviewID, Review, UserID){
+    function Review(ReviewID, Review, UserID, _id){
         this.ReviewID = ReviewID,
         this.Review = Review,
-        this.UserID = UserID
+        this.UserID = UserID,
+        this._id = _id
     }
 
     function GetReviews()
@@ -216,6 +274,7 @@ $(document).ready(function(){
                           response[i].ReviewID, 
                           response[i].Review, 
                           response[i].UserID, 
+                          response[i]._id
                           )
                   )  
               }
@@ -310,7 +369,7 @@ $(document).ready(function(){
     function popular()
     {
         let booklist = []
-        booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
+        booklist = JSON.parse(localStorage.getItem("booklist"))
 
         if(booklist == [])
         {
@@ -393,15 +452,11 @@ $(document).ready(function(){
                 
             }
         }
-        
-            
-        
-        
     }
 
     function latest(){
         let booklist = []
-        booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
+        booklist = JSON.parse(localStorage.getItem("booklist"))
         if (booklist == [])
         {
             latest()
@@ -418,7 +473,6 @@ $(document).ready(function(){
                 clean_date2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
                 return Math.floor((date1/ms - date2/ms) )
             })
-
             for(let i = 0; i <= 10; i++)
             {
                 let root = document.querySelector(".table-container-latest-popular")
@@ -483,13 +537,12 @@ $(document).ready(function(){
             root.appendChild(container)
              
         }
-    }
+    }}
     
     function loadUser(){
         if(JSON.parse(localStorage.getItem("user")) != null)
         {
             let user = JSON.parse(localStorage.getItem("user"))
-            console.log(user)
             document.querySelector(".pfp").innerHTML = `<img src = ${user.Profilepic} width = "40">`
             document.querySelector(".pfp").style.borderRadius = "10px"
         }
@@ -500,12 +553,10 @@ $(document).ready(function(){
         }
 
     }
-
-
     
-}
-GetBooks()
-GetUsers()
-GetReviews()
-loadUser()
+
+    GetBooks()
+    GetUsers()
+    GetReviews()
+    loadUser()  
 })
