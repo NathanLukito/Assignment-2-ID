@@ -543,8 +543,7 @@ $(document).ready(function(){
         if(JSON.parse(localStorage.getItem("user")) != null)
         {
             let user = JSON.parse(localStorage.getItem("user"))
-            document.querySelector(".pfp").innerHTML = `<img src = ${user.Profilepic} width = "40">`
-            document.querySelector(".pfp").style.borderRadius = "10px"
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic} width = "60">`
         }
 
         else
