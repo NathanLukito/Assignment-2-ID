@@ -68,6 +68,8 @@ $(document).ready(function(){
 
 
     /*  RestDB Database  */
+     
+
     let booklist = []
 
     //initiating book object
@@ -124,13 +126,8 @@ $(document).ready(function(){
             }
             //add to localStorage for use in other pages
             localStorage.setItem("booklist", JSON.stringify(booklist)) 
-
-            //wait for data initialization to finish before initiating popular booklist
-            await popular() 
-            await latest()
+            await GetUsers()
         })
-
-        
     }
 
     let userlist = []
@@ -237,9 +234,35 @@ $(document).ready(function(){
                   
             }
             localStorage.setItem("userlist", JSON.stringify(userlist))
+            let booklist = []
+            booklist = JSON.parse(localStorage.getItem("booklist"))
+            for(let i = 0; i < booklist.length; i++)
+            {
+                let likes = 0
+                for(let x = 0; x < userlist.length; x++)
+                {
+                    for(let a = 0; a < userlist[x].Liked.length; a++)
+                    {
+                        if (userlist[x].Liked[a].BookID == booklist[i].BookID)
+                        {
+                            likes += userlist[x].Liked[a].Likes
+                        }
+                        else
+                        {
+                            continue
+                        }
+                    }
+                }
+                booklist[i].Likes = likes
+            }  
+            localStorage.setItem("booklist", JSON.stringify(booklist)) 
+            //wait for data initialization to finish before initiating popular booklist
+            await popular() 
+            await latest()
             await author() 
-        })           
+        })  
     }
+        
 
     let reviewlist = []
 
@@ -281,12 +304,8 @@ $(document).ready(function(){
               localStorage.setItem("reviewlist", JSON.stringify(reviewlist))
             })
     }
-
-    
-
     function author()
     {
-        
         let userlist = JSON.parse(localStorage.getItem("userlist"))
         let sorted = userlist.slice(0)
         sorted.sort(function(a,b)
@@ -378,6 +397,7 @@ $(document).ready(function(){
 
         else
         {
+            
             let sorted = booklist.slice(0) //duplicates the list into a array that always adds the higher liked book
             sorted.sort(function(a,b)
             {     
@@ -553,10 +573,7 @@ $(document).ready(function(){
         }
 
     }
-    
-
     GetBooks()
-    GetUsers()
     GetReviews()
-    loadUser()  
+    loadUser() 
 })
