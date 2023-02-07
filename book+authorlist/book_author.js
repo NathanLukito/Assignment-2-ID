@@ -138,7 +138,7 @@ $(document).ready(function(){
             })                
             author.innerHTML = 
             ` 
-                <div class = "author">
+                
                     <div class = "author-identity">
                         <h1 class = "author-name">${userlist[i].Username}</h1>
                         <img class = "profilepic"src = "https://nathaninteractivedev-4002.restdb.io/media/${userlist[i].Profilepic}" width = "50">
@@ -148,7 +148,7 @@ $(document).ready(function(){
                         <h1>Datejoined ${userlist[i].Datejoin.substring(0,10).replace("/", "-")}</h1>
                         <h1>${TotalBooks[0]}</h1>
                     </div>
-                </div>
+
             `
             root.appendChild(author)
         }

@@ -71,7 +71,7 @@ $(document).ready(function(){
     let booklist = []
 
     //initiating book object
-    function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover, Genre)
+    function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover, Genre, _id)
     {
         this.BookID = BookID,
         this.Title = Title,
@@ -82,7 +82,8 @@ $(document).ready(function(){
         this.ReviewID = ReviewID,
         this.Date = Date,
         this.BookCover = BookCover,
-        this.Genre = Genre
+        this.Genre = Genre,
+        this._id = _id
 
     }
     const APIKEY = "63b3e1aa969f06502871a8c1"
@@ -115,7 +116,8 @@ $(document).ready(function(){
                         response[i].ReviewID,
                         response[i].Date,
                         response[i].BookCover,
-                        response[i].Genre
+                        response[i].Genre,
+                        response[i]._id
                         )
                 )
                 
@@ -133,7 +135,7 @@ $(document).ready(function(){
 
     let userlist = []
 
-    function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic)
+    function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic, Likes, Publish, _id)
     {
         this.UserID = UserID,
         this.Username = Username,
@@ -142,7 +144,10 @@ $(document).ready(function(){
         this.Usertype = Usertype,
         this.Datejoin = Datejoin,
         this.Likes = Likes,
-        this.Profilepic = Profilepic
+        this.Profilepic = Profilepic,
+        this.Liked = Likes,
+        this.Publish = Publish,
+        this._id = _id
     }
 
     async function GetUsers()
@@ -173,7 +178,10 @@ $(document).ready(function(){
                           response[i].Usertype, 
                           response[i].Datejoin, 
                           response[i].Likes,
-                          response[i].Profilepic
+                          response[i].Profilepic,
+                          response[i].Liked,
+                          response[i].Publish,
+                          response[i]._id
                           )
                   )  
               }
@@ -186,10 +194,11 @@ $(document).ready(function(){
 
     let reviewlist = []
 
-    function Review(ReviewID, Review, UserID){
+    function Review(ReviewID, Review, UserID, _id){
         this.ReviewID = ReviewID,
         this.Review = Review,
-        this.UserID = UserID
+        this.UserID = UserID,
+        this._id = _id
     }
 
     function GetReviews()
@@ -216,6 +225,7 @@ $(document).ready(function(){
                           response[i].ReviewID, 
                           response[i].Review, 
                           response[i].UserID, 
+                          response[i]._id
                           )
                   )  
               }
