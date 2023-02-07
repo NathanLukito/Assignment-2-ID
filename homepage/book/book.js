@@ -74,7 +74,7 @@ $(document).ready(function(){
             {
                 if (userlist[i].Liked[x].BookID == book.BookID)
                 {
-                    likes ++
+                    likes += userlist[i].Liked[x].Likes
                 }
                 else
                 {

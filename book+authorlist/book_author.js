@@ -41,8 +41,29 @@ $(document).ready(function(){
     booklist = JSON.parse(localStorage.getItem("booklist"))
     let searchfor = localStorage.getItem("search")
     document.querySelector(".searchfor").innerHTML = "Searched for: " + searchfor
+
+    
     for(let i = 0; i < booklist.length; i++)
     {
+        function CalcLikes(){
+            let likes = 0
+            for(let x = 0; x < userlist.length; x++)
+            {
+                for(let a = 0; a < userlist[x].Liked.length; a++)
+                {
+                    if (userlist[x].Liked[a].BookID == booklist[i].BookID)
+                    {
+                        console.log(likes)
+                        likes += userlist[x].Liked[a].Likes
+                    }
+                    else
+                    {
+                        continue
+                    }
+                }
+            }
+            return likes
+        }
         if(searchfor == null)
         {
             root = document.querySelector(".booklist")
@@ -62,7 +83,7 @@ $(document).ready(function(){
                     <p class = "synopsis">${booklist[i].Synopsis}</p>
                 </div>
                 <div class = "book-details">
-                    <h1>${booklist[i].Likes} Likes</h1>
+                    <h1>${CalcLikes()} Likes</h1>
                     <h1>${booklist[i].Date.substring(0,10).replace("/", "-")}</h1>
                     <h1>By: ${booklist[i].Author}</h1>
                     <h1>Genre: ${booklist[i].Genre}</h1>
@@ -90,7 +111,7 @@ $(document).ready(function(){
                     <p class = "synopsis">${booklist[i].Synopsis}</p>
                 </div>
                 <div class = "book-details">
-                    <h1>${booklist[i].Likes} Likes</h1>
+                    <h1>${CalcLikes()} Likes</h1>
                     <h1>${booklist[i].Date.substring(0,10).replace("/", "-")}</h1>
                     <h1>By: ${booklist[i].Author}</h1>
                     <h1>Genre: ${booklist[i].Genre}</h1>
@@ -111,21 +132,16 @@ $(document).ready(function(){
         {
             function CalcBooks(){
                 let total = [0,0]
-                for(let i = 0; i < booklist.length; i++)
+                for(let i = 0; i < userlist.length; i++)
                 {
-                    if (userlist[i].UserID == booklist[i].AuthorID)
+                    for(let x = 0; x < userlist[i].Publish[x].length; x++)
                     {
-                        total[0] ++
-                        total[1] += booklist[i].Likes
-                    }
-                    else
-                    {
-                        continue
+                        total[0] += userlist[i].Publish[x].Likes
+                        total[1] ++
                     }
                 }
                 return total
             }
-            const TotalBooks = CalcBooks()
 
             root = document.querySelector(".authorlist")
             let author = document.createElement("div")
@@ -144,9 +160,9 @@ $(document).ready(function(){
                         <img class = "profilepic"src = "https://nathaninteractivedev-4002.restdb.io/media/${userlist[i].Profilepic}" width = "50">
                     </div>
                     <div class = "author-details">
-                        <h1>${TotalBooks[1]} Likes</h1>
+                        <h1>${CalcBooks()[0]} Likes</h1>
                         <h1>Datejoined ${userlist[i].Datejoin.substring(0,10).replace("/", "-")}</h1>
-                        <h1>${TotalBooks[0]}</h1>
+                        <h1>${CalcBooks()[1]}</h1>
                     </div>
 
             `
@@ -157,21 +173,17 @@ $(document).ready(function(){
         {
             function CalcBooks(){
                 let total = [0,0]
-                for(let i = 0; i < booklist.length; i++)
+                console.log("erguiuijniuhnuiohj")
+                for(let x = 0; x < userlist[i].Publish.length; x++)
                 {
-                    if (userlist[i].UserID == booklist[i].AuthorID)
-                    {
-                        total[0] ++
-                        total[1] += booklist[i].Likes
-                    }
-                    else
-                    {
-                        continue
-                    }
+                    console.log("feierfuioweraf")
+                    total[0] += userlist[i].Publish[x].Likes
+                    total[1] ++
                 }
                 return total
             }
-            const TotalBooks = CalcBooks()
+                
+            
 
             root = document.querySelector(".authorlist")
             let author = document.createElement("div")
@@ -189,9 +201,9 @@ $(document).ready(function(){
                     <img class = "profilepic"src = "https://nathaninteractivedev-4002.restdb.io/media/${userlist[i].Profilepic}" width = "50">
                 </div>
                 <div class = "author-details">
-                    <h1>${TotalBooks[1]} Likes</h1>
+                    <h1>${CalcBooks()[0]} Likes</h1>
                     <h1>Datejoined ${userlist[i].Datejoin.substring(0,10).replace("/", "-")}</h1>
-                    <h1>${TotalBooks[0]} Books</h1>
+                    <h1>${CalcBooks()[1]} Books</h1>
                 </div> 
             `
             root.appendChild(author)

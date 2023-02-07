@@ -226,7 +226,6 @@ $(document).ready(function(){
                             response[i].Profilepic,
                             CalcLiked(),
                             FindPublish(),
-                            response[i].Publish,
                             response[i]._id
                         )
                     )  
