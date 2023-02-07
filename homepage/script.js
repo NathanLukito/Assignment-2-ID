@@ -1,8 +1,8 @@
 $(document).ready(function(){
-    function clear(){
-        localStorage.clear()
-    }
-    clear()
+    // function clear(){
+    //     localStorage.clear()
+    // }
+    // clear()
     let translate = 0
     let container = document.querySelector(".scroll-images")
     $(".scroll-left").click(function(){
@@ -310,7 +310,7 @@ $(document).ready(function(){
     function popular()
     {
         let booklist = []
-        booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
+        booklist = JSON.parse(localStorage.getItem("booklist"))
 
         if(booklist == [])
         {
@@ -401,7 +401,7 @@ $(document).ready(function(){
 
     function latest(){
         let booklist = []
-        booklist = JSON.parse(localStorage.getItem(localStorage.key(0)))
+        booklist = JSON.parse(localStorage.getItem("booklist"))
         if (booklist == [])
         {
             latest()
@@ -484,7 +484,7 @@ $(document).ready(function(){
              
         }
     }
-    
+}
     function loadUser(){
         if(JSON.parse(localStorage.getItem("user")) != null)
         {
@@ -501,11 +501,8 @@ $(document).ready(function(){
 
     }
 
-
-    
-}
+loadUser()
 GetBooks()
 GetUsers()
 GetReviews()
-loadUser()
 })
