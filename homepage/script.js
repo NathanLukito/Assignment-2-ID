@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("body").addClass("scroll-disable")
     function clear(){
         localStorage.clear()
     }
@@ -260,6 +261,8 @@ $(document).ready(function(){
             await popular() 
             await latest()
             await author() 
+            $("body").removeClass("scroll-disable")
+            $(".page-load").css("display", "none")
         })  
     }
         

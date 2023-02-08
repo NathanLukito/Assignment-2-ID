@@ -80,7 +80,7 @@ a:active { text-decoration: none; }
     padding-bottom: 8px;
     padding-top: 8px;
     height: 10vh;
-    z-index: 100;
+    z-index: 2;
 }
 
 .brand{
@@ -217,7 +217,7 @@ a:active { text-decoration: none; }
     color:white;
     height: 90vh;
     text-align: center;
-    margin-top: 1vh;
+    margin-top: 11vh;
     overflow-x: hidden;
     z-index: 1;
 }
@@ -257,17 +257,19 @@ a:active { text-decoration: none; }
     justify-content: space-evenly;
     margin-left: 5vw;
     margin-right: 5vw;
-    margin-top: 10vh;
+    margin-bottom: 10vh;
 }
 
 .book-anim{
     width: 30vw;
+    margin-top: 10vh;
 }
 
 .welcome{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 10vh;
     width: 30vw;
 }
 
@@ -319,8 +321,19 @@ a:active { text-decoration: none; }
         font-size: 25px;
         margin-top: 20px;
     }
+}
 
+.page-load{
+    position: fixed;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+}
 
+.scroll-disable{
+    height: 100%;
+    overflow: hidden;
 }
 
 .book-container{
