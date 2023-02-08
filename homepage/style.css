@@ -247,6 +247,10 @@ a:active { text-decoration: none; }
     transform: scale(1.05);
 }
 
+.nav-pfp{
+    width: 60;
+}
+
 .landing-page{
     position: relative;
     display: flex;
