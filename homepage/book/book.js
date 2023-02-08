@@ -51,6 +51,8 @@ $(document).ready(function(){
         await AddDesc(book)
         await AddBookCover(book)
         await AddReviews(book)
+        // await AddRecentlyViewed(book)
+        await AddReview()
     }
     
     async function GetBook(BookID, booklist){
@@ -139,7 +141,7 @@ $(document).ready(function(){
     {
         for (let i = 0; i < reviewlist.length; i++)
         {
-            if(book.ReviewID == reviewlist[i].ReviewID)
+            if(book.BookID == reviewlist[i].BookID)
             {
                 
                 for(let x = 0; x < userlist.length; x++)
@@ -177,6 +179,83 @@ $(document).ready(function(){
                 continue
             }
         }  
+    }
+
+    async function AddRecentlyViewed(book)
+    {
+        recentlyViewedList = JSON.parse(localStorage.getItem("recentlyViewed"))
+        if(recentlyViewedList.includes(book) == false)
+        {   
+            
+            recentlyViewedList.push(book)
+        }
+
+        else
+        {
+            return
+        }
+    }
+
+    function sendReviewSet(reviewData){
+        const APIKEY = "63b3e1aa969f06502871a8c1"
+        let settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://nathaninteractivedev-4002.restdb.io/rest/review",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(reviewData)
+        }
+
+        $.ajax(settings).done(function (){
+            window.location.reload();
+        })
+    }
+
+    $(".submit-review-btn").click(function(){
+        event.preventDefault()
+        let review_content = $(".book-review").val();
+        let user = JSON.parse(localStorage.getItem("user"))
+        let bookid = JSON.parse(localStorage.getItem("BookID"))
+        if(review_content == ""){
+            alert("Please fill in the review form!")
+        }
+
+        else{
+            let jsonReviewData = {
+                "BookID": bookid,
+                "Review": review_content,
+                "UserID": user.UserID
+            }
+
+            console.log(jsonReviewData)
+            sendReviewSet(jsonReviewData)
+
+            document.querySelector("#form").reset();
+            document.querySelector(".submit-review-btn").setAttribute("value", "Submitting...")  
+            document.querySelector(".submit-review-btn").style.backgroundColor = "rgba(27,185,157,0.6)"
+        }
+
+        
+    })
+    async function AddReview()
+    {
+        document.querySelector(".book-review").addEventListener("focus", function(){
+            setWidthReview(100)
+        })
+    
+        document.querySelector(".book-review").addEventListener("blur", function(){
+            setWidthReview(0)
+        })
+        function setWidthReview(value){
+            document.querySelector(".bottom-border-review").style.width = value + "%";
+            document.querySelector(".bottom-border-review").style.backgroundColor = "rgba(27,185,157,255)"
+        }
     }
 
 
