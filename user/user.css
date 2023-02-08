@@ -247,6 +247,10 @@ a:active { text-decoration: none; }
     transform: scale(1.05);
 }
 
+.nav-pfp{
+    width: 60;
+}
+
 .pfp-data-container{
     display:flex;
     flex-direction: row;
@@ -311,11 +315,37 @@ a:active { text-decoration: none; }
     z-index: 1;
 }
 
+.user-data-nav{
+    display: flex;
+    margin-top: 20vh;
+    width: 65vw;
+    justify-content: space-evenly;
+}
+
+.user-data-nav button{
+    display:flex;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 8px;
+    border: 2px solid black;
+    margin-bottom: 10px;
+    transition: border 100ms
+}
+
+.user-data-nav button:focus{
+    border-radius: 8px;
+    border: 2px solid white;
+    transform: scale(1.1);
+    background-color: rgb(255, 167, 5);
+    transition: border 200ms;
+    z-index: 1;
+}
+
+
 .books-liked-container{
     display: grid;
     gap: 40px;
+    margin-top: 10vh;
     width: 65vw;
-    margin-top: 20vh;
     grid-template-columns: repeat(auto-fill , 200px);
     justify-content: space-evenly;
 }
@@ -361,4 +391,28 @@ a:active { text-decoration: none; }
 
 .book > h4{
     text-align: center;
+}
+
+.user-reviews-container{
+    display: grid;
+    gap: 40px;
+    margin-top: 10vh;
+    width: 65vw;
+    grid-template-columns: repeat(auto-fill , 200px);
+    justify-content: space-evenly;
+}
+
+.review{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.review:hover{
+    transform: scale(1.05);
+    transition: transform 200ms ease-in-out;
+    background-color:rgba(243, 243, 243, 0.337);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 8px;
 }
