@@ -53,7 +53,6 @@ $(document).ready(function(){
                 {
                     if (userlist[x].Liked[a].BookID == booklist[i].BookID)
                     {
-                        console.log(likes)
                         likes += userlist[x].Liked[a].Likes
                     }
                     else
@@ -173,10 +172,8 @@ $(document).ready(function(){
         {
             function CalcBooks(){
                 let total = [0,0]
-                console.log("erguiuijniuhnuiohj")
                 for(let x = 0; x < userlist[i].Publish.length; x++)
                 {
-                    console.log("feierfuioweraf")
                     total[0] += userlist[i].Publish[x].Likes
                     total[1] ++
                 }

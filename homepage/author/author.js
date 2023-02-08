@@ -42,7 +42,6 @@ $(document).ready(function(){
         {
             if (userlist[i].UserID == AuthorID)
             {
-                console.log(userlist[i])
                 return userlist[i]
             }
             else

@@ -43,10 +43,6 @@ $(document).ready(function(){
         booklist = JSON.parse(localStorage.getItem("booklist"))
         userlist = JSON.parse(localStorage.getItem("userlist"))
         reviewlist = JSON.parse(localStorage.getItem("reviewlist"))
-        console.log(BookID)
-        console.log(booklist)
-        console.log(userlist)
-        console.log(reviewlist)
         const book = await GetBook(BookID, booklist)
         await AddDesc(book)
         await AddBookCover(book)
@@ -66,7 +62,6 @@ $(document).ready(function(){
     }
 
     function CalcLikes(book){
-        console.log(book)
         let likes = 0
         for(let i = 0; i < userlist.length; i++)
         {
@@ -101,7 +96,19 @@ $(document).ready(function(){
         synopsis_text = document.createElement("p")
         synopsis_text.innerHTML = book.Synopsis
 
+        speech_container = document.createElement("button")
+        speech_container.classList.add("read")
+        speech_container.innerHTML = 
+        `
+        <p>Read</p>
+        <lottie-player class = "read-anim" src="https://assets1.lottiefiles.com/packages/lf20_jxiw7p9v.json"  background="transparent"  speed="1" loop autoplay></lottie-player>
+        `
+        speech_container.addEventListener('click', function(){
+        responsiveVoice.speak(book.Synopsis)
+        })
+
         book_desc.appendChild(title)
+        book_desc.appendChild(speech_container)
         book_desc.appendChild(synopsis)
         book_desc.appendChild(synopsis_text)
 
@@ -178,6 +185,6 @@ $(document).ready(function(){
             }
         }  
     }
-
+    
 
 })
