@@ -32,6 +32,20 @@ $(document).ready(function(){
         location.href = '/booklist/booklist.html'
     })
 
+    $(".delete-profile-button").click(function(){
+        document.querySelector(".delete-account-content-container").style.display = "block"
+    })
+
+    $(".confirm-delete").click(function(){
+        let user = JSON.parse(localStorage.getItem("user"))
+        
+    })
+
+    $(".cancel-delete").click(function(){
+        console.log("hello")
+        document.querySelector(".delete-account-content-container").style.display = "none"
+    })
+
     function loadUserNavPfp(){
         if(JSON.parse(localStorage.getItem("user")) != null)
         {
@@ -66,9 +80,10 @@ $(document).ready(function(){
             let booklist = JSON.parse(localStorage.getItem("booklist"))
             let reviewlist = JSON.parse(localStorage.getItem("reviewlist"))
             $(".books-liked-button").click(function(){
-
+                $(".delete-account-container").html('');
                 $(".user-reviews-container").html ('');
-
+                $(".user-books-added-container").html('');
+                $(".user-books-viewed-container").html('');
                 for(let i = 0; i < user.Liked.length; i++)
                 {
                     if(user.Liked.length != 0)
@@ -95,29 +110,30 @@ $(document).ready(function(){
                                 `
                                 liked_root.appendChild(book_container)
                             }
-
                             else
                             {
                                 continue
                             }
                         }
                     }
-
                     else{
                         document.querySelector(".books-liked-container").innerHTML = 
                         `
                             <div class = "books-liked>
                                 <h1> Books Liked: No liked books</h1>
                             </div>
-                        
+
                         `
                         }
-                }
+                    }
+
             })
 
             $(".reviews-button").click(function(){
 
                 $(".books-liked-container").html ('');
+                $(".user-books-added-container").html('');
+                $(".user-books-viewed-container").html('');
 
                 let userID = user.UserID
                 let userReviewCheck = 0
@@ -158,7 +174,7 @@ $(document).ready(function(){
 
                 if(userReviewCheck == 0)
                 {
-                    root = document.querySelector(".user-reviews-container") 
+                    reviews_root = document.querySelector(".user-reviews-container") 
                     let review_container = document.createElement("div")
                     review_container.classList.add("review-container")
                     review_container.innerHTML =                         
@@ -167,9 +183,19 @@ $(document).ready(function(){
                      </div>  
                     `
 
-                    root.appendChild(review_container)
+                    reviews_root.appendChild(review_container)
 
                 }
+            })
+
+            $(".books-added-button").click(function(){
+
+                $(".books-liked-container").html ('');
+                $(".user-reviews-container").html ('');
+                $(".user-books-viewed-container").html('');
+
+
+
             })
 
 

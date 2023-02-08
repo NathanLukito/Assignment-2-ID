@@ -324,6 +324,64 @@ a:active { text-decoration: none; }
     transition: border 200ms;
     z-index: 1;
 }
+
+.delete-account-container{
+    display: grid;
+    gap: 40px;
+    margin-top: 10vh;
+    width: 65vw;
+    grid-template-columns: repeat(auto-fill , 200px);
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-account-content-container{
+    display: none;
+    flex-direction: column;
+}
+
+.confirm-delete{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 8px;
+    border: 2px solid black;
+    margin-bottom: 10px;
+    transition: border 100ms
+}
+
+
+.cancel-delete{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 8px;
+    border: 2px solid black;
+    margin-bottom: 10px;
+    transition: border 100ms
+}
+
+.confirm-delete:hover{
+    border-radius: 8px;
+    border: 2px solid white;
+    transform: scale(1.1);
+    background-color: rgb(211, 244, 93);
+    transition: border 200ms;
+    z-index: 1;
+}
+
+.cancel-delete:hover{
+    border-radius: 8px;
+    border: 2px solid white;
+    transform: scale(1.1);
+    background-color: rgb(206, 28, 28);
+    transition: border 200ms;
+    z-index: 1;
+}
 .user-data-nav{
     display: flex;
     margin-top: 20vh;
