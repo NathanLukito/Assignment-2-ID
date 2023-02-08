@@ -9,7 +9,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto&display=swap" rel="stylesheet">
     </head>
-<body>
+<body id = "top">
     <nav>
         <div class = "menu">
             <div class = "select" style="cursor: pointer" onclick="window.location = '/booklist/booklist.html'">
@@ -58,10 +58,18 @@
     </nav>
     <div class = "page-container">
         <h1 class = "searchfor">Searched For: BookName</h1>
+        <a class = "scroll" href = "#authors">
+            <button>Scroll to Authors</button>
+            <img src = "/book+authorlist/img/down.svg">
+        </a>
         <div class = "booklist">
             
         </div>
-        <div class = "authorlist">
+        <a class = "scroll" href = "#top">
+            <img src = "/book+authorlist/img/up.svg">
+            <button>Scroll to Top</button>
+        </a>
+        <div class = "authorlist" id = "authors">
             
         </div>
     </div>
