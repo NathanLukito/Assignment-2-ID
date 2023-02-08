@@ -267,8 +267,8 @@ a:active { text-decoration: none; }
     align-items: center;
     margin-top: 20vh;
     margin-left: 5vw;
-    width: 25vw;
-    height: 35vw;
+    width: 250px;
+    height: 350px;
     gap: 10px;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -314,10 +314,10 @@ a:active { text-decoration: none; }
 .books-liked-container{
     display: grid;
     gap: 40px;
+    width: 65vw;
     margin-top: 20vh;
-    grid-template-columns: repeat(3 , 1fr);
+    grid-template-columns: repeat(auto-fill , 200px);
     justify-content: space-evenly;
-
 }
 
 .book-cover{

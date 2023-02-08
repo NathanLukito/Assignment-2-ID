@@ -68,24 +68,34 @@ $(document).ready(function(){
             {
                 if(user.Liked.length != 0)
                 {
-                    root = document.querySelector(".books-liked-container")
-                    let book_container = document.createElement("div")
-                    book_container.classList.add("book-container")
-                    book_container.setAttribute("data-link", booklist[i].BookID)
-                    book_container.addEventListener('click', function(){
-                        let bookid = book_container.getAttribute("data-link")
-                        localStorage.setItem("BookID", bookid)
-                        location.href = '/homepage/book/book.html'
-                    })
-                    book_container.innerHTML =
-                    `       <div class = book>
-                                <h2 class = "book-header">Book Title: </h2>
-                                <h2 class = "book-title"> ${user.Liked[i].Title}</h2>
-                                <img class = "book-cover" src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Liked[i].BookCover}" width = "100px">
-                            </div>
-                    `
+                    for(let j = 0; j < booklist.length; j++)
+                    {
+                        if(user.Liked[i].BookID == booklist[j].BookID)
+                        {
+                            root = document.querySelector(".books-liked-container")
+                            let book_container = document.createElement("div")
+                            book_container.classList.add("book-container")
+                            book_container.setAttribute("data-link", user.Liked[i].BookID)
+                            book_container.addEventListener('click', function(){
+                                let bookid = book_container.getAttribute("data-link")
+                                localStorage.setItem("BookID", bookid)
+                                location.href = '/homepage/book/book.html'
+                            })
+                            book_container.innerHTML =
+                            `       <div class = book>
+                                        <h2 class = "book-header">Book Title: </h2>
+                                        <h2 class = "book-title"> ${user.Liked[i].Title}</h2>
+                                        <img class = "book-cover" src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Liked[i].BookCover}" width = "100px">
+                                    </div>
+                            `
+                            root.appendChild(book_container)
+                        }
 
-                    root.appendChild(book_container)
+                        else
+                        {
+                            continue
+                        }
+                    }
                 }
 
                 else{
@@ -93,17 +103,16 @@ $(document).ready(function(){
                     `
                         <div class = "books-liked>
                             <h1> Books Liked: No liked books</h1>
-        
-        
+                        </div>
+                
                     `
                 }
-
             }
-
         }
     }
 
-    loadUserNavPfp()
-    loadUserPfp()
-    loadUserData()
+loadUserNavPfp()
+loadUserPfp()
+loadUserData()
+
 })
