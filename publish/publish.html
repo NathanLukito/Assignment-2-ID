@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width" minimum-scale = 1>
-        <link href="/publish/publish.css" rel="stylesheet" type="text/css"/>
+        <link href="/Assignment-2-ID/publish/publish.css" rel="stylesheet" type="text/css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto&display=swap" rel="stylesheet">
@@ -62,22 +62,22 @@
         <form class = "publish-container">
             <div class = "form-input">
                 <label class = "label" for = "title">Title</label>
-                <input class = "input" type = "text" placeholder = "Enter Title" required>
+                <input class = "input" id = "title"type = "text" placeholder = "Enter Title" required>
             </div>
             
             <div class = "form-input">
                 <label class = "label" for = "genre">Genre</label>
-                <input class = "input" type = "text" placeholder = "Enter Genre" required>
+                <input class = "input" id = "genre" type = "text" placeholder = "Enter Genre" required>
             </div>
             
             <div class = "form-input">
                 <label class = "label" for = "synopsis">Synopsis</label>
-                <textarea class = "synopsis" placeholder="Type a synopsis..." required></textarea>
+                <textarea class = "synopsis" id = "synopsis" placeholder="Type a synopsis..." required></textarea>
             </div>
             
             <div class = "file-input-container">
                 <label class = "label" for = "bookcover">BookCover</label>
-                <input rows = "1" class = "input-file" type = "file" placeholder = "Upload Image" accept = "image/png, image.jpeg">
+                <input rows = "1" class = "input-file" id = "bookcover" type = "file" placeholder = "Upload Image" accept = "image/png, image.jpeg">
             </div>
 
             <button type = "submit" class = "submit">Publish</button>
@@ -87,7 +87,7 @@
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src = "/publish/publish.js"></script>
+<script src = "/Assignment-2-ID/publish/publish.js"></script>
 
 
 </html>

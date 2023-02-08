@@ -31,4 +31,58 @@ $(document).ready(function(){
         localStorage.setItem("search", search)
         location.href = '/book+authorlist/book_author.html'
     })
+
+    var author = JSON.parse(localStorage.getItem("user"))
+    var booklist = JSON.parse(localStorage.getItem("booklist"))
+    let ids = booklist.map(object => {
+        return object.BookID;
+    })
+    let max = Math.max(...ids) + 1
+    $(".submit").click(function(){
+        event.preventDefault()
+        let Title = $("#title").val()
+        let Genre = $("#genre").val()
+        let Synopsis = $("#synopsis").val()
+        let Bookcover = $("#bookcover").val()
+        const date = new Date()
+        let day = date.getDate()
+        let month = date.getMonth()
+        let year = date.getFullYear()
+        if(Title != null && Genre != null && Synopsis != null && Bookcover != null)
+        {
+            var jsondata = {
+                "BookID": max,
+                "Title": Title,
+                "Synopsis": Synopsis,
+                "Author": "Kory Ferry",
+                "Likes": 0,
+                "Dislikes": 0,
+                "Date": `${day}/${month}/${year}`,
+                "BookCover": Bookcover,
+                "ReviewID": 0,
+                "Genre": Genre
+            };
+            var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://nathaninteractivedev-4002.restdb.io/rest/book",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": "63b3e1aa969f06502871a8c1",
+                "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+            }
+
+            $.ajax(settings).done(function (response) {
+            console.log(response);
+            });
+        }
+        else
+        {
+            alert("Form is incomplete")
+        }
+    })
 })
