@@ -49,7 +49,7 @@ $(document).ready(function(){
     function loadUserPfp(){
         if(JSON.parse(localStorage.getItem("user")) != null){
             let user = JSON.parse(localStorage.getItem("user"))
-            document.querySelector(".profile-pic").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" width = "100px">`
+            document.querySelector(".profile-pic").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "pfp" width = "100px">`
 
             document.querySelector(".profile-name").innerHTML = user.Username
         }
@@ -63,19 +63,26 @@ $(document).ready(function(){
     function loadUserData(){
         if(JSON.parse(localStorage.getItem("user")) != null){
             let user = JSON.parse(localStorage.getItem("user"))
+            let booklist = JSON.parse(localStorage.getItem("booklist"))
             for(let i = 0; i < user.Liked.length; i++)
             {
                 if(user.Liked.length != 0)
                 {
-                    root = document.querySelector(".books-liked-title")
+                    root = document.querySelector(".books-liked-container")
                     let book_container = document.createElement("div")
                     book_container.classList.add("book-container")
-
+                    book_container.setAttribute("data-link", booklist[i].BookID)
+                    book_container.addEventListener('click', function(){
+                        let bookid = book_container.getAttribute("data-link")
+                        localStorage.setItem("BookID", bookid)
+                        location.href = '/homepage/book/book.html'
+                    })
                     book_container.innerHTML =
-                    `
-                            <h2>Book Title: ${user.Liked[i].Title}<h2>
-                            <img class = "book-cover" src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Liked[i].BookCover}" width = "60">
-
+                    `       <div class = book>
+                                <h2 class = "book-header">Book Title: </h2>
+                                <h2 class = "book-title"> ${user.Liked[i].Title}</h2>
+                                <img class = "book-cover" src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Liked[i].BookCover}" width = "100px">
+                            </div>
                     `
 
                     root.appendChild(book_container)

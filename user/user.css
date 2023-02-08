@@ -268,18 +268,24 @@ a:active { text-decoration: none; }
     margin-top: 20vh;
     margin-left: 5vw;
     width: 25vw;
+    height: 35vw;
     gap: 10px;
+    border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .profile-pic{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    width: 20vw;
+    width: 150px;
     border-radius: 10px;
     border: 7px solid black;
 }
 
+.pfp{
+    display: flex;
+    width: 150px
+}
 .profile-name{
     display:flex;
     font-family: 'Montserrat', sans-serif;
@@ -303,4 +309,56 @@ a:active { text-decoration: none; }
     background-color: rgba(27,185,157,255);
     transition: border 200ms;
     z-index: 1;
+}
+
+.books-liked-container{
+    display: grid;
+    gap: 40px;
+    margin-top: 20vh;
+    grid-template-columns: repeat(3 , 1fr);
+    justify-content: space-evenly;
+
+}
+
+.book-cover{
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.book-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 70%;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.book-container:hover{
+    transform: scale(1.05);
+    transition: transform 200ms ease-in-out;
+    background-color:rgba(243, 243, 243, 0.337);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 8px;
+}
+
+.book-container:active{
+    transform: scale(0.95);
+    transition: transform 200ms ease-in-out;
+}
+
+.book{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 70%;
+}
+
+.book > h4{
+    text-align: center;
 }
