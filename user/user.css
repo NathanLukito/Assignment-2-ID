@@ -411,7 +411,6 @@ a:active { text-decoration: none; }
 .books-liked-container{
     display: grid;
     gap: 40px;
-    margin-top: 10vh;
     width: 65vw;
     grid-template-columns: repeat(auto-fill , 200px);
     justify-content: space-evenly;
@@ -463,7 +462,6 @@ a:active { text-decoration: none; }
 .user-reviews-container{
     display: grid;
     gap: 40px;
-    margin-top: 10vh;
     width: 65vw;
     grid-template-columns: repeat(auto-fill , 200px);
     justify-content: space-evenly;
@@ -483,3 +481,40 @@ a:active { text-decoration: none; }
     background-color:rgba(243, 243, 243, 0.337);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 8px;
 }
+
+.user-books-added-container{
+    display: grid;
+    gap: 40px;
+    width: 65vw;
+    margin-bottom: 10px;
+    grid-template-columns: repeat(auto-fill , 300px);
+    justify-content: space-evenly;
+}
+
+.books-added-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 70%;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.books-added-container:hover{
+    transform: scale(1.05);
+    transition: transform 200ms ease-in-out;
+    background-color:rgba(243, 243, 243, 0.337);
+}
+
+.books-added{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 70%;
+}
+

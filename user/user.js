@@ -80,123 +80,171 @@ $(document).ready(function(){
             let booklist = JSON.parse(localStorage.getItem("booklist"))
             let reviewlist = JSON.parse(localStorage.getItem("reviewlist"))
             $(".books-liked-button").click(function(){
-                $(".delete-account-container").html('');
-                $(".user-reviews-container").html ('');
-                $(".user-books-added-container").html('');
-                $(".user-books-viewed-container").html('');
-                for(let i = 0; i < user.Liked.length; i++)
+                if(document.querySelector(".books-liked-button").getAttribute("check_clicked") != "clicked")
                 {
-                    if(user.Liked.length != 0)
+                    document.querySelector(".books-liked-button").setAttribute("check_clicked", "clicked")
+                    document.querySelector(".reviews-button").setAttribute("check_clicked", "")
+                    $(".delete-account-container").html('');
+                    $(".user-reviews-container").html ('');
+                    $(".user-books-added-container").html('');
+                    $(".user-books-viewed-container").html('');
+                    for(let i = 0; i < user.Liked.length; i++)
                     {
-                        for(let j = 0; j < booklist.length; j++)
+                        if(user.Liked.length != 0)
                         {
-                            if(user.Liked[i].BookID == booklist[j].BookID)
+                            for(let j = 0; j < booklist.length; j++)
                             {
-                                liked_root = document.querySelector(".books-liked-container")
-                                let book_container = document.createElement("div")
-                                book_container.classList.add("book-container")
-                                book_container.setAttribute("data-link", user.Liked[i].BookID)
-                                book_container.addEventListener('click', function(){
-                                    let bookid = book_container.getAttribute("data-link")
-                                    localStorage.setItem("BookID", bookid)
-                                    location.href = '/homepage/book/book.html'
-                                })
-                                book_container.innerHTML =
-                                `       <div class = book>
-                                            <h2 class = "book-header">Book Title: </h2>
-                                            <h2 class = "book-title"> ${user.Liked[i].Title}</h2>
-                                            <img class = "book-cover" src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Liked[i].BookCover}" width = "100px">
-                                        </div>
-                                `
-                                liked_root.appendChild(book_container)
-                            }
-                            else
-                            {
-                                continue
+                                if(user.Liked[i].BookID == booklist[j].BookID)
+                                {
+                                    liked_root = document.querySelector(".books-liked-container")
+                                    let book_container = document.createElement("div")
+                                    book_container.classList.add("book-container")
+                                    book_container.setAttribute("data-link", user.Liked[i].BookID)
+                                    book_container.addEventListener('click', function(){
+                                        let bookid = book_container.getAttribute("data-link")
+                                        localStorage.setItem("BookID", bookid)
+                                        location.href = '/homepage/book/book.html'
+                                    })
+                                    book_container.innerHTML =
+                                    `       <div class = book>
+                                                <h2 class = "book-header">Book Title: </h2>
+                                                <h2 class = "book-title"> ${user.Liked[i].Title}</h2>
+                                                <img class = "book-cover" src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Liked[i].BookCover}" width = "100px">
+                                            </div>
+                                    `
+                                    liked_root.appendChild(book_container)
+                                }
+                                else
+                                {
+                                    continue
+                                }
                             }
                         }
-                    }
-                    else{
-                        document.querySelector(".books-liked-container").innerHTML = 
-                        `
-                            <div class = "books-liked>
-                                <h1> Books Liked: No liked books</h1>
-                            </div>
+                        else{
+                            document.querySelector(".books-liked-container").innerHTML = 
+                            `
+                                <div class = "books-liked>
+                                    <h1> Books Liked: No liked books</h1>
+                                </div>
+    
+                            `
+                            }
+                        }
+                }
 
-                        `
-                        }
-                    }
 
             })
 
             $(".reviews-button").click(function(){
-
-                $(".books-liked-container").html ('');
-                $(".user-books-added-container").html('');
-                $(".user-books-viewed-container").html('');
-
-                let userID = user.UserID
-                let userReviewCheck = 0
-                for(let i = 0; i < reviewlist.length; i++){
-                    if(userID == reviewlist[i].UserID)
-                    {
-                        for(let j = 0; j < booklist.length; j++)
-                        {
-                            if(reviewlist[i].ReviewID == booklist[j].ReviewID)
-                            {
-                                reviews_root = document.querySelector(".user-reviews-container") 
-                                let review_container = document.createElement("div")
-                                review_container.classList.add("review-container")
-                                review_container.addEventListener('click', function(){
-                                    let bookid = booklist[j].BookID
-                                    localStorage.setItem("BookID", bookid)
-                                    location.href = '/homepage/book/book.html'
-                                })
-                                review_container.innerHTML =                         
-                                `
-                                <div class = "review">
-                                    <h2 class = "review-header">Book: ${booklist[j].Title}</h2>
-                                    <p class = "review-content">${reviewlist[i].Review}</p>
-                                </div>  
-                                `
-        
-                                reviews_root.appendChild(review_container)
-                            }
-
-                        }
-                        userReviewCheck += 1
-                    }
-
-                    else{
-                        continue
-                    }
-                }
-
-                if(userReviewCheck == 0)
+                if(document.querySelector(".reviews-button").getAttribute("check_clicked") != "clicked")
                 {
-                    reviews_root = document.querySelector(".user-reviews-container") 
-                    let review_container = document.createElement("div")
-                    review_container.classList.add("review-container")
-                    review_container.innerHTML =                         
-                    `<div class = "review">
-                        <h1 class = "review-header">No Reviews Yet...</h1>
-                     </div>  
-                    `
-
-                    reviews_root.appendChild(review_container)
-
+                    document.querySelector(".reviews-button").setAttribute("check_clicked", "clicked")
+                    document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
+                    document.querySelector(".books-added-button").setAttribute("check_clicked", "")
+                    document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
+                    $(".books-liked-container").html ('');
+                    $(".user-books-added-container").html('');
+                    $(".user-books-viewed-container").html('');
+    
+                    let userID = user.UserID
+                    let userReviewCheck = 0
+                    for(let i = 0; i < reviewlist.length; i++){
+                        if(userID == reviewlist[i].UserID)
+                        {
+                            for(let j = 0; j < booklist.length; j++)
+                            {
+                                if(reviewlist[i].ReviewID == booklist[j].ReviewID)
+                                {
+                                    reviews_root = document.querySelector(".user-reviews-container") 
+                                    let review_container = document.createElement("div")
+                                    review_container.classList.add("review-container")
+                                    review_container.addEventListener('click', function(){
+                                        let bookid = booklist[j].BookID
+                                        localStorage.setItem("BookID", bookid)
+                                        location.href = '/homepage/book/book.html'
+                                    })
+                                    review_container.innerHTML =                         
+                                    `
+                                    <div class = "review">
+                                        <h2 class = "review-header">Book: ${booklist[j].Title}</h2>
+                                        <p class = "review-content">${reviewlist[i].Review}</p>
+                                    </div>  
+                                    `
+            
+                                    reviews_root.appendChild(review_container)
+                                }
+    
+                            }
+                            userReviewCheck += 1
+                        }
+    
+                        else{
+                            continue
+                        }
+                    }
+    
+                    if(userReviewCheck == 0)
+                    {
+                        reviews_root = document.querySelector(".user-reviews-container") 
+                        let review_container = document.createElement("div")
+                        review_container.classList.add("review-container")
+                        review_container.innerHTML =                         
+                        `<div class = "review">
+                            <h1 class = "review-header">No Reviews Yet...</h1>
+                         </div>  
+                        `
+    
+                        reviews_root.appendChild(review_container)
+    
+                    }
                 }
+
+
             })
 
             $(".books-added-button").click(function(){
 
-                $(".books-liked-container").html ('');
-                $(".user-reviews-container").html ('');
-                $(".user-books-viewed-container").html('');
+                if(document.querySelector(".books-added-button").getAttribute("check_clicked") != "clicked")
+                {
+                    $(".books-liked-container").html ('');
+                    $(".user-reviews-container").html ('');
+                    $(".user-books-viewed-container").html('');
 
+                    for(let i = 0; i < user.Publish.length; i ++)
+                    {
+                        books_added_root = document.querySelector(".user-books-added-container")
+                        let books_added_container = document.createElement("div")
+                        books_added_container.classList.add("books-added-container")
+                        books_added_container.innerHTML = 
+                        `
+                            <div class = "books-added">
+                                <h2 class = "books-added-header">Book Title</h2>
+                                <h2 class = "book-title">${user.Publish[i].Title}</h2>
+                                <img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Publish[i].BookCover}" width = "100px">
+                            </div>
+                        `
+                        books_added_root.appendChild(books_added_container)
+                    }
+                }
 
 
             })
+
+            // $(".books-viewed-button").click(function(){
+
+            //     if(document.querySelector(".books-viewed-button").getAttribute("check_clicked") != "clicked")
+            //     {
+            //         let recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed"))
+            //         $(".books-liked-container").html ('');
+            //         $(".user-reviews-container").html ('');
+            //         $(".user-books-viewed-container").html('');
+
+            //         for(let i = 0; i < recentlyViewed.length; i++)
+            //         {
+
+            //         } 
+            //     }
+            // })
 
 
         }
