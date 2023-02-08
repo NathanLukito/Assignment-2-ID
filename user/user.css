@@ -295,7 +295,7 @@ a:active { text-decoration: none; }
     font-family: 'Montserrat', sans-serif;
 }
 
-.profile-set-button
+.profile-set button
 {
     display:flex;
     font-family: 'Montserrat', sans-serif;
@@ -315,6 +315,15 @@ a:active { text-decoration: none; }
     z-index: 1;
 }
 
+.delete-profile-button:hover
+{
+    border-radius: 8px;
+    border: 2px solid white;
+    transform: scale(1.1);
+    background-color: rgb(206, 28, 28);
+    transition: border 200ms;
+    z-index: 1;
+}
 .user-data-nav{
     display: flex;
     margin-top: 20vh;
