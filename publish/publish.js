@@ -40,6 +40,8 @@ $(document).ready(function(){
     let max = Math.max(...ids) + 1
     $(".submit").click(function(){
         event.preventDefault()
+        $(".load").css("display", "block")
+        $(".load").css("width", 40)
         let Title = $("#title").val()
         let Genre = $("#genre").val()
         let Synopsis = $("#synopsis").val()
@@ -73,11 +75,23 @@ $(document).ready(function(){
                 "cache-control": "no-cache"
             },
             "processData": false,
-            "data": JSON.stringify(jsondata)
+            "data": JSON.stringify(jsondata),
+            "error": function(){
+                alert("Publish did not work, please try again")
+                $(".load").css("width", 0)
+                setTimeout(function(){
+                    $(".load").css("display", "none")
+                })
+            }
             }
 
-            $.ajax(settings).done(function (response) {
-            console.log(response);
+            $.ajax(settings).done(function(){
+                $(".load").css("width", 0)
+                setTimeout(function(){
+                    $(".load").css("display", "none")
+                })
+                alert("Book Published")
+                $("form").reset()
             });
         }
         else
