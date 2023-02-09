@@ -32,9 +32,6 @@ $(document).ready(function(){
         location.href = '/booklist/booklist.html'
     })
 
-    $(".delete-profile-button").click(function(){
-        document.querySelector(".delete-account-content-container").style.display = "block"
-    })
     function deleteUserSet(){
         let user = JSON.parse(localStorage.getItem("user"))
         const APIKEY = "63b3e1aa969f06502871a8c1"
@@ -59,13 +56,29 @@ $(document).ready(function(){
         })
     }
 
+    $(".delete-profile-button").click(function(){
+        if(document.querySelector(".delete-profile-button").getAttribute("check_clicked") != "clicked")
+        {
+            document.querySelector(".delete-profile-button").setAttribute("check_clicked", "clicked")
+            document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
+            document.querySelector(".reviews-button").setAttribute("check_clicked", "")
+            document.querySelector(".books-added-button").setAttribute("check_clicked", "")
+            document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
+
+            $(".books-liked-container").html('')
+            $(".user-reviews-container").html ('');
+            $(".user-books-added-container").html('');
+            $(".user-books-viewed-container").html('');
+            document.querySelector(".delete-account-content-container").style.display = "block"
+        }
+    })
+
     $(".confirm-delete").click(function(){
-        deleteUserSet()
-        alert("Account successfully deleted!")
+            deleteUserSet()
+            alert("Account successfully deleted!")
     })
 
     $(".cancel-delete").click(function(){
-        console.log("hello")
         document.querySelector(".delete-account-content-container").style.display = "none"
     })
 
@@ -107,10 +120,15 @@ $(document).ready(function(){
                 {
                     document.querySelector(".books-liked-button").setAttribute("check_clicked", "clicked")
                     document.querySelector(".reviews-button").setAttribute("check_clicked", "")
-                    $(".delete-account-container").html('');
+                    document.querySelector(".books-added-button").setAttribute("check_clicked", "")
+                    document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
+                    document.querySelector(".delete-profile-button").setAttribute("check_clicked", "")
+                    
+
                     $(".user-reviews-container").html ('');
                     $(".user-books-added-container").html('');
                     $(".user-books-viewed-container").html('');
+                    document.querySelector(".delete-account-content-container").style.display = "none"
                     for(let i = 0; i < user.Liked.length; i++)
                     {
                         if(user.Liked.length != 0)
@@ -161,13 +179,17 @@ $(document).ready(function(){
             $(".reviews-button").click(function(){
                 if(document.querySelector(".reviews-button").getAttribute("check_clicked") != "clicked")
                 {
+
                     document.querySelector(".reviews-button").setAttribute("check_clicked", "clicked")
                     document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
                     document.querySelector(".books-added-button").setAttribute("check_clicked", "")
                     document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
-                    $(".books-liked-container").html ('');
+                    document.querySelector(".delete-profile-button").setAttribute("check_clicked", "")
+
+                    $(".books-liked-container").html('')
                     $(".user-books-added-container").html('');
                     $(".user-books-viewed-container").html('');
+                    document.querySelector(".delete-account-content-container").style.display = "none"
     
                     let userID = user.UserID
                     let userReviewCheck = 0
@@ -229,25 +251,51 @@ $(document).ready(function(){
 
                 if(document.querySelector(".books-added-button").getAttribute("check_clicked") != "clicked")
                 {
-                    $(".books-liked-container").html ('');
+                    document.querySelector(".books-added-button").setAttribute("check_clicked", "clicked")
+                    document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
+                    document.querySelector(".reviews-button").setAttribute("check_clicked", "")
+                    document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
+                    document.querySelector(".delete-profile-button").setAttribute("check_clicked", "")
+
+                    $(".books-liked-container").html('')
                     $(".user-reviews-container").html ('');
                     $(".user-books-viewed-container").html('');
+                    document.querySelector(".delete-account-content-container").style.display = "none"
 
-                    for(let i = 0; i < user.Publish.length; i ++)
+
+                    if(user.Publish.length != 0)
                     {
-                        books_added_root = document.querySelector(".user-books-added-container")
-                        let books_added_container = document.createElement("div")
-                        books_added_container.classList.add("books-added-container")
-                        books_added_container.innerHTML = 
-                        `
-                            <div class = "books-added">
-                                <h2 class = "books-added-header">Book Title</h2>
-                                <h2 class = "book-title">${user.Publish[i].Title}</h2>
-                                <img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Publish[i].BookCover}" width = "100px">
-                            </div>
-                        `
-                        books_added_root.appendChild(books_added_container)
+                        for(let i = 0; i < user.Publish.length; i ++)
+                        {
+    
+                            books_added_root = document.querySelector(".user-books-added-container")
+                            let books_added_container = document.createElement("div")
+                            books_added_container.classList.add("books-added-container")
+                            books_added_container.innerHTML = 
+                            `
+                                <div class = "books-added">
+                                    <h2 class = "books-added-header">Book Title</h2>
+                                    <h2 class = "book-title">${user.Publish[i].Title}</h2>
+                                    <img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Publish[i].BookCover}" width = "100px">
+                                </div>
+                            `
+                            books_added_root.appendChild(books_added_container)
+                        }
                     }
+
+                    else{
+                        added_root = document.querySelector(".user-books-added-container") 
+                        let added_container = document.createElement("div")
+                        added_container.classList.add("books-added-container")
+                        added_container.innerHTML =                         
+                        `<div class = "books-added">
+                            <h1 class = "books-added-header">No Books Yet...</h1>
+                         </div>  
+                        `
+    
+                        added_root.appendChild(added_container)
+                    }
+
                 }
 
 
@@ -269,6 +317,19 @@ $(document).ready(function(){
             //     }
             // })
 
+            // document.querySelector("").setAttribute("check_clicked", "clicked")
+            // document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
+            // document.querySelector(".reviews-button").setAttribute("check_clicked", "")
+            // document.querySelector(".books-added-button").setAttribute("check_clicked", "")
+            // document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
+            // document.querySelector(".confirm-delete").setAttribute("check_clicked", "")
+            // document.querySelector(".cancel-delete").setAttribute("check_clicked", "")
+
+            // $(".books-liked-container").html('')
+            // $(".user-reviews-container").html ('');
+            // $(".user-books-added-container").html('');
+            // $(".user-books-viewed-container").html('');
+            // $(".delete-account-container").html('');
 
         }
     }
