@@ -338,20 +338,6 @@ $(document).ready(function(){
             //     }
             // })
 
-            // document.querySelector("").setAttribute("check_clicked", "clicked")
-            // document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
-            // document.querySelector(".reviews-button").setAttribute("check_clicked", "")
-            // document.querySelector(".books-added-button").setAttribute("check_clicked", "")
-            // document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
-            // document.querySelector(".confirm-delete").setAttribute("check_clicked", "")
-            // document.querySelector(".cancel-delete").setAttribute("check_clicked", "")
-
-            // $(".books-liked-container").html('')
-            // $(".user-reviews-container").html ('');
-            // $(".user-books-added-container").html('');
-            // $(".user-books-viewed-container").html('');
-            // $(".delete-account-container").html('');
-
         }
     }
 
