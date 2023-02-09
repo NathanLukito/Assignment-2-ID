@@ -9,7 +9,7 @@ $(document).ready(function(){
     $(".scroll-left").click(function(){
         if(translate != 0)
         {
-            translate += 4.5;
+            translate += 6.5;
             container.style.transform = "translateX(" + translate + "%)"
         }
 
@@ -22,7 +22,7 @@ $(document).ready(function(){
     $(".scroll-right").click(function(){
         if(translate >= -95)
         {
-            translate -= 4.5;
+            translate -= 6.5;
             container.style.transform = "translateX(" + translate + "%)"
         }
 

@@ -349,7 +349,7 @@ a:active { text-decoration: none; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    scroll-behavior: smooth;
+    scroll-behavior:auto;
     overflow-x: scroll;
     overflow-y: hidden;
 }
