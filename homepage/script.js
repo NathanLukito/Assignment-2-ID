@@ -243,8 +243,8 @@ $(document).ready(function(){
 
     let reviewlist = []
 
-    function Review(ReviewID, Review, UserID, _id){
-        this.ReviewID = ReviewID,
+    function Review(BookID, Review, UserID, _id){
+        this.BookID = BookID,
         this.Review = Review,
         this.UserID = UserID,
         this._id = _id
@@ -271,7 +271,7 @@ $(document).ready(function(){
                   reviewlist.push
                   (
                       new Review(
-                          response[i].ReviewID, 
+                          response[i].BookID, 
                           response[i].Review, 
                           response[i].UserID, 
                           response[i]._id
@@ -542,6 +542,7 @@ $(document).ready(function(){
     function loadUser(){
         if(JSON.parse(localStorage.getItem("user")) != null)
         {
+
             let user = JSON.parse(localStorage.getItem("user"))
             document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic} class = "nav-pfp" width = "60">`
         }
@@ -552,10 +553,26 @@ $(document).ready(function(){
         }
 
     }
+
+    function loadRecentlyViewed(){
+        for(let i = 0; i < localStorage.length; i++){
+            if(localStorage.getItem(localStorage.key(i)) == "recentlyViewed")
+            {
+                return
+            }
+    
+        }
+
+        // console.log("hello")
+        let recentlyViewed = []
+        localStorage.setItem = ("recentlyViewed", recentlyViewed)
+
+    }
     
 
     GetBooks()
     GetUsers()
     GetReviews()
     loadUser()  
+    // loadRecentlyViewed()
 })
