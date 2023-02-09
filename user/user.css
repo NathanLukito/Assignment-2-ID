@@ -256,6 +256,7 @@ a:active { text-decoration: none; }
     flex-direction: row;
     gap: 40px;
 }
+    
 .pfp-data-container.set-pfp-container{
     display:flex;
     flex-direction: row;
