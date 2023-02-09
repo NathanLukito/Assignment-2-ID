@@ -67,6 +67,12 @@ $(document).ready(function(){
     })
 
 
+    $("#all").click(function(){
+        localStorage.setItem("search", "")
+        location.href = '/book+authorlist/book_author.html'
+    })
+
+
 
     /*  RestDB Database  */
      
@@ -234,7 +240,7 @@ $(document).ready(function(){
                 }
                   
             }
-            localStorage.setItem("userlist", JSON.stringify(userlist))
+            // localStorage.setItem("userlist", JSON.stringify(userlist))
             let booklist = []
             booklist = JSON.parse(localStorage.getItem("booklist"))
             for(let i = 0; i < booklist.length; i++)
@@ -255,8 +261,31 @@ $(document).ready(function(){
                     }
                 }
                 booklist[i].Likes = likes
+                for(let x = 0; x < userlist.length; x++)
+                {
+                    for(let a = 0; a < userlist[x].Publish.length; a ++)
+                    {
+                        if(booklist[i].BookID == userlist[x].Publish[a].BookID)
+                        {
+                            userlist[x].Publish[a].Likes = likes
+                        }
+                    }
+                }   
+                
             }  
+            for(let b = 0; b < userlist.length; b++)
+            {
+                var totallikes = 0
+                for(let c = 0; c < userlist[b].Publish.length; c++) 
+                {
+                    
+                    totallikes += userlist[b].Publish[c].Likes
+                }
+                userlist[b].Likes = totallikes
+            }
+            
             localStorage.setItem("booklist", JSON.stringify(booklist)) 
+            localStorage.setItem("userlist", JSON.stringify(userlist))
             //wait for data initialization to finish before initiating popular booklist
             await popular() 
             await latest()
