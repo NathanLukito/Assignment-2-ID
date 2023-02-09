@@ -248,6 +248,22 @@ a:active { text-decoration: none; }
     transform: scale(1.05);
 }
 
+.likes-container{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.like-icon{
+    display:flex;
+    width: 35px;
+}
+
+.like-icon:hover{
+    transform: scale(1.1);
+    transition: transform 200ms;
+}
 
 .book{
     position: relative;
