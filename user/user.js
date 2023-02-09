@@ -35,10 +35,33 @@ $(document).ready(function(){
     $(".delete-profile-button").click(function(){
         document.querySelector(".delete-account-content-container").style.display = "block"
     })
+    function deleteUserSet(){
+        let user = JSON.parse(localStorage.getItem("user"))
+        const APIKEY = "63b3e1aa969f06502871a8c1"
+        let settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://nathaninteractivedev-4002.restdb.io/rest/userdata/" + user._id,
+            "method": "DELETE",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            },
+        }
+
+        $.ajax(settings).done(function (){
+            function clear(){
+                localStorage.clear()
+            }
+            clear()
+            location.href = '/homepage/index.html'
+        })
+    }
 
     $(".confirm-delete").click(function(){
-        let user = JSON.parse(localStorage.getItem("user"))
-        
+        deleteUserSet()
+        alert("Account successfully deleted!")
     })
 
     $(".cancel-delete").click(function(){

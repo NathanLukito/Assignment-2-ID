@@ -369,7 +369,7 @@ a:active { text-decoration: none; }
     border-radius: 8px;
     border: 2px solid white;
     transform: scale(1.1);
-    background-color: rgb(211, 244, 93);
+    background-color: rgb(248, 46, 46);
     transition: border 200ms;
     z-index: 1;
 }
@@ -378,7 +378,7 @@ a:active { text-decoration: none; }
     border-radius: 8px;
     border: 2px solid white;
     transform: scale(1.1);
-    background-color: rgb(206, 28, 28);
+    background-color: rgb(163, 172, 159);
     transition: border 200ms;
     z-index: 1;
 }
