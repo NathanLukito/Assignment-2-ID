@@ -47,6 +47,8 @@ $(document).ready(function(){
         await AddDesc(book)
         await AddBookCover(book)
         await AddReviews(book)
+        // await AddRecentlyViewed(book)
+        await AddReview()
     }
     
     async function GetBook(BookID, booklist){
@@ -69,7 +71,8 @@ $(document).ready(function(){
             {
                 if (userlist[i].Liked[x].BookID == book.BookID)
                 {
-                    likes += userlist[i].Liked[x].Likes
+                    likes += 1
+                    console.log(likes)
                 }
                 else
                 {
@@ -115,8 +118,13 @@ $(document).ready(function(){
         book_data = document.createElement("div")
         book_data.classList.add("book-data")
 
-        likes = document.createElement("h1")
-        likes.innerHTML = "Likes: " + CalcLikes(book)
+        likes = document.querySelector(".like-container")
+        likes.innerHTML = "Likes:" + CalcLikes(book) +
+        `
+            <button type = "submit" class = "submit-like">
+                <img class = "like-icon" src = "img/blacklike.svg">
+            </button>
+        `
 
         genre = document.createElement("h1")
         genre.innerHTML = "Genre: " + book.Genre
@@ -129,6 +137,90 @@ $(document).ready(function(){
 
         root.appendChild(book_desc)
         root.appendChild(book_data)
+
+        function sendLikesSet(LikesData){
+            let user = JSON.parse(localStorage.getItem("user"))
+            console.log(LikesData)
+            const APIKEY = "63b3e1aa969f06502871a8c1"
+            let settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://nathaninteractivedev-4002.restdb.io/rest/userdata/" + user._id,
+                "method": "PUT",
+                "headers": {
+                    "content-type": "application/json",
+                    "x-apikey": APIKEY,
+                    "cache-control": "no-cache"
+                },
+                "processData": false,
+                "data": JSON.stringify(LikesData)
+            }
+    
+            $.ajax(settings).done(function (){
+            })
+        }
+
+        $(".submit-like").click(function(){
+            event.preventDefault()
+            let bookid = JSON.parse(localStorage.getItem("BookID"))
+            let user = JSON.parse(localStorage.getItem("user"))
+            let likedCheck = 0
+            for(let i = 0; i < booklist.length; i++)
+            {
+                if(bookid == booklist[i].BookID)
+                {
+                    for(let j = 0; j < userlist.length; j++)
+                    {
+                        if(user.UserID == userlist[j].UserID)
+                        {
+                            for(let k = 0; k < userlist[j].Liked.length; k++)
+                            {
+                                if(userlist[j].Liked[k].BookID == bookid)
+                                {
+                                    likedCheck += 1
+                                }
+
+                            }
+
+                            if(likedCheck == 0)
+                            {
+                                userlist[j].Liked.push(booklist[i])
+                                localStorage.setItem("userlist",JSON.stringify(userlist))
+                                localStorage.setItem("user",JSON.stringify(userlist[j]))
+                                user_liked_list = CalcLiked()
+
+                                let jsonLikedData = {
+                                    "Datejoin" : userlist[j].Datejoin,
+                                    "Email"  : userlist[j].Email,
+                                    "Liked"  : userlist[j].Liked,
+                                    "Likes"  : userlist[j].Likes,
+                                    "Password": userlist[j].Password,
+                                    "Profilepic": userlist[j].Profilepic,
+                                    "Publish" : userlist[j].Publish,
+                                    "UserID" : userlist[j].UserID,
+                                    "Username" : userlist[j].Username,
+                                    "Usertype" : userlist[j].Usertype,
+                                    "_id" : userlist[j]._id
+                                    
+                                }
+
+                                sendLikesSet(jsonLikedData)
+                                
+                            }
+
+                            else{
+                                alert("You have already liked this book")
+                            }
+
+                        }
+                    }
+                }
+            }
+
+        })
+
+
+
     }
 
     function AddBookCover(book)
@@ -146,7 +238,7 @@ $(document).ready(function(){
     {
         for (let i = 0; i < reviewlist.length; i++)
         {
-            if(book.ReviewID == reviewlist[i].ReviewID)
+            if(book.BookID == reviewlist[i].BookID)
             {
                 
                 for(let x = 0; x < userlist.length; x++)
@@ -185,6 +277,131 @@ $(document).ready(function(){
             }
         }  
     }
-    
 
+    async function AddRecentlyViewed(book)
+    {
+        recentlyViewedList = JSON.parse(localStorage.getItem("recentlyViewed"))
+        if(recentlyViewedList.includes(book) == false)
+        {   
+            
+            recentlyViewedList.push(book)
+        }
+
+        else
+        {
+            return
+        }
+    }
+
+    function sendReviewSet(reviewData){
+        const APIKEY = "63b3e1aa969f06502871a8c1"
+        let settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://nathaninteractivedev-4002.restdb.io/rest/review",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(reviewData)
+        }
+
+        $.ajax(settings).done(function (){
+            window.location.reload();
+        })
+    }
+
+    $(".submit-review-btn").click(function(){
+        event.preventDefault()
+        let review_content = $(".book-review").val();
+        let user = JSON.parse(localStorage.getItem("user"))
+        let bookid = JSON.parse(localStorage.getItem("BookID"))
+        if(review_content == ""){
+            alert("Please fill in the review form!")
+        }
+
+        else{
+            let jsonReviewData = {
+                "BookID": bookid,
+                "Review": review_content,
+                "UserID": user.UserID
+            }
+
+            console.log(jsonReviewData)
+            sendReviewSet(jsonReviewData)
+
+            document.querySelector("#form").reset();
+            document.querySelector(".submit-review-btn").setAttribute("value", "Submitting...")  
+            document.querySelector(".submit-review-btn").style.backgroundColor = "rgba(27,185,157,0.6)"
+        }
+
+        
+    })
+    async function AddReview()
+    {
+        document.querySelector(".book-review").addEventListener("focus", function(){
+            setWidthReview(100)
+        })
+    
+        document.querySelector(".book-review").addEventListener("blur", function(){
+            setWidthReview(0)
+        })
+        function setWidthReview(value){
+            document.querySelector(".bottom-border-review").style.width = value + "%";
+            document.querySelector(".bottom-border-review").style.backgroundColor = "rgba(27,185,157,255)"
+        }
+    }
+
+    function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover, Genre, _id)
+    {
+        this.BookID = BookID,
+        this.Title = Title,
+        this.Synopsis = Synopsis,
+        this.Author = Author,
+        this.Likes = Likes,
+        this.Dislikes = Dislikes,
+        this.ReviewID = ReviewID,
+        this.Date = Date,
+        this.BookCover = BookCover,
+        this.Genre = Genre,
+        this._id = _id
+
+    }
+
+    function CalcLiked(){
+        likedlist = []
+        let user = JSON.parse(localStorage.getItem("user"))
+        let bookid = JSON.parse(localStorage.getItem("BookID"))
+        for(let j = 0; j < userlist.length; j++)
+        {
+            if(userlist[j].UserID == user.UserID)
+            {
+                for(let x  = 0; x < userlist[j].Liked.length; x++)
+                {
+                    if(userlist[j].Liked[x].BookID == bookid)
+                    {
+                        likedlist.push(
+                            new Book(userlist[j].Liked[x].BookID, 
+                            userlist[j].Liked[x].Title, 
+                            userlist[j].Liked[x].Synopsis, 
+                            userlist[j].Liked[x].Author, 
+                            userlist[j].Liked[x].Likes,
+                            userlist[j].Liked[x].Dislikes, 
+                            userlist[j].Liked[x].ReviewID, 
+                            userlist[j].Liked[x].Date, 
+                            userlist[j].Liked[x].BookCover, 
+                            userlist[j].Liked[x].Genre, 
+                            userlist[j].Liked[x]._id)
+                            )
+                    }
+        
+                }
+                return likedlist
+            }
+        }
+
+    }
 })

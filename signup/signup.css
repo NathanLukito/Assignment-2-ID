@@ -106,15 +106,12 @@ form{
 }
 
 .input::placeholder{
-
     color: black;
-    
-    }
+}
 
 .input:focus{
     display:flex;
     outline: none;
-    
 }
 .username{
     display:flex;

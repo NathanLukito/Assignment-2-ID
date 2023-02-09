@@ -1,8 +1,8 @@
 $(document).ready(function(){
-    function clear(){
-        localStorage.clear()
-    }
-    clear()
+    // function clear(){
+    //     localStorage.clear()
+    // }
+    // clear()
     let translate = 0
     let container = document.querySelector(".scroll-images")
     $(".scroll-left").click(function(){
@@ -266,8 +266,8 @@ $(document).ready(function(){
 
     let reviewlist = []
 
-    function Review(ReviewID, Review, UserID, _id){
-        this.ReviewID = ReviewID,
+    function Review(BookID, Review, UserID, _id){
+        this.BookID = BookID,
         this.Review = Review,
         this.UserID = UserID,
         this._id = _id
@@ -294,7 +294,7 @@ $(document).ready(function(){
                   reviewlist.push
                   (
                       new Review(
-                          response[i].ReviewID, 
+                          response[i].BookID, 
                           response[i].Review, 
                           response[i].UserID, 
                           response[i]._id
@@ -562,9 +562,9 @@ $(document).ready(function(){
     function loadUser(){
         if(JSON.parse(localStorage.getItem("user")) != null)
         {
+
             let user = JSON.parse(localStorage.getItem("user"))
-            document.querySelector(".pfp").innerHTML = `<img src = ${user.Profilepic} width = "40">`
-            document.querySelector(".pfp").style.borderRadius = "10px"
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic} class = "nav-pfp" width = "60">`
         }
 
         else
@@ -573,7 +573,22 @@ $(document).ready(function(){
         }
 
     }
+
+    function loadRecentlyViewed(){
+        for(let i = 0; i < localStorage.length; i++){
+            if(localStorage.getItem(localStorage.key(i)) == "recentlyViewed")
+            {
+                return
+            }
+    
+        }
+
+        // console.log("hello")
+        let recentlyViewed = []
+        localStorage.setItem = ("recentlyViewed", recentlyViewed)
+
+    }
     GetBooks()
     GetReviews()
-    loadUser() 
+    loadUser()  
 })
