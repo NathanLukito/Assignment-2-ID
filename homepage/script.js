@@ -1,14 +1,15 @@
 $(document).ready(function(){
-    // function clear(){
-    //     localStorage.clear()
-    // }
-    // clear()
+    $("body").addClass("scroll-disable")
+    function clear(){
+        localStorage.clear()
+    }
+    clear()
     let translate = 0
     let container = document.querySelector(".scroll-images")
     $(".scroll-left").click(function(){
         if(translate != 0)
         {
-            translate += 4.5;
+            translate += 6.5;
             container.style.transform = "translateX(" + translate + "%)"
         }
 
@@ -21,7 +22,7 @@ $(document).ready(function(){
     $(".scroll-right").click(function(){
         if(translate >= -95)
         {
-            translate -= 4.5;
+            translate -= 6.5;
             container.style.transform = "translateX(" + translate + "%)"
         }
 
@@ -62,6 +63,12 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
+        location.href = '/book+authorlist/book_author.html'
+    })
+
+
+    $("#all").click(function(){
+        localStorage.setItem("search", "")
         location.href = '/book+authorlist/book_author.html'
     })
 
@@ -233,7 +240,7 @@ $(document).ready(function(){
                 }
                   
             }
-            localStorage.setItem("userlist", JSON.stringify(userlist))
+            // localStorage.setItem("userlist", JSON.stringify(userlist))
             let booklist = []
             booklist = JSON.parse(localStorage.getItem("booklist"))
             for(let i = 0; i < booklist.length; i++)
@@ -245,7 +252,7 @@ $(document).ready(function(){
                     {
                         if (userlist[x].Liked[a].BookID == booklist[i].BookID)
                         {
-                            likes += userlist[x].Liked[a].Likes
+                            likes += 1
                         }
                         else
                         {
@@ -254,12 +261,37 @@ $(document).ready(function(){
                     }
                 }
                 booklist[i].Likes = likes
+                for(let x = 0; x < userlist.length; x++)
+                {
+                    for(let a = 0; a < userlist[x].Publish.length; a ++)
+                    {
+                        if(booklist[i].BookID == userlist[x].Publish[a].BookID)
+                        {
+                            userlist[x].Publish[a].Likes = likes
+                        }
+                    }
+                }   
+                
             }  
+            for(let b = 0; b < userlist.length; b++)
+            {
+                var totallikes = 0
+                for(let c = 0; c < userlist[b].Publish.length; c++) 
+                {
+                    
+                    totallikes += userlist[b].Publish[c].Likes
+                }
+                userlist[b].Likes = totallikes
+            }
+            
             localStorage.setItem("booklist", JSON.stringify(booklist)) 
+            localStorage.setItem("userlist", JSON.stringify(userlist))
             //wait for data initialization to finish before initiating popular booklist
             await popular() 
             await latest()
             await author() 
+            $("body").removeClass("scroll-disable")
+            $(".page-load").css("display", "none")
         })  
     }
         
