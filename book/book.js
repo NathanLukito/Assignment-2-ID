@@ -30,7 +30,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        window.location.href = '/Assignment-2-ID/book+authorlist/book_author.html'
+        window.location.href = '/Book-Sommeliers/book+authorlist/book_author.html'
     })
 
     let booklist = []
