@@ -52,7 +52,7 @@ $(document).ready(function(){
                 localStorage.clear()
             }
             clear()
-            location.href = 'index.html'
+            window.location.href = 'index.html'
         })
     }
 
@@ -62,7 +62,6 @@ $(document).ready(function(){
             document.querySelector(".delete-profile-button").setAttribute("check_clicked", "clicked")
             document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
             document.querySelector(".reviews-button").setAttribute("check_clicked", "")
-            document.querySelector(".books-added-button").setAttribute("check_clicked", "")
             document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
 
             $(".books-liked-container").html('')
@@ -121,7 +120,6 @@ $(document).ready(function(){
                     document.querySelector(".books-liked-button").setAttribute("check_clicked", "clicked")
                     document.querySelector(".reviews-button").setAttribute("check_clicked", "")
                     document.querySelector(".books-added-button").setAttribute("check_clicked", "")
-                    document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
                     document.querySelector(".delete-profile-button").setAttribute("check_clicked", "")
                     
 
@@ -144,7 +142,11 @@ $(document).ready(function(){
                                     book_container.addEventListener('click', function(){
                                         let bookid = book_container.getAttribute("data-link")
                                         localStorage.setItem("BookID", bookid)
+<<<<<<< HEAD:user.js
                                         location.href = 'book.html'
+=======
+                                        window.location.href = '/book/book.html'
+>>>>>>> main:user/user.js
                                     })
                                     book_container.innerHTML =
                                     `       <div class = book>
@@ -183,7 +185,6 @@ $(document).ready(function(){
                     document.querySelector(".reviews-button").setAttribute("check_clicked", "clicked")
                     document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
                     document.querySelector(".books-added-button").setAttribute("check_clicked", "")
-                    document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
                     document.querySelector(".delete-profile-button").setAttribute("check_clicked", "")
 
                     $(".books-liked-container").html('')
@@ -206,7 +207,11 @@ $(document).ready(function(){
                                     review_container.addEventListener('click', function(){
                                         let bookid = booklist[j].BookID
                                         localStorage.setItem("BookID", bookid)
+<<<<<<< HEAD:user.js
                                         location.href = 'book.html'
+=======
+                                        window.location.href = '/book/book.html'
+>>>>>>> main:user/user.js
                                     })
                                     review_container.innerHTML =                         
                                     `
@@ -254,7 +259,6 @@ $(document).ready(function(){
                     document.querySelector(".books-added-button").setAttribute("check_clicked", "clicked")
                     document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
                     document.querySelector(".reviews-button").setAttribute("check_clicked", "")
-                    document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
                     document.querySelector(".delete-profile-button").setAttribute("check_clicked", "")
 
                     $(".books-liked-container").html('')
@@ -292,13 +296,9 @@ $(document).ready(function(){
                             <h1 class = "books-added-header">No Books Yet...</h1>
                          </div>  
                         `
-    
                         added_root.appendChild(added_container)
                     }
-
                 }
-
-
             })
         }
     }

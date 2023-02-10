@@ -29,7 +29,11 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
+<<<<<<< HEAD:author.js
         location.href = 'book_author.html'
+=======
+        window.location.href = '/book+authorlist/book_author.html'
+>>>>>>> main:author/author.js
     })
 
     let userlist = []
@@ -107,7 +111,11 @@ $(document).ready(function(){
             book.addEventListener('click', function(){
                 let bookid = book.getAttribute("data-link")
                 localStorage.setItem("BookID", bookid)
+<<<<<<< HEAD:author.js
                 location.href = 'book.html'
+=======
+                window.location.href = '/book/book.html'
+>>>>>>> main:author/author.js
             })
             book.innerHTML = 
             `

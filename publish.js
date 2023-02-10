@@ -29,11 +29,16 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
+<<<<<<< HEAD:publish.js
         location.href = 'book_author.html'
+=======
+        window.location.href = '/book+authorlist/book_author.html'
+>>>>>>> main:publish/publish.js
     })
 
     var author = JSON.parse(localStorage.getItem("user"))
     var booklist = JSON.parse(localStorage.getItem("booklist"))
+    var userlist = JSON.parse(localStorage.getItem("userlist"))
     let ids = booklist.map(object => {
         return object.BookID;
     })
@@ -65,7 +70,6 @@ $(document).ready(function(){
                 "Genre": Genre
             };
 
-            console.log(jsondata)
             var settings = {
             "async": true,
             "crossDomain": true,
@@ -86,7 +90,77 @@ $(document).ready(function(){
                 })
             }
             }
+            function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover, Genre)
+            {
+                this.BookID = BookID,
+                this.Title = Title,
+                this.Synopsis = Synopsis,
+                this.Author = Author,
+                this.Likes = Likes,
+                this.Dislikes = Dislikes,
+                this.ReviewID = ReviewID,
+                this.Date = Date,
+                this.BookCover = BookCover,
+                this.Genre = Genre
+            }
+            let newbook = new Book(max, Title, Synopsis, author.Username, 0, 0, `${day}/${month}/${year}`, Bookcover, 0, Genre)
+            author.Publish.push(newbook)
+            var userdata = {
+                "UserID": author.UserID,
+                "Username": author.Username,
+                "Password": author.Password,
+                "Email": author.Email,
+                "Usertype": author.Usertype,
+                "Datejoin": author.Likes,
+                "Profilepic": author.Profilepic,
+                "Liked": author.Liked,
+                "Publish": author.Publish
+            }
 
+            function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic, Liked, Publish)
+            {
+                this.UserID = UserID,
+                this.Username = Username,
+                this.Password = Password,
+                this.Email = Email,
+                this.Usertype = Usertype,
+                this.Datejoin = Datejoin,
+                this.Likes = Likes,
+                this.Profilepic = Profilepic,
+                this.Liked = Liked,
+                this.Publish = Publish
+            }
+            let newuser = new User(author.UserID,author.Username,author.Password,author.Email,author.Usertype,author.Datejoin, author.Likes,author.Profilepic,author.Liked,author.Publish)
+            localStorage.setItem("User", JSON.stringify(newuser))
+            for(let i = 0; i < userlist.length; i++)
+            {
+                if(userlist[i].UserID == author.UserID)
+                {
+                    userlist[i] = newuser
+                    localStorage.setItem("userlist", JSON.stringify(userlist))
+                }
+            }
+            var usersettings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://nathaninteractivedev-4002.restdb.io/rest/userdata/" + author._id,
+                "method": "PUT",
+                "headers": {
+                    "content-type": "application/json",
+                    "x-apikey": "63b3e1aa969f06502871a8c1",
+                    "cache-control": "no-cache"
+                },
+                "processData": false,
+                "data": JSON.stringify(userdata),
+                "error": function(){
+                    alert("Publish did not work, please try again")
+                    $(".load").css("width", 0)
+                    setTimeout(function(){
+                        $(".load").css("display", "none")
+                    })
+                }
+                }
+            $.ajax(usersettings).done(function (response) {})
             $.ajax(settings).done(function(){
                 $(".load").css("width", 0)
                 setTimeout(function(){
@@ -94,7 +168,11 @@ $(document).ready(function(){
                 })
                 alert("Book Published")
                 document.querySelector("form").reset()
+<<<<<<< HEAD:publish.js
                 location.href = "user.html"
+=======
+                window.location.href = "/user/user.html"
+>>>>>>> main:publish/publish.js
             });
         }
         else

@@ -30,10 +30,13 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
+<<<<<<< HEAD:book.js
         location.href = 'book_author.html'
+=======
+        window.location.href = '/book+authorlist/book_author.html'
+>>>>>>> main:book/book.js
     })
 
-    /*Initiating Data*/
     let booklist = []
     let userlist = []
     let reviewlist = []
@@ -47,7 +50,6 @@ $(document).ready(function(){
         await AddDesc(book)
         await AddBookCover(book)
         await AddReviews(book)
-        // await AddRecentlyViewed(book)
         await AddReview()
     }
     

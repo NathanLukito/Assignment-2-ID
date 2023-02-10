@@ -30,7 +30,11 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
+<<<<<<< HEAD:book_author.js
         location.href = 'book_author.html'
+=======
+        window.location.href = '/book+authorlist/book_author.html'
+>>>>>>> main:book+authorlist/book_author.js
     })
 
     
@@ -72,7 +76,11 @@ $(document).ready(function(){
             book_container.addEventListener('click', function(){
                 let bookid = book_container.getAttribute("data-link")
                 localStorage.setItem("BookID", bookid)
+<<<<<<< HEAD:book_author.js
                 location.href = 'book.html'
+=======
+                window.location.href = '/book/book.html'
+>>>>>>> main:book+authorlist/book_author.js
             })                
             book_container.innerHTML = 
             ` 
@@ -100,7 +108,11 @@ $(document).ready(function(){
             book_container.addEventListener('click', function(){
                 let bookid = book_container.getAttribute("data-link")
                 localStorage.setItem("BookID", bookid)
+<<<<<<< HEAD:book_author.js
                 location.href = 'book.html'
+=======
+                window.location.href = '/book/book.html'
+>>>>>>> main:book+authorlist/book_author.js
             })                
             book_container.innerHTML = 
             ` 
@@ -149,7 +161,11 @@ $(document).ready(function(){
             author.addEventListener('click', function(){
                 let userid = book_container.getAttribute("data-link")
                 localStorage.setItem("UserID", userid)
+<<<<<<< HEAD:book_author.js
                 location.href = 'author.html'
+=======
+                window.location.href = '/author/author.html'
+>>>>>>> main:book+authorlist/book_author.js
             })                
             author.innerHTML = 
             ` 
@@ -179,9 +195,6 @@ $(document).ready(function(){
                 }
                 return total
             }
-                
-            
-
             root = document.querySelector(".authorlist")
             let author = document.createElement("div")
             author.classList.add("author")
@@ -189,7 +202,11 @@ $(document).ready(function(){
             author.addEventListener('click', function(){
                 let userid = author.getAttribute("data-link")
                 localStorage.setItem("UserID", userid)
+<<<<<<< HEAD:book_author.js
                 location.href = 'author.html'
+=======
+                window.location.href = '/author/author.html'
+>>>>>>> main:book+authorlist/book_author.js
             })                
             author.innerHTML = 
             `  
