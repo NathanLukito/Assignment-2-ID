@@ -29,7 +29,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/Assignment-2-ID/book+author_list/book_author.html'
+        location.href = '/Book-Sommeliers/book+author_list/book_author.html'
     })
 
     function deleteUserSet(){
@@ -52,7 +52,7 @@ $(document).ready(function(){
                 localStorage.clear()
             }
             clear()
-            window.location.href = '/Assignment-2-ID/index.html'
+            window.location.href = '/Book-Sommeliers/index.html'
         })
     }
 
