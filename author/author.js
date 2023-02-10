@@ -29,7 +29,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        window.location.href = '/Assignment-2-ID/book+authorlist/book_author.html'
+        window.location.href = '/Book-Sommeliers/book+authorlist/book_author.html'
     })
 
     let userlist = []
@@ -107,7 +107,7 @@ $(document).ready(function(){
             book.addEventListener('click', function(){
                 let bookid = book.getAttribute("data-link")
                 localStorage.setItem("BookID", bookid)
-                window.location.href = '/Assignment-2-ID/book/book.html'
+                window.location.href = '/Book-Sommeliers/book/book.html'
             })
             book.innerHTML = 
             `
