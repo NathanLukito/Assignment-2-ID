@@ -86,7 +86,21 @@ $(document).ready(function(){
                 })
             }
             }
-            var newPublish = author.Publish.push(jsondata)
+            function Book(BookID, Title, Synopsis, Author, Likes, Dislikes, ReviewID, Date, BookCover, Genre)
+            {
+                this.BookID = BookID,
+                this.Title = Title,
+                this.Synopsis = Synopsis,
+                this.Author = Author,
+                this.Likes = Likes,
+                this.Dislikes = Dislikes,
+                this.ReviewID = ReviewID,
+                this.Date = Date,
+                this.BookCover = BookCover,
+                this.Genre = Genre
+            }
+            let newbook = new Book(max, Title, Synopsis, author.Username, 0, 0, `${day}/${month}/${year}`, Bookcover, 0, Genre)
+            author.Publish.push(newbook)
             var userdata = {
                 "UserID": author.UserID,
                 "Username": author.Username,
@@ -96,9 +110,10 @@ $(document).ready(function(){
                 "Datejoin": author.Likes,
                 "Profilepic": author.Profilepic,
                 "Liked": author.Liked,
-                "Publish": newPublish
+                "Publish": author.Publish
             }
-            function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic, Liked, Publish, _id)
+
+            function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic, Liked, Publish)
             {
                 this.UserID = UserID,
                 this.Username = Username,
@@ -109,10 +124,9 @@ $(document).ready(function(){
                 this.Likes = Likes,
                 this.Profilepic = Profilepic,
                 this.Liked = Liked,
-                this.Publish = Publish,
-                this._id = _id
+                this.Publish = Publish
             }
-            let newuser = new User(author.UserID,author.Username,author.Password,author.Email,author.Usertype,author.Likes,author.Profilepic,author.Liked,newPublish, author._id)
+            let newuser = new User(author.UserID,author.Username,author.Password,author.Email,author.Usertype,author.Datejoin, author.Likes,author.Profilepic,author.Liked,author.Publish)
             localStorage.setItem("User", JSON.stringify(newuser))
             for(let i = 0; i < userlist.length; i++)
             {
@@ -150,7 +164,7 @@ $(document).ready(function(){
                 })
                 alert("Book Published")
                 document.querySelector("form").reset()
-                //window.location.href = "/user/user.html"
+                window.location.href = "/user/user.html"
             });
         }
         else
