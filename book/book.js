@@ -277,21 +277,6 @@ $(document).ready(function(){
         }  
     }
 
-    async function AddRecentlyViewed(book)
-    {
-        recentlyViewedList = JSON.parse(localStorage.getItem("recentlyViewed"))
-        if(recentlyViewedList.includes(book) == false)
-        {   
-            
-            recentlyViewedList.push(book)
-        }
-
-        else
-        {
-            return
-        }
-    }
-
     function sendReviewSet(reviewData){
         const APIKEY = "63b3e1aa969f06502871a8c1"
         let settings = {

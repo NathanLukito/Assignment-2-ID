@@ -304,10 +304,6 @@ a:active { text-decoration: none; }
         height: 0vh;
         width: 0vw;
     }
-    
-    .landing-page{
-        
-    }
 
     .welcome{
         width: 100vw;
@@ -579,17 +575,10 @@ a:active { text-decoration: none; }
     gap: 10px;
 }
 
-.like-icon{
-    
-}
-
 .date-released{
     display: flex;
     flex-wrap: nowrap;
     gap: 10px;
-}
-
-.author-container{
 }
 
 .footer-container{

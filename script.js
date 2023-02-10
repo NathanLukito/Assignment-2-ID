@@ -231,7 +231,8 @@ $(document).ready(function(){
                 }
                 else
                 {
-                    continue
+                    likedlist = []
+                    return likedlist
                 }
                   
             }
