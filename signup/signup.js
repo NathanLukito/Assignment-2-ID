@@ -195,10 +195,8 @@ $(document).ready(function(){
             document.querySelector(".login-btn").setAttribute("value", "Signing up...")  
             document.querySelector(".login-btn").style.backgroundColor = "rgba(27,185,157,0.6)"
             setTimeout(function(){
-                location.href = "index.html"
+                window.location.href = "/index.html"
             },1000)
         }
-
-
     })
 })

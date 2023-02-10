@@ -29,11 +29,12 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/book+authorlist/book_author.html'
+        window.location.href = '/book+authorlist/book_author.html'
     })
 
     var author = JSON.parse(localStorage.getItem("user"))
     var booklist = JSON.parse(localStorage.getItem("booklist"))
+    var userlist = JSON.parse(localStorage.getItem("userlist"))
     let ids = booklist.map(object => {
         return object.BookID;
     })
@@ -50,16 +51,6 @@ $(document).ready(function(){
         let day = date.getDate()
         let month = date.getMonth()
         let year = date.getFullYear()
-        // console.log(max)
-        // console.log(Title)
-        // console.log(Synopsis)
-        // console.log(author.Username)
-        // console.log(Title)
-        // console.log(Title)
-        // console.log(Title)
-        // console.log(Title)
-        // console.log(Title)
-        // console.log(Title)
         if(Title != null && Genre != null && Synopsis != null && Bookcover != null)
         {
             var jsondata = {
@@ -75,7 +66,6 @@ $(document).ready(function(){
                 "Genre": Genre
             };
 
-            console.log(jsondata)
             var settings = {
             "async": true,
             "crossDomain": true,
@@ -96,7 +86,63 @@ $(document).ready(function(){
                 })
             }
             }
-
+            var newPublish = author.Publish.push(jsondata)
+            var userdata = {
+                "UserID": author.UserID,
+                "Username": author.Username,
+                "Password": author.Password,
+                "Email": author.Email,
+                "Usertype": author.Usertype,
+                "Datejoin": author.Likes,
+                "Profilepic": author.Profilepic,
+                "Liked": author.Liked,
+                "Publish": newPublish
+            }
+            function User(UserID, Username, Password, Email, Usertype, Datejoin, Likes, Profilepic, Liked, Publish, _id)
+            {
+                this.UserID = UserID,
+                this.Username = Username,
+                this.Password = Password,
+                this.Email = Email,
+                this.Usertype = Usertype,
+                this.Datejoin = Datejoin,
+                this.Likes = Likes,
+                this.Profilepic = Profilepic,
+                this.Liked = Liked,
+                this.Publish = Publish,
+                this._id = _id
+            }
+            let newuser = new User(author.UserID,author.Username,author.Password,author.Email,author.Usertype,author.Likes,author.Profilepic,author.Liked,newPublish, author._id)
+            localStorage.setItem("User", JSON.stringify(newuser))
+            for(let i = 0; i < userlist.length; i++)
+            {
+                if(userlist[i].UserID == author.UserID)
+                {
+                    userlist[i] = newuser
+                    localStorage.setItem("userlist", JSON.stringify(userlist))
+                }
+            }
+            var usersettings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://nathaninteractivedev-4002.restdb.io/rest/userdata/" + author._id,
+                "method": "PUT",
+                "headers": {
+                    "content-type": "application/json",
+                    "x-apikey": "63b3e1aa969f06502871a8c1",
+                    "cache-control": "no-cache"
+                },
+                "processData": false,
+                "data": JSON.stringify(userdata),
+                "error": function(){
+                    alert("Publish did not work, please try again")
+                    $(".load").css("width", 0)
+                    setTimeout(function(){
+                        $(".load").css("display", "none")
+                    })
+                }
+                }
+            $.ajax(usersettings).done(function (response) {})
             $.ajax(settings).done(function(){
                 $(".load").css("width", 0)
                 setTimeout(function(){
@@ -104,7 +150,7 @@ $(document).ready(function(){
                 })
                 alert("Book Published")
                 document.querySelector("form").reset()
-                location.href = "/user/user.html"
+                //window.location.href = "/user/user.html"
             });
         }
         else

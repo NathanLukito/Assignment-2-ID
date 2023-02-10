@@ -13,24 +13,24 @@
     <body>
         <nav>
             <div class = "menu">
-                <div class = "select" onclick = "window.location = '/index.html'" style="cursor: pointer">
+                <div class = "select" onclick = "window.location.href = '/index.html'" style="cursor: pointer">
                     <h1>Homepage</h1>
                 </div>
         
-                <div class = "select" onclick = "window.location = '/book+authorlist/book_author.html'" id = "all" style="cursor: pointer">
+                <div class = "select" onclick = "window.location.href = '/book+authorlist/book_author.html'" id = "all" style="cursor: pointer">
                     <h1>All Books and Authors</h1>
                 </div>
         
-                <div style="cursor: pointer" onclick="window.location= '/login/login.html'" class = "select">
+                <div style="cursor: pointer" onclick="window.location.href = '/login/login.html'" class = "select">
                     <h1>Log In</h1>
                 </div>
                 
-                <div style="cursor: pointer" onclick="window.location= '/user/user.html'" class = "select">
+                <div style="cursor: pointer" onclick="window.location.href = '/user/user.html'" class = "select">
                     <h1>Account</h1>
                 </div>
             </div>
             <div class = "navigation">
-                <div class = "brand" onclick = "window.location = '/index.html'" style="cursor: pointer">
+                <div class = "brand" onclick = "window.location.href = '/index.html'" style="cursor: pointer">
                     <img alt = "icon" class = "brandIcon" src = "/img/brand-icon.svg">
                     <span class = "brandName">
                         Book Sommeliers
@@ -44,7 +44,6 @@
                     <input class = "bar" id = "search" type = "text" placeholder="Search" required>
                 </div>
                 
-    
                 <div class = "navbar">
                     <div class = "profile"></div>
                     <button class = "nav-btn">
@@ -58,8 +57,6 @@
                 </div>
                 
             </div>
-    
-            
         </nav>
         <div class = "form-sign-up-container">
             <div class = "form-container">
@@ -86,7 +83,7 @@
         
             <div class = "sign-up-container">
                 <div class = "sign-up-text">
-                    <p>New to Book Sommeliers? <a href = "/signup/signup.html" class = "create-acc">Create an account</a></p>
+                    <p>New to Book Sommeliers? <a onclick = "window.location.href = '/signup/signup.html'" style="cursor: pointer" class = "create-acc">Create an account</a></p>
                 </div>
             </div>
         </div>
@@ -95,5 +92,5 @@
     </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src = "/login/login.js"></script>
+<script src = "login.js"></script>
 </html>

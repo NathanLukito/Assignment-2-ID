@@ -38,7 +38,6 @@ $(document).ready(function(){
 
         else{
             let userList = JSON.parse(localStorage.getItem("userlist"))
-
             for (let i = 0; i < userList.length; i++)
             {
                 if (name == userList[i].Username && pass == userList[i].Password)
@@ -48,13 +47,14 @@ $(document).ready(function(){
                     document.querySelector(".login-btn").style.backgroundColor = "rgba(27,185,157,0.6)"
                     localStorage.setItem("user", JSON.stringify(userList[i]))
                     setTimeout(function(){
-                        location.href = "/index.html"
+                        window.location.href = "/index.html"
                     },1000)
                    
                 }
     
                 else if (name != userList[i].Username || pass != userList[i].Password)
                 {
+                    alert("Entered wrong username or password")
                     continue
                 }
             }
@@ -65,7 +65,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/book+authorlist/book_author.html'
+        window.location.href = '/book+authorlist/book_author.html'
     })
 
     document.querySelector("#Username").addEventListener("focus", function(){

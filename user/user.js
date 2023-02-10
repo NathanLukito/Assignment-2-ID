@@ -52,7 +52,7 @@ $(document).ready(function(){
                 localStorage.clear()
             }
             clear()
-            location.href = 'index.html'
+            window.location.href = 'index.html'
         })
     }
 
@@ -144,7 +144,7 @@ $(document).ready(function(){
                                     book_container.addEventListener('click', function(){
                                         let bookid = book_container.getAttribute("data-link")
                                         localStorage.setItem("BookID", bookid)
-                                        location.href = '/book/book.html'
+                                        window.location.href = '/book/book.html'
                                     })
                                     book_container.innerHTML =
                                     `       <div class = book>
@@ -206,7 +206,7 @@ $(document).ready(function(){
                                     review_container.addEventListener('click', function(){
                                         let bookid = booklist[j].BookID
                                         localStorage.setItem("BookID", bookid)
-                                        location.href = '/book/book.html'
+                                        window.location.href = '/book/book.html'
                                     })
                                     review_container.innerHTML =                         
                                     `
@@ -292,52 +292,10 @@ $(document).ready(function(){
                             <h1 class = "books-added-header">No Books Yet...</h1>
                          </div>  
                         `
-    
                         added_root.appendChild(added_container)
                     }
-
                 }
-
-
             })
-
-            // $(".profile-set-button").click(function(){
-            //     if(document.querySelector(".profile-set-button").getAttribute("check_clicked") != "clicked")
-            //     {
-            //         document.querySelector(".profile-set-button").setAttribute("check_clicked", "clicked")
-            //         document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
-            //         document.querySelector(".reviews-button").setAttribute("check_clicked", "")
-            //         document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
-            //         document.querySelector(".books-added-button").setAttribute("check_clicked", "")
-            //         document.querySelector(".delete-profile-button").setAttribute("check_clicked", "")
-
-            //         $(".books-liked-container").html('')
-            //         $(".user-reviews-container").html ('');
-            //         $(".user-books-added-container").html('');
-            //         $(".user-books-viewed-container").html('');
-            //         document.querySelector(".delete-account-content-container").style.display = "none"
-
-
-            //     }
-
-            // })
-
-            // $(".books-viewed-button").click(function(){
-
-            //     if(document.querySelector(".books-viewed-button").getAttribute("check_clicked") != "clicked")
-            //     {
-            //         let recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed"))
-            //         $(".books-liked-container").html ('');
-            //         $(".user-reviews-container").html ('');
-            //         $(".user-books-viewed-container").html('');
-
-            //         for(let i = 0; i < recentlyViewed.length; i++)
-            //         {
-
-            //         } 
-            //     }
-            // })
-
         }
     }
 
