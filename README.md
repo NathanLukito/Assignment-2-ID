@@ -29,11 +29,11 @@ The website should allow the user to be able to search for new books to read tha
 
   - To complete CRUD in the website as well as creating unique functions that we used throughout the website
 
-- [jQuery] (https://jquery.com/)
+- [jQuery](https://jquery.com/)
 
   - To reduce the amount of code that we have for our website and to make the JavaScript execute faster
 
-- [Lottie] (https://lottiefiles.com/)
+- [Lottie](https://lottiefiles.com/)
   - For the loading animations and landing page animations of the website
 
 # Testing:
@@ -52,4 +52,4 @@ The animations used for this project were from:
 
 We received inspiration for the login page and signup from:
 
-- [GitHub] (https://github.com/)
+- [GitHub](https://github.com/)
