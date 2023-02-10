@@ -72,7 +72,7 @@ $(document).ready(function(){
             book_container.addEventListener('click', function(){
                 let bookid = book_container.getAttribute("data-link")
                 localStorage.setItem("BookID", bookid)
-                location.href = '/homepage/book/book.html'
+                location.href = '/book/book.html'
             })                
             book_container.innerHTML = 
             ` 
@@ -100,7 +100,7 @@ $(document).ready(function(){
             book_container.addEventListener('click', function(){
                 let bookid = book_container.getAttribute("data-link")
                 localStorage.setItem("BookID", bookid)
-                location.href = '/homepage/book/book.html'
+                location.href = '/book/book.html'
             })                
             book_container.innerHTML = 
             ` 
@@ -149,7 +149,7 @@ $(document).ready(function(){
             author.addEventListener('click', function(){
                 let userid = book_container.getAttribute("data-link")
                 localStorage.setItem("UserID", userid)
-                location.href = '/homepage/author/author.html'
+                location.href = '/author/author.html'
             })                
             author.innerHTML = 
             ` 
@@ -189,7 +189,7 @@ $(document).ready(function(){
             author.addEventListener('click', function(){
                 let userid = author.getAttribute("data-link")
                 localStorage.setItem("UserID", userid)
-                location.href = '/homepage/author/author.html'
+                location.href = '/author/author.html'
             })                
             author.innerHTML = 
             `  
@@ -211,4 +211,18 @@ $(document).ready(function(){
             continue
         }
     }
+    function loadUserNavPfp(){
+        if(JSON.parse(localStorage.getItem("user")) != null)
+        {
+            let user = JSON.parse(localStorage.getItem("user"))
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "nav-pfp">`
+        }
+
+        else
+        {
+            return
+        }
+
+    }
+    loadUserNavPfp()
 })

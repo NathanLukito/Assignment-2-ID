@@ -83,6 +83,19 @@ $(document).ready(function(){
         root.appendChild(profilepic)
         root.appendChild(details)
     }
+    function loadUserNavPfp(){
+        if(JSON.parse(localStorage.getItem("user")) != null)
+        {
+            let user = JSON.parse(localStorage.getItem("user"))
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "nav-pfp">`
+        }
+
+        else
+        {
+            return
+        }
+
+    }
 
     function loadBooks(){
         for(let i = 0; i < author.Publish.length; i++)
@@ -90,6 +103,12 @@ $(document).ready(function(){
             let root = document.querySelector(".book-container")
             let book = document.createElement("div")
             book.classList.add("book")
+            book.setAttribute("data-link", author.Publish[i].BookID)
+            book.addEventListener('click', function(){
+                let bookid = book.getAttribute("data-link")
+                localStorage.setItem("BookID", bookid)
+                location.href = '/book/book.html'
+            })
             book.innerHTML = 
             `
             <img class = "book-image" src = "https://nathaninteractivedev-4002.restdb.io/media/${author.Publish[i].BookCover}">
@@ -103,4 +122,5 @@ $(document).ready(function(){
     }
     loadAuthor()
     loadBooks()
+    loadUserNavPfp()
 })

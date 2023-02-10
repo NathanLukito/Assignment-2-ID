@@ -1,9 +1,5 @@
 $(document).ready(function(){
     $("body").addClass("scroll-disable")
-    function clear(){
-        localStorage.clear()
-    }
-    clear()
     let translate = 0
     let container = document.querySelector(".scroll-images")
     $(".scroll-left").click(function(){
@@ -12,7 +8,6 @@ $(document).ready(function(){
             translate += 6.5;
             container.style.transform = "translateX(" + translate + "%)"
         }
-
         else
         {
             return;
@@ -236,7 +231,8 @@ $(document).ready(function(){
                 }
                 else
                 {
-                    continue
+                    likedlist = []
+                    return likedlist
                 }
                   
             }
@@ -345,7 +341,7 @@ $(document).ready(function(){
             return b.Likes - a.Likes
         })
 
-        for (let i = 0; i < 4; i++)
+        for (let i = 0; i < 2; i++)
         {
             if(sorted[i].Usertype = "Author")
             {
@@ -357,7 +353,7 @@ $(document).ready(function(){
                 container.addEventListener('click', function(){
                 let UserID = container.getAttribute("data-link")
                 localStorage.setItem("UserID", UserID)
-                location.href = '/homepage/author/author.html'
+                location.href = '/author/author.html'
             })
 
                 let profilepic = document.createElement("img")
@@ -383,7 +379,7 @@ $(document).ready(function(){
                 likes = document.createElement("p")
                 likes.innerHTML = sorted[i].Likes
                 like_icon = document.createElement("img")
-                like_icon.setAttribute("src", "img/blacklike.svg")
+                like_icon.setAttribute("src", "/img/blacklike.svg")
                 like_icon.setAttribute("alt", "Like Icon")
                 like_icon.classList.add("like-icon")
 
@@ -395,7 +391,7 @@ $(document).ready(function(){
                 date = document.createElement("p")
                 date.innerHTML = sorted[i].Datejoin.substring(0,10).replace("/", "-")
                 date_icon = document.createElement("img")
-                date_icon.setAttribute("src", "img/blackdate.svg")
+                date_icon.setAttribute("src", "/img/blackdate.svg")
                 date_icon.setAttribute("alt", "Date Icon")
                 date_icon.classList.add("date-icon")
 
@@ -436,7 +432,7 @@ $(document).ready(function(){
                 return b.Likes - a.Likes
             })
 
-            for (let i = 0; i <= 10; i++)
+            for (let i = 0; i <= 2; i++)
             {
                 let root = document.getElementById("popular")
                 let book_container = document.createElement("div")
@@ -445,7 +441,7 @@ $(document).ready(function(){
                 book_container.addEventListener('click', function(){
                     let bookid = book_container.getAttribute("data-link")
                     localStorage.setItem("BookID", bookid)
-                    location.href = '/homepage/book/book.html'
+                    location.href = '/book/book.html'
                 })
 
                 let book = document.createElement("div")
@@ -476,7 +472,7 @@ $(document).ready(function(){
                 let likes = document.createElement("p")
                 likes.innerHTML = sorted[i].Likes
                 let likes_icon = document.createElement("img")
-                likes_icon.setAttribute("src", "img/blacklike.svg")
+                likes_icon.setAttribute("src", "/img/blacklike.svg")
                 likes_container.appendChild(likes)
                 likes_container.appendChild(likes_icon)
 
@@ -488,7 +484,7 @@ $(document).ready(function(){
                 let date = document.createElement("p")
                 date.innerHTML = sorted[i].Date.substring(0,10)
                 let date_icon = document.createElement("img")
-                date_icon.setAttribute("src", "img/blackdate.svg")
+                date_icon.setAttribute("src", "/img/blackdate.svg")
 
                 date_container.appendChild(date)
                 date_container.appendChild(date_icon)
@@ -525,7 +521,7 @@ $(document).ready(function(){
                 clean_date2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
                 return Math.floor((date1/ms - date2/ms) )
             })
-            for(let i = 0; i <= 10; i++)
+            for(let i = 0; i <= 2; i++)
             {
                 let root = document.querySelector(".table-container-latest-popular")
 
@@ -535,7 +531,7 @@ $(document).ready(function(){
                 container.addEventListener('click', function(){
                     let bookid = container.getAttribute("data-link")
                     localStorage.setItem("BookID", bookid)
-                    location.href = '/homepage/book/book.html'
+                    location.href = '/book/book.html'
                 })
 
                 let img = document.createElement("img")
@@ -554,7 +550,7 @@ $(document).ready(function(){
                 let date = document.createElement("p")
                 date.innerHTML = sorted[i].Date.substring(0,10).replace("/", "-")
                 let date_icon = document.createElement("img")
-                date_icon.setAttribute("src", "img/blackdate.svg")
+                date_icon.setAttribute("src", "/img/blackdate.svg")
                 date_icon.setAttribute("alt", "date")
 
                 date_released.appendChild(date)
@@ -569,7 +565,7 @@ $(document).ready(function(){
                 let like = document.createElement("p")
                 like.innerHTML = sorted[i].Likes
                 let like_icon = document.createElement("img")
-                like_icon.setAttribute("src", "img/blacklike.svg")
+                like_icon.setAttribute("src", "/img/blacklike.svg")
                 like_icon.setAttribute("alt", "likes")
                 let genre = document.createElement("p")
                 genre.innerHTML = sorted[i].Genre
@@ -596,7 +592,7 @@ $(document).ready(function(){
         {
 
             let user = JSON.parse(localStorage.getItem("user"))
-            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic} class = "nav-pfp" width = "60">`
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "nav-pfp">`
         }
 
         else
@@ -606,20 +602,6 @@ $(document).ready(function(){
 
     }
 
-    function loadRecentlyViewed(){
-        for(let i = 0; i < localStorage.length; i++){
-            if(localStorage.getItem(localStorage.key(i)) == "recentlyViewed")
-            {
-                return
-            }
-    
-        }
-
-        // console.log("hello")
-        let recentlyViewed = []
-        localStorage.setItem = ("recentlyViewed", recentlyViewed)
-
-    }
     GetBooks()
     GetReviews()
     loadUser()  

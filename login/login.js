@@ -48,7 +48,7 @@ $(document).ready(function(){
                     document.querySelector(".login-btn").style.backgroundColor = "rgba(27,185,157,0.6)"
                     localStorage.setItem("user", JSON.stringify(userList[i]))
                     setTimeout(function(){
-                        location.href = "/homepage/index.html"
+                        location.href = "/index.html"
                     },1000)
                    
                 }
@@ -94,5 +94,18 @@ $(document).ready(function(){
         document.querySelector(".bottom-border-password").style.backgroundColor = "rgba(27,185,157,255)"
     }
 
-    
+    function loadUserNavPfp(){
+        if(JSON.parse(localStorage.getItem("user")) != null)
+        {
+            let user = JSON.parse(localStorage.getItem("user"))
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "nav-pfp">`
+        }
+
+        else
+        {
+            return
+        }
+
+    }
+    loadUserNavPfp()
 })

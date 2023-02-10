@@ -121,7 +121,7 @@ $(document).ready(function(){
         likes.innerHTML = "Likes:" + CalcLikes(book) +
         `
             <button type = "submit" class = "submit-like">
-                <img class = "like-icon" src = "img/blacklike.svg">
+                <img class = "like-icon" src = "/img/blacklike.svg">
             </button>
         `
 
@@ -277,21 +277,6 @@ $(document).ready(function(){
         }  
     }
 
-    async function AddRecentlyViewed(book)
-    {
-        recentlyViewedList = JSON.parse(localStorage.getItem("recentlyViewed"))
-        if(recentlyViewedList.includes(book) == false)
-        {   
-            
-            recentlyViewedList.push(book)
-        }
-
-        else
-        {
-            return
-        }
-    }
-
     function sendReviewSet(reviewData){
         const APIKEY = "63b3e1aa969f06502871a8c1"
         let settings = {
@@ -403,4 +388,18 @@ $(document).ready(function(){
         }
 
     }
+    function loadUserNavPfp(){
+        if(JSON.parse(localStorage.getItem("user")) != null)
+        {
+            let user = JSON.parse(localStorage.getItem("user"))
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "nav-pfp">`
+        }
+
+        else
+        {
+            return
+        }
+
+    }
+    loadUserNavPfp()
 })

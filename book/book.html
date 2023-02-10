@@ -4,12 +4,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width" minimum-scale = 1>
-        <link href="/book+authorlist/book_author.css" rel="stylesheet" type="text/css"/>
+        <link href="/book/book.css" rel="stylesheet" type="text/css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto&display=swap" rel="stylesheet">
     </head>
-<body id = "top">
+<body>
     <nav>
         <div class = "menu">
             <div class = "select" onclick = "window.location = '/index.html'" style="cursor: pointer">
@@ -60,37 +60,47 @@
 
         
     </nav>
-    <div class = "page-container">
-        <h1 class = "searchfor">Searched For: BookName</h1>
-        <a class = "scroll" href = "#authors">
-            <button>Scroll to Authors</button>
-            <img src = "/img/down.svg">
-        </a>
-        <div class = "booklist">
-            
-        </div>
-        <a class = "scroll" href = "#top">
-            <img src = "/img/up.svg">
-            <button>Scroll to Top</button>
-        </a>
-        <div class = "authorlist" id = "authors">
-            
-        </div>
-        <footer class = "footer-container">
-            <div >
-                <div class = "footer-content">
-                    <p> Made by Lim JunHui and Nathan Farrel Lukito Copyright &#169; All rights reserved.</p>
-                </div>
+
+    <div class = "book">
+        <div class = "book-container">
+            <div class = "desc">
+                <h1 class = "like-container">
+                </h1>
             </div>
-        </footer>
+        </div>
+        
+        <h3 class = "book-review-container">Reviews</h3>
+        <div class = "review">
+            
+        </div>
+
+        <h3 class = "add-review-title"> Add a review</h3>
+        <div class = "add-book-review-container">
+            <form id = "form">
+                <input type = text class = "book-review" placeholder = "Add your review here!">
+                <div class = "bottom-border-wrapper">
+                    <div class = "bottom-border-review"></div>
+                </div>
+                
+                <input type = "submit" value = "Add Review" class = "submit-review-btn">
+            </form>
+        </div>
+
+        
     </div>
 
-    
+    <footer class = "footer-container">
+        <div >
+            <div class = "footer-content">
+                <p> Made by Lim JunHui and Nathan Farrel Lukito Copyright &#169; All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
     
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<script src = "/book+authorlist/book_author.js"></script>
-
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=S1uySq1M"></script>
+<script src = "/book/book.js"></script>
 </html>

@@ -12,25 +12,25 @@
 <body>
     <nav>
         <div class = "menu">
-            <div class = "select" style="cursor: pointer" onclick="window.location = '/booklist/booklist.html'">
-                <h1>All Books</h1>
+            <div class = "select" onclick = "window.location = '/index.html'" style="cursor: pointer">
+                <h1>Homepage</h1>
             </div>
     
-            <div class = "select">
-                <h1>Authors</h1>
+            <div class = "select" onclick = "window.location = '/book+authorlist/book_author.html'" id = "all" style="cursor: pointer">
+                <h1>All Books and Authors</h1>
             </div>
     
-            <div style="cursor: pointer" onclick="window.location= '/signup/signup.html'" class = "select">
-                <h1>Sign In</h1>
+            <div style="cursor: pointer" onclick="window.location= '/login/login.html'" class = "select">
+                <h1>Log In</h1>
             </div>
             
-            <div class = "select">
+            <div style="cursor: pointer" onclick="window.location= '/user/user.html'" class = "select">
                 <h1>Account</h1>
             </div>
         </div>
         <div class = "navigation">
-            <div class = "brand">
-                <img alt = "icon" class = "brandIcon" src = "img/brand-icon.svg">
+            <div class = "brand" onclick = "window.location = '/index.html'" style="cursor: pointer">
+                <img alt = "icon" class = "brandIcon" src = "/img/brand-icon.svg">
                 <span class = "brandName">
                     Book Sommeliers
                 </span>
@@ -38,14 +38,14 @@
     
             <div class = "searchbar">
                 <button type = "submit">
-                    <img class = "search-icon" src = "img/search.svg">
+                    <img class = "search-icon" src = "/img/search.svg">
                 </button>
                 <input class = "bar" id = "search" type = "text" placeholder="Search" required>
             </div>
             
 
             <div class = "navbar">
-                <div class = "pfp"></div>
+                <div class = "profile"></div>
                 <button class = "nav-btn">
                     <p class = "menu-btn">Menu</p>
                     <div>
@@ -57,6 +57,8 @@
             </div>
             
         </div>
+
+        
     </nav>
     <div class = "container">
         <form class = "publish-container">
@@ -85,12 +87,20 @@
             </div>
         </form>
     </div>
+
+    <footer class = "footer-container">
+        <div >
+            <div class = "footer-content">
+                <p> Made by Lim JunHui and Nathan Farrel Lukito Copyright &#169; All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
     
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<script src = "publish.js"></script>
+<script src = "/publish/publish.js"></script>
 
 
 </html>

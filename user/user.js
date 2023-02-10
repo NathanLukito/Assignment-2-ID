@@ -29,7 +29,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/booklist/booklist.html'
+        location.href = '/book+author_list/book_author.html'
     })
 
     function deleteUserSet(){
@@ -52,7 +52,7 @@ $(document).ready(function(){
                 localStorage.clear()
             }
             clear()
-            location.href = '/homepage/index.html'
+            location.href = 'index.html'
         })
     }
 
@@ -86,7 +86,7 @@ $(document).ready(function(){
         if(JSON.parse(localStorage.getItem("user")) != null)
         {
             let user = JSON.parse(localStorage.getItem("user"))
-            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "nav-pfp" width = "60">`
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "nav-pfp">`
         }
 
         else
@@ -144,7 +144,7 @@ $(document).ready(function(){
                                     book_container.addEventListener('click', function(){
                                         let bookid = book_container.getAttribute("data-link")
                                         localStorage.setItem("BookID", bookid)
-                                        location.href = '/homepage/book/book.html'
+                                        location.href = '/book/book.html'
                                     })
                                     book_container.innerHTML =
                                     `       <div class = book>
@@ -206,7 +206,7 @@ $(document).ready(function(){
                                     review_container.addEventListener('click', function(){
                                         let bookid = booklist[j].BookID
                                         localStorage.setItem("BookID", bookid)
-                                        location.href = '/homepage/book/book.html'
+                                        location.href = '/book/book.html'
                                     })
                                     review_container.innerHTML =                         
                                     `
