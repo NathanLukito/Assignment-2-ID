@@ -15,7 +15,7 @@ $(document).ready(function(){
     })
 
     $(".scroll-right").click(function(){
-        if(translate >= -95)
+        if(translate >= -60)
         {
             translate -= 6.5;
             container.style.transform = "translateX(" + translate + "%)"
@@ -341,7 +341,7 @@ $(document).ready(function(){
             return b.Likes - a.Likes
         })
 
-        for (let i = 0; i < 2; i++)
+        for (let i = 0; i < 4; i++)
         {
             if(sorted[i].Usertype = "Author")
             {
@@ -432,7 +432,7 @@ $(document).ready(function(){
                 return b.Likes - a.Likes
             })
 
-            for (let i = 0; i <= 2; i++)
+            for (let i = 0; i <= 7; i++)
             {
                 let root = document.getElementById("popular")
                 let book_container = document.createElement("div")
@@ -521,7 +521,7 @@ $(document).ready(function(){
                 clean_date2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
                 return Math.floor((date1/ms - date2/ms) )
             })
-            for(let i = 0; i <= 2; i++)
+            for(let i = 0; i <= 5; i++)
             {
                 let root = document.querySelector(".table-container-latest-popular")
 
