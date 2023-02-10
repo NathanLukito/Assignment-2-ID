@@ -67,7 +67,6 @@ $(document).ready(function(){
             $(".books-liked-container").html('')
             $(".user-reviews-container").html ('');
             $(".user-books-added-container").html('');
-            $(".user-books-viewed-container").html('');
             document.querySelector(".delete-account-content-container").style.display = "block"
         }
     })
@@ -125,7 +124,7 @@ $(document).ready(function(){
 
                     $(".user-reviews-container").html ('');
                     $(".user-books-added-container").html('');
-                    $(".user-books-viewed-container").html('');
+    
                     document.querySelector(".delete-account-content-container").style.display = "none"
                     for(let i = 0; i < user.Liked.length; i++)
                     {
@@ -185,7 +184,7 @@ $(document).ready(function(){
 
                     $(".books-liked-container").html('')
                     $(".user-books-added-container").html('');
-                    $(".user-books-viewed-container").html('');
+    
                     document.querySelector(".delete-account-content-container").style.display = "none"
     
                     let userID = user.UserID
@@ -255,7 +254,7 @@ $(document).ready(function(){
 
                     $(".books-liked-container").html('')
                     $(".user-reviews-container").html ('');
-                    $(".user-books-viewed-container").html('');
+    
                     document.querySelector(".delete-account-content-container").style.display = "none"
 
 
