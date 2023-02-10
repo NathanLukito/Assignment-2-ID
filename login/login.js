@@ -47,7 +47,7 @@ $(document).ready(function(){
                     document.querySelector(".login-btn").style.backgroundColor = "rgba(27,185,157,0.6)"
                     localStorage.setItem("user", JSON.stringify(userList[i]))
                     setTimeout(function(){
-                        window.location.href = "/index.html"
+                        window.location.href = "/Assignment-2-ID/index.html"
                     },1000)
                    
                 }
@@ -65,7 +65,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        window.location.href = '/book+authorlist/book_author.html'
+        window.location.href = '/Assignment-2-ID/book+authorlist/book_author.html'
     })
 
     document.querySelector("#Username").addEventListener("focus", function(){

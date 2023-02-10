@@ -29,7 +29,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/book+author_list/book_author.html'
+        location.href = '/Assignment-2-ID/book+author_list/book_author.html'
     })
 
     function deleteUserSet(){
@@ -52,7 +52,7 @@ $(document).ready(function(){
                 localStorage.clear()
             }
             clear()
-            window.location.href = 'index.html'
+            window.location.href = '/Assignment-2-ID/index.html'
         })
     }
 
@@ -142,7 +142,7 @@ $(document).ready(function(){
                                     book_container.addEventListener('click', function(){
                                         let bookid = book_container.getAttribute("data-link")
                                         localStorage.setItem("BookID", bookid)
-                                        window.location.href = '/book/book.html'
+                                        window.location.href = '/Assignment-2-ID/book/book.html'
                                     })
                                     book_container.innerHTML =
                                     `       <div class = book>

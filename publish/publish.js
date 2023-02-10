@@ -29,7 +29,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        window.location.href = '/book+authorlist/book_author.html'
+        window.location.href = '/Assignment-2-ID/book+authorlist/book_author.html'
     })
 
     var author = JSON.parse(localStorage.getItem("user"))
@@ -164,7 +164,7 @@ $(document).ready(function(){
                 })
                 alert("Book Published")
                 document.querySelector("form").reset()
-                window.location.href = "/user/user.html"
+                window.location.href = "/Assignment-2-ID/user/user.html"
             });
         }
         else
