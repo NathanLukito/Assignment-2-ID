@@ -30,7 +30,7 @@ $(document).ready(function(){
 
     const listItems = document.querySelector('.menu').children
     const listArray = Array.from(listItems)
-    $(".nav-btn").click(function(index){
+    $(".nav-btn").click(function(){
         var interval = 100      
         listArray.forEach(function (i, index) {
             setTimeout(function () {
@@ -58,13 +58,13 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        location.href = '/book+authorlist/book_author.html'
+        window.location.href = 'book+authorlist/book_author.html'
     })
 
 
     $("#all").click(function(){
         localStorage.setItem("search", "")
-        location.href = '/book+authorlist/book_author.html'
+        window.location.href = 'book+authorlist/book_author.html'
     })
 
 
@@ -103,7 +103,6 @@ $(document).ready(function(){
               "cache-control": "no-cache"
             },
           }
-    //Getting data from databse
         $.ajax(settings).done(async function (response) 
         {
             for(let i = 0; i < response.length; i++)
@@ -126,7 +125,6 @@ $(document).ready(function(){
                 )
                 
             }
-            //add to localStorage for use in other pages
             localStorage.setItem("booklist", JSON.stringify(booklist)) 
             await GetUsers()
         })
@@ -236,7 +234,6 @@ $(document).ready(function(){
                 }
                   
             }
-            // localStorage.setItem("userlist", JSON.stringify(userlist))
             let booklist = []
             booklist = JSON.parse(localStorage.getItem("booklist"))
             for(let i = 0; i < booklist.length; i++)
@@ -341,7 +338,7 @@ $(document).ready(function(){
             return b.Likes - a.Likes
         })
 
-        for (let i = 0; i < 2; i++)
+        for (let i = 0; i < 4; i++)
         {
             if(sorted[i].Usertype = "Author")
             {
@@ -353,7 +350,7 @@ $(document).ready(function(){
                 container.addEventListener('click', function(){
                 let UserID = container.getAttribute("data-link")
                 localStorage.setItem("UserID", UserID)
-                location.href = '/author/author.html'
+                window.location.href = 'author/author.html'
             })
 
                 let profilepic = document.createElement("img")
@@ -379,7 +376,7 @@ $(document).ready(function(){
                 likes = document.createElement("p")
                 likes.innerHTML = sorted[i].Likes
                 like_icon = document.createElement("img")
-                like_icon.setAttribute("src", "/img/blacklike.svg")
+                like_icon.setAttribute("src", "img/blacklike.svg")
                 like_icon.setAttribute("alt", "Like Icon")
                 like_icon.classList.add("like-icon")
 
@@ -391,7 +388,7 @@ $(document).ready(function(){
                 date = document.createElement("p")
                 date.innerHTML = sorted[i].Datejoin.substring(0,10).replace("/", "-")
                 date_icon = document.createElement("img")
-                date_icon.setAttribute("src", "/img/blackdate.svg")
+                date_icon.setAttribute("src", "img/blackdate.svg")
                 date_icon.setAttribute("alt", "Date Icon")
                 date_icon.classList.add("date-icon")
 
@@ -425,14 +422,13 @@ $(document).ready(function(){
 
         else
         {
-            
-            let sorted = booklist.slice(0) //duplicates the list into a array that always adds the higher liked book
+            let sorted = booklist.slice(0)
             sorted.sort(function(a,b)
             {     
                 return b.Likes - a.Likes
             })
 
-            for (let i = 0; i <= 2; i++)
+            for (let i = 0; i <= 7; i++)
             {
                 let root = document.getElementById("popular")
                 let book_container = document.createElement("div")
@@ -472,7 +468,7 @@ $(document).ready(function(){
                 let likes = document.createElement("p")
                 likes.innerHTML = sorted[i].Likes
                 let likes_icon = document.createElement("img")
-                likes_icon.setAttribute("src", "/img/blacklike.svg")
+                likes_icon.setAttribute("src", "img/blacklike.svg")
                 likes_container.appendChild(likes)
                 likes_container.appendChild(likes_icon)
 
@@ -484,7 +480,7 @@ $(document).ready(function(){
                 let date = document.createElement("p")
                 date.innerHTML = sorted[i].Date.substring(0,10)
                 let date_icon = document.createElement("img")
-                date_icon.setAttribute("src", "/img/blackdate.svg")
+                date_icon.setAttribute("src", "img/blackdate.svg")
 
                 date_container.appendChild(date)
                 date_container.appendChild(date_icon)
@@ -511,7 +507,7 @@ $(document).ready(function(){
         }
         else
         {
-            let sorted = booklist.slice(0) //duplicates the list into a array that always adds the most recent book
+            let sorted = booklist.slice(0)
             sorted.sort(function(a,b)
             {  
                 let ms = 1000 * 60 * 60 * 24;
@@ -521,7 +517,7 @@ $(document).ready(function(){
                 clean_date2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
                 return Math.floor((date1/ms - date2/ms) )
             })
-            for(let i = 0; i <= 2; i++)
+            for(let i = 0; i <= 7; i++)
             {
                 let root = document.querySelector(".table-container-latest-popular")
 
@@ -531,7 +527,7 @@ $(document).ready(function(){
                 container.addEventListener('click', function(){
                     let bookid = container.getAttribute("data-link")
                     localStorage.setItem("BookID", bookid)
-                    location.href = '/book/book.html'
+                    location.href = 'book/book.html'
                 })
 
                 let img = document.createElement("img")
@@ -550,7 +546,7 @@ $(document).ready(function(){
                 let date = document.createElement("p")
                 date.innerHTML = sorted[i].Date.substring(0,10).replace("/", "-")
                 let date_icon = document.createElement("img")
-                date_icon.setAttribute("src", "/img/blackdate.svg")
+                date_icon.setAttribute("src", "img/blackdate.svg")
                 date_icon.setAttribute("alt", "date")
 
                 date_released.appendChild(date)
@@ -565,7 +561,7 @@ $(document).ready(function(){
                 let like = document.createElement("p")
                 like.innerHTML = sorted[i].Likes
                 let like_icon = document.createElement("img")
-                like_icon.setAttribute("src", "/img/blacklike.svg")
+                like_icon.setAttribute("src", "img/blacklike.svg")
                 like_icon.setAttribute("alt", "likes")
                 let genre = document.createElement("p")
                 genre.innerHTML = sorted[i].Genre
