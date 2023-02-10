@@ -62,7 +62,6 @@ $(document).ready(function(){
             document.querySelector(".delete-profile-button").setAttribute("check_clicked", "clicked")
             document.querySelector(".books-liked-button").setAttribute("check_clicked", "")
             document.querySelector(".reviews-button").setAttribute("check_clicked", "")
-            document.querySelector(".books-viewed-button").setAttribute("check_clicked", "")
 
             $(".books-liked-container").html('')
             $(".user-reviews-container").html ('');
