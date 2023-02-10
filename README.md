@@ -55,7 +55,7 @@ The website should allow the user to be able to search for new books to read tha
 
 ## Link to Deployed GitHub Site:
 
-- [Deployed-Site](https://nathanlukito.github.io/Assignment-2-ID/)
+- [Deployed-Site](https://nathanlukito.github.io/Book-Sommeliers/)
 
 # Credits:
 
