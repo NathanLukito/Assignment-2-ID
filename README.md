@@ -116,3 +116,8 @@ The website should allow the user to be able to search for new books to read tha
 We received inspiration for the login page and signup from:
 
 - [GitHub](https://github.com/)
+
+## Contributions
+
+- Nathan (homepage, book, book_author, author, publish)
+- JunHui (login, signup, user)
