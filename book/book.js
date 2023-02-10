@@ -137,7 +137,6 @@ $(document).ready(function(){
 
         function sendLikesSet(LikesData){
             let user = JSON.parse(localStorage.getItem("user"))
-            console.log(LikesData)
             const APIKEY = "63b3e1aa969f06502871a8c1"
             let settings = {
                 "async": true,
@@ -312,7 +311,6 @@ $(document).ready(function(){
                 "UserID": user.UserID
             }
 
-            console.log(jsonReviewData)
             sendReviewSet(jsonReviewData)
 
             document.querySelector("#form").reset();
