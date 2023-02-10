@@ -55,7 +55,7 @@ $(document).ready(function(){
                 else if (name != userList[i].Username || pass != userList[i].Password)
                 {
                     alert("Entered wrong username or password")
-                    continue
+                    return;
                 }
             }
         }
