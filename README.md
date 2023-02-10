@@ -51,6 +51,12 @@ The website should allow the user to be able to search for new books to read tha
 
 - [Testing](https://docs.google.com/document/d/16BpF2A4isF_gGQvTv_x0Ly0y7wm9EqYVQVIhDVdgtrY/edit?usp=sharing)
 
+# Deployment:
+
+## Link to Deployed GitHub Site:
+
+- [Deployed-Site](https://nathanlukito.github.io/Assignment-2-ID/)
+
 # Credits:
 
 ## Media:
