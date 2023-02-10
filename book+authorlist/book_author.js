@@ -30,7 +30,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        window.location.href = '/book+authorlist/book_author.html'
+        window.location.href = '/Assignment-2-ID/book+authorlist/book_author.html'
     })
 
     
@@ -72,7 +72,7 @@ $(document).ready(function(){
             book_container.addEventListener('click', function(){
                 let bookid = book_container.getAttribute("data-link")
                 localStorage.setItem("BookID", bookid)
-                window.location.href = '/book/book.html'
+                window.location.href = '/Assignment-2-ID/book/book.html'
             })                
             book_container.innerHTML = 
             ` 
@@ -100,7 +100,7 @@ $(document).ready(function(){
             book_container.addEventListener('click', function(){
                 let bookid = book_container.getAttribute("data-link")
                 localStorage.setItem("BookID", bookid)
-                window.location.href = '/book/book.html'
+                window.location.href = '/Assignment-2-ID/book/book.html'
             })                
             book_container.innerHTML = 
             ` 
@@ -149,7 +149,7 @@ $(document).ready(function(){
             author.addEventListener('click', function(){
                 let userid = book_container.getAttribute("data-link")
                 localStorage.setItem("UserID", userid)
-                window.location.href = '/author/author.html'
+                window.location.href = '/Assignment-2-ID/author/author.html'
             })                
             author.innerHTML = 
             ` 
@@ -186,7 +186,7 @@ $(document).ready(function(){
             author.addEventListener('click', function(){
                 let userid = author.getAttribute("data-link")
                 localStorage.setItem("UserID", userid)
-                window.location.href = '/author/author.html'
+                window.location.href = '/Assignment-2-ID/author/author.html'
             })                
             author.innerHTML = 
             `  

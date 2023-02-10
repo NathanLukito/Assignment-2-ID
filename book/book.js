@@ -30,7 +30,7 @@ $(document).ready(function(){
     $(".search-icon").click(function(){
         let search = $("#search").val()
         localStorage.setItem("search", search)
-        window.location.href = '/book+authorlist/book_author.html'
+        window.location.href = '/Assignment-2-ID/book+authorlist/book_author.html'
     })
 
     let booklist = []
@@ -119,7 +119,7 @@ $(document).ready(function(){
         likes.innerHTML = "Likes:" + CalcLikes(book) +
         `
             <button type = "submit" class = "submit-like">
-                <img class = "like-icon" src = "/img/blacklike.svg">
+                <img class = "like-icon" src = "/Assignment-2-ID/img/blacklike.svg">
             </button>
         `
 
