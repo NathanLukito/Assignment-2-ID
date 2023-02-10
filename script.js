@@ -12,7 +12,6 @@ $(document).ready(function(){
             translate += 6.5;
             container.style.transform = "translateX(" + translate + "%)"
         }
-
         else
         {
             return;
@@ -357,7 +356,7 @@ $(document).ready(function(){
                 container.addEventListener('click', function(){
                 let UserID = container.getAttribute("data-link")
                 localStorage.setItem("UserID", UserID)
-                location.href = '/homepage/author/author.html'
+                location.href = '/author/author.html'
             })
 
                 let profilepic = document.createElement("img")
@@ -383,7 +382,7 @@ $(document).ready(function(){
                 likes = document.createElement("p")
                 likes.innerHTML = sorted[i].Likes
                 like_icon = document.createElement("img")
-                like_icon.setAttribute("src", "img/blacklike.svg")
+                like_icon.setAttribute("src", "/img/blacklike.svg")
                 like_icon.setAttribute("alt", "Like Icon")
                 like_icon.classList.add("like-icon")
 
@@ -395,7 +394,7 @@ $(document).ready(function(){
                 date = document.createElement("p")
                 date.innerHTML = sorted[i].Datejoin.substring(0,10).replace("/", "-")
                 date_icon = document.createElement("img")
-                date_icon.setAttribute("src", "img/blackdate.svg")
+                date_icon.setAttribute("src", "/img/blackdate.svg")
                 date_icon.setAttribute("alt", "Date Icon")
                 date_icon.classList.add("date-icon")
 
@@ -445,7 +444,7 @@ $(document).ready(function(){
                 book_container.addEventListener('click', function(){
                     let bookid = book_container.getAttribute("data-link")
                     localStorage.setItem("BookID", bookid)
-                    location.href = '/homepage/book/book.html'
+                    location.href = '/book/book.html'
                 })
 
                 let book = document.createElement("div")
@@ -476,7 +475,7 @@ $(document).ready(function(){
                 let likes = document.createElement("p")
                 likes.innerHTML = sorted[i].Likes
                 let likes_icon = document.createElement("img")
-                likes_icon.setAttribute("src", "img/blacklike.svg")
+                likes_icon.setAttribute("src", "/img/blacklike.svg")
                 likes_container.appendChild(likes)
                 likes_container.appendChild(likes_icon)
 
@@ -488,7 +487,7 @@ $(document).ready(function(){
                 let date = document.createElement("p")
                 date.innerHTML = sorted[i].Date.substring(0,10)
                 let date_icon = document.createElement("img")
-                date_icon.setAttribute("src", "img/blackdate.svg")
+                date_icon.setAttribute("src", "/img/blackdate.svg")
 
                 date_container.appendChild(date)
                 date_container.appendChild(date_icon)
@@ -535,7 +534,7 @@ $(document).ready(function(){
                 container.addEventListener('click', function(){
                     let bookid = container.getAttribute("data-link")
                     localStorage.setItem("BookID", bookid)
-                    location.href = '/homepage/book/book.html'
+                    location.href = '/book/book.html'
                 })
 
                 let img = document.createElement("img")
@@ -554,7 +553,7 @@ $(document).ready(function(){
                 let date = document.createElement("p")
                 date.innerHTML = sorted[i].Date.substring(0,10).replace("/", "-")
                 let date_icon = document.createElement("img")
-                date_icon.setAttribute("src", "img/blackdate.svg")
+                date_icon.setAttribute("src", "/img/blackdate.svg")
                 date_icon.setAttribute("alt", "date")
 
                 date_released.appendChild(date)
@@ -569,7 +568,7 @@ $(document).ready(function(){
                 let like = document.createElement("p")
                 like.innerHTML = sorted[i].Likes
                 let like_icon = document.createElement("img")
-                like_icon.setAttribute("src", "img/blacklike.svg")
+                like_icon.setAttribute("src", "/img/blacklike.svg")
                 like_icon.setAttribute("alt", "likes")
                 let genre = document.createElement("p")
                 genre.innerHTML = sorted[i].Genre

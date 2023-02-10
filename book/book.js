@@ -121,7 +121,7 @@ $(document).ready(function(){
         likes.innerHTML = "Likes:" + CalcLikes(book) +
         `
             <button type = "submit" class = "submit-like">
-                <img class = "like-icon" src = "img/blacklike.svg">
+                <img class = "like-icon" src = "/img/blacklike.svg">
             </button>
         `
 

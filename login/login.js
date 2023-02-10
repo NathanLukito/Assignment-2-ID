@@ -48,7 +48,7 @@ $(document).ready(function(){
                     document.querySelector(".login-btn").style.backgroundColor = "rgba(27,185,157,0.6)"
                     localStorage.setItem("user", JSON.stringify(userList[i]))
                     setTimeout(function(){
-                        location.href = "/homepage/index.html"
+                        location.href = "index.html"
                     },1000)
                    
                 }

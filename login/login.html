@@ -13,25 +13,25 @@
     <body>
         <nav>
             <div class = "menu">
-                <div class = "select" style="cursor: pointer" onclick="window.location = '/booklist/booklist.html'">
-                    <h1>All Books</h1>
+                <div class = "select" onclick = "window.location = '/index.html'" style="cursor: pointer">
+                    <h1>Homepage</h1>
                 </div>
         
-                <div class = "select">
-                    <h1>Authors</h1>
+                <div class = "select" onclick = "window.location = '/book+authorlist/book_author.html'" id = "all" style="cursor: pointer">
+                    <h1>All Books and Authors</h1>
                 </div>
         
                 <div style="cursor: pointer" onclick="window.location= '/login/login.html'" class = "select">
                     <h1>Log In</h1>
                 </div>
                 
-                <div class = "select">
+                <div style="cursor: pointer" onclick="window.location= '/user/user.html'" class = "select">
                     <h1>Account</h1>
                 </div>
             </div>
             <div class = "navigation">
-                <div class = "brand">
-                    <img alt = "icon" class = "brandIcon" src = "img/brand-icon.svg">
+                <div class = "brand" onclick = "window.location = '/index.html'" style="cursor: pointer">
+                    <img alt = "icon" class = "brandIcon" src = "/img/brand-icon.svg">
                     <span class = "brandName">
                         Book Sommeliers
                     </span>
@@ -39,13 +39,14 @@
         
                 <div class = "searchbar">
                     <button type = "submit">
-                        <img class = "search-icon" src = "img/search.svg">
+                        <img class = "search-icon" src = "/img/search.svg">
                     </button>
                     <input class = "bar" id = "search" type = "text" placeholder="Search" required>
                 </div>
                 
     
                 <div class = "navbar">
+                    <div class = "profile"></div>
                     <button class = "nav-btn">
                         <p class = "menu-btn">Menu</p>
                         <div>
