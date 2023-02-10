@@ -437,7 +437,7 @@ $(document).ready(function(){
                 book_container.addEventListener('click', function(){
                     let bookid = book_container.getAttribute("data-link")
                     localStorage.setItem("BookID", bookid)
-                    location.href = '/book/book.html'
+                    window.location.href = '/Assignment-2-ID/book/book.html'
                 })
 
                 let book = document.createElement("div")
@@ -527,7 +527,7 @@ $(document).ready(function(){
                 container.addEventListener('click', function(){
                     let bookid = container.getAttribute("data-link")
                     localStorage.setItem("BookID", bookid)
-                    location.href = 'book/book.html'
+                    location.href = '/Assignment-2-ID/book/book.html'
                 })
 
                 let img = document.createElement("img")
