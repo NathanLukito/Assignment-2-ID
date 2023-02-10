@@ -45,18 +45,28 @@ $(document).ready(function(){
         let Title = $("#title").val()
         let Genre = $("#genre").val()
         let Synopsis = $("#synopsis").val()
-        let Bookcover = $("#bookcover").val()
+        let Bookcover = $("#bookcover").val().replace(/^.*\\/, "");
         const date = new Date()
         let day = date.getDate()
         let month = date.getMonth()
         let year = date.getFullYear()
+        // console.log(max)
+        // console.log(Title)
+        // console.log(Synopsis)
+        // console.log(author.Username)
+        // console.log(Title)
+        // console.log(Title)
+        // console.log(Title)
+        // console.log(Title)
+        // console.log(Title)
+        // console.log(Title)
         if(Title != null && Genre != null && Synopsis != null && Bookcover != null)
         {
             var jsondata = {
                 "BookID": max,
                 "Title": Title,
                 "Synopsis": Synopsis,
-                "Author": "Kory Ferry",
+                "Author": author.Username,
                 "Likes": 0,
                 "Dislikes": 0,
                 "Date": `${day}/${month}/${year}`,
@@ -64,6 +74,8 @@ $(document).ready(function(){
                 "ReviewID": 0,
                 "Genre": Genre
             };
+
+            console.log(jsondata)
             var settings = {
             "async": true,
             "crossDomain": true,
@@ -91,7 +103,8 @@ $(document).ready(function(){
                     $(".load").css("display", "none")
                 })
                 alert("Book Published")
-                $("form").reset()
+                document.querySelector("form").reset()
+                location.href = "/user/user.html"
             });
         }
         else
@@ -99,4 +112,18 @@ $(document).ready(function(){
             alert("Form is incomplete")
         }
     })
+    function loadUserNavPfp(){
+        if(JSON.parse(localStorage.getItem("user")) != null)
+        {
+            let user = JSON.parse(localStorage.getItem("user"))
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "nav-pfp">`
+        }
+
+        else
+        {
+            return
+        }
+
+    }
+    loadUserNavPfp()
 })

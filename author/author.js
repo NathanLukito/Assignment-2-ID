@@ -83,6 +83,19 @@ $(document).ready(function(){
         root.appendChild(profilepic)
         root.appendChild(details)
     }
+    function loadUserNavPfp(){
+        if(JSON.parse(localStorage.getItem("user")) != null)
+        {
+            let user = JSON.parse(localStorage.getItem("user"))
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "nav-pfp">`
+        }
+
+        else
+        {
+            return
+        }
+
+    }
 
     function loadBooks(){
         for(let i = 0; i < author.Publish.length; i++)
@@ -109,4 +122,5 @@ $(document).ready(function(){
     }
     loadAuthor()
     loadBooks()
+    loadUserNavPfp()
 })

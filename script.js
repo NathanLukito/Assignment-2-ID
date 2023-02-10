@@ -1,9 +1,5 @@
 $(document).ready(function(){
     $("body").addClass("scroll-disable")
-    function clear(){
-        localStorage.clear()
-    }
-    clear()
     let translate = 0
     let container = document.querySelector(".scroll-images")
     $(".scroll-left").click(function(){
@@ -344,7 +340,7 @@ $(document).ready(function(){
             return b.Likes - a.Likes
         })
 
-        for (let i = 0; i < 4; i++)
+        for (let i = 0; i < 2; i++)
         {
             if(sorted[i].Usertype = "Author")
             {
@@ -435,7 +431,7 @@ $(document).ready(function(){
                 return b.Likes - a.Likes
             })
 
-            for (let i = 0; i <= 10; i++)
+            for (let i = 0; i <= 2; i++)
             {
                 let root = document.getElementById("popular")
                 let book_container = document.createElement("div")
@@ -524,7 +520,7 @@ $(document).ready(function(){
                 clean_date2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
                 return Math.floor((date1/ms - date2/ms) )
             })
-            for(let i = 0; i <= 10; i++)
+            for(let i = 0; i <= 2; i++)
             {
                 let root = document.querySelector(".table-container-latest-popular")
 
@@ -595,7 +591,7 @@ $(document).ready(function(){
         {
 
             let user = JSON.parse(localStorage.getItem("user"))
-            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic} class = "nav-pfp" width = "60">`
+            document.querySelector(".profile").innerHTML = `<img src = "https://nathaninteractivedev-4002.restdb.io/media/${user.Profilepic}" class = "nav-pfp">`
         }
 
         else
@@ -605,20 +601,6 @@ $(document).ready(function(){
 
     }
 
-    function loadRecentlyViewed(){
-        for(let i = 0; i < localStorage.length; i++){
-            if(localStorage.getItem(localStorage.key(i)) == "recentlyViewed")
-            {
-                return
-            }
-    
-        }
-
-        // console.log("hello")
-        let recentlyViewed = []
-        localStorage.setItem = ("recentlyViewed", recentlyViewed)
-
-    }
     GetBooks()
     GetReviews()
     loadUser()  
