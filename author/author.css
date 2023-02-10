@@ -262,6 +262,8 @@ a:active { text-decoration: none; }
 .profilepic{
     width: 50%;
     height: 100%;
+    max-width: 300px;
+    max-height: 500px;
 }
 
 .author-details{
