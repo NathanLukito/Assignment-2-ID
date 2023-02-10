@@ -90,6 +90,12 @@ $(document).ready(function(){
             let root = document.querySelector(".book-container")
             let book = document.createElement("div")
             book.classList.add("book")
+            book.setAttribute("data-link", author.Publish[i].BookID)
+            book.addEventListener('click', function(){
+                let bookid = book.getAttribute("data-link")
+                localStorage.setItem("BookID", bookid)
+                location.href = '/book/book.html'
+            })
             book.innerHTML = 
             `
             <img class = "book-image" src = "https://nathaninteractivedev-4002.restdb.io/media/${author.Publish[i].BookCover}">
